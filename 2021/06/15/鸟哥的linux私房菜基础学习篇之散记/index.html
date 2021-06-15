@@ -6,24 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>PyQt之状态提示和工具提示 | Hexo</title>
+  <title>鸟哥的linux私房菜基础学习篇之散记 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="article">
-<meta property="og:title" content="PyQt之状态提示和工具提示">
-<meta property="og:url" content="http://example.com/2021/06/09/PyQt%E4%B9%8B%E7%8A%B6%E6%80%81%E6%8F%90%E7%A4%BA%E5%92%8C%E5%B7%A5%E5%85%B7%E6%8F%90%E7%A4%BA/index.html">
+<meta property="og:title" content="鸟哥的linux私房菜基础学习篇之散记">
+<meta property="og:url" content="http://example.com/2021/06/15/%E9%B8%9F%E5%93%A5%E7%9A%84linux%E7%A7%81%E6%88%BF%E8%8F%9C%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AF%87%E4%B9%8B%E6%95%A3%E8%AE%B0/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://i.loli.net/2021/06/09/atQLInOqX9S4piC.png">
-<meta property="og:image" content="https://i.loli.net/2021/06/09/hBJikOjS9Eo24sY.png">
-<meta property="og:image" content="https://i.loli.net/2021/06/09/rZvyBJ4PiGRKzhD.png">
-<meta property="og:image" content="https://i.loli.net/2021/06/09/hb3BA26SCXKercv.png">
-<meta property="og:image" content="https://i.loli.net/2021/06/09/D8HhTrNdwECRl6a.png">
-<meta property="article:published_time" content="2021-06-09T02:50:10.000Z">
-<meta property="article:modified_time" content="2021-06-09T03:11:03.273Z">
+<meta property="article:published_time" content="2021-06-15T00:32:44.000Z">
+<meta property="article:modified_time" content="2021-06-15T01:31:48.394Z">
 <meta property="article:author" content="nan-del">
-<meta property="article:tag" content="PyQt实现状态提示和工具提示的功能">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://i.loli.net/2021/06/09/atQLInOqX9S4piC.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -180,20 +173,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-PyQt之状态提示和工具提示" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-鸟哥的linux私房菜基础学习篇之散记" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      PyQt之状态提示和工具提示
+      鸟哥的linux私房菜基础学习篇之散记
     </h1>
   
 
         
-        <a href="/2021/06/09/PyQt%E4%B9%8B%E7%8A%B6%E6%80%81%E6%8F%90%E7%A4%BA%E5%92%8C%E5%B7%A5%E5%85%B7%E6%8F%90%E7%A4%BA/" class="archive-article-date">
-  	<time datetime="2021-06-09T02:50:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-09</time>
+        <a href="/2021/06/15/%E9%B8%9F%E5%93%A5%E7%9A%84linux%E7%A7%81%E6%88%BF%E8%8F%9C%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AF%87%E4%B9%8B%E6%95%A3%E8%AE%B0/" class="archive-article-date">
+  	<time datetime="2021-06-15T00:32:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-15</time>
 </a>
         
       </header>
@@ -201,35 +194,44 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p><escape><span id="more"></span></escape></p>
-<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>当鼠标放在某一控件上时，在状态栏立刻出现的提示信息是状态提示；当鼠标放在某一控件上一会儿后，才出现的提示信息是工具提示。</p>
-<p>功能：</p>
-<p>当鼠标放在某一控件上时，在状态栏立刻出现提示信息；当鼠标放在某一控件上一会儿后，才出现提示信息。</p>
-<p>步骤：</p>
-<ol>
-<li>实现一个框架</li>
-<li>创建一个状态提示标签，创建一个工具提示标签和工具提示按钮并实现状态提示和工具提示的功能</li>
+<h2 id="第五章总结："><a href="#第五章总结：" class="headerlink" title="第五章总结："></a>第五章总结：</h2><ol>
+<li>Linux的每个文件中,可分别给予用户、用户组与其他人三种身份的r、w、x权限;</li>
+<li>用户组最有用的功能之一,就是当你在团队协同工作的时候,且每个账号都可以有多个用户组的<br>支持</li>
+<li>利用 <code>ls -l</code> 显示的文件属性中,第一个字段是文件的权限,共有十个位,第一个位是文件类型,接<br>下来三个为一组共三组,为用户、用户组、其他人的权限,权限有r、w、x三种</li>
+<li>如果文件名之前多一个<code>.</code>,则代表这个文件为隐藏文件</li>
+<li>若需要root的权限时,可以使用<code>su -</code>这个命令来切换身份,操作完毕则使用exit离开su的命令<br>环境</li>
+<li>更改文件的用户组支持可用 <code>chgrp</code>,修改文件的拥有者可用<code>chown</code>,修改文件的权限可用<code>chmod</code></li>
+<li><code>chmod</code>修改权限的方法有两种,分别是符号法与数字法,数字法中r、w、x数字分别为4、2、1</li>
+<li>对文件来讲,权限的性能为:</li>
 </ol>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><blockquote>
-<p>1.实现一个框架</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PyQt5.Qt <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Window</span>(<span class="params">QMainWindow</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;实现状态提示的前提要有状态栏，所以我们换一个组合控件&quot;&quot;&quot;</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;组合控件是指由很多部分组成的：有标题栏、菜单栏、工具栏、中心的工作区域、状态栏，但是这些有些是通过懒加载的方式--只有用到的时候，才会显示&quot;&quot;&quot;</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;因为使用的是QMainWindow的控件，所以要先固定控件的大小及位置&quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line">        self.resize(<span class="number">500</span>, <span class="number">500</span>)  </span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;实现状态提示和工具提示的功能&quot;&quot;&quot;</span></span><br><span class="line">    app = QApplication(sys.argv)</span><br><span class="line"></span><br><span class="line">    window = Window()</span><br><span class="line">    window.show()</span><br><span class="line"></span><br><span class="line">    sys.exit(app.exec_())</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>效果：</p>
-<p><img src="https://i.loli.net/2021/06/09/atQLInOqX9S4piC.png" alt="image-20210609110149263"></p>
-</blockquote>
-<blockquote>
-<p>2.创建一个状态提示标签，创建一个工具提示标签和工具提示按钮</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">self.Status_Tips()</span><br><span class="line">      self.Tool_Tips()</span><br><span class="line"></span><br><span class="line">  <span class="string">&quot;&quot;&quot;当把鼠标放在某一个控件上的时候，会在状态栏立刻出现提示信息&quot;&quot;&quot;</span></span><br><span class="line">  <span class="string">&quot;&quot;&quot;创建一个窗口，在创建一个标签&quot;&quot;&quot;</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">Status_Tips</span>(<span class="params">self</span>):</span></span><br><span class="line">      self.statusBar()    <span class="comment">#因为懒加载，原本是没有状态栏一行的，只有通过statusBar()调用后，控件才会有状态栏</span></span><br><span class="line">      self.setStatusTip(<span class="string">&quot;这是一个窗口&quot;</span>)</span><br><span class="line"></span><br><span class="line">      self.label_Status = QLabel(self)</span><br><span class="line">      self.label_Status.setText(<span class="string">&quot;状态提示标签&quot;</span>)</span><br><span class="line">      self.label_Status.move(<span class="number">100</span>, <span class="number">10</span>)</span><br><span class="line">      self.label_Status.setStatusTip(<span class="string">&quot;这是一个状态提示标签&quot;</span>)  <span class="comment"># 设置工具提示</span></span><br><span class="line"></span><br><span class="line">  <span class="string">&quot;&quot;&quot;首先创建两个控件，一个标签，一个按钮&quot;&quot;&quot;</span></span><br><span class="line">  <span class="string">&quot;&quot;&quot;当把鼠标放在控件上停留一会后，会出现提示信息&quot;&quot;&quot;</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">Tool_Tips</span>(<span class="params">self</span>):</span></span><br><span class="line">      self.label_Tool = QLabel(self)</span><br><span class="line">      self.label_Tool.setText(<span class="string">&quot;工具提示标签&quot;</span>)</span><br><span class="line">      self.label_Tool.move(<span class="number">100</span>,<span class="number">100</span>)</span><br><span class="line">      self.label_Tool.setToolTip(<span class="string">&quot;这是一个工具提示标签&quot;</span>)     <span class="comment">#设置工具提示</span></span><br><span class="line">      self.label_Tool.setToolTipDuration(<span class="number">3000</span>)     <span class="comment">#设置工具提示的时间，以毫秒显示</span></span><br><span class="line"></span><br><span class="line">      self.btn_Tool = QPushButton(self)</span><br><span class="line">      self.btn_Tool.setText(<span class="string">&quot;工具提示按钮&quot;</span>)</span><br><span class="line">      self.btn_Tool.move(<span class="number">100</span>, <span class="number">150</span>)</span><br><span class="line">      self.btn_Tool.setToolTip(<span class="string">&quot;这是一个工具提示按钮&quot;</span>)</span><br><span class="line">      self.btn_Tool.setToolTipDuration(<span class="number">3000</span>)</span><br></pre></td></tr></table></figure>
-
-<p>效果：</p>
-<p>窗口的状态提示信息：（因为其他的控件都在窗口中，所以除了标签的状态提示信息的时候被覆盖以外，其他时候在状态栏都会显示“这是一个窗口”）</p>
-<p><img src="https://i.loli.net/2021/06/09/hBJikOjS9Eo24sY.png" alt="image-20210609110346930"></p>
-<p>标签的状态提示信息：</p>
-<p><img src="https://i.loli.net/2021/06/09/rZvyBJ4PiGRKzhD.png" alt="image-20210609110453210"></p>
-<p>标签的工具提示信息：</p>
-<p><img src="https://i.loli.net/2021/06/09/hb3BA26SCXKercv.png" alt="image-20210609111011110"></p>
-<p>按钮的工具提示信息：</p>
-<p><img src="https://i.loli.net/2021/06/09/D8HhTrNdwECRl6a.png" alt="image-20210609110655278"></p>
-</blockquote>
+<ul>
+<li>or:可读取此一文件的实际内容,如读取文本文件的文字内容等</li>
+<li>w:可以编辑、新增或是修改该文件的内容(但不含删除该文件)</li>
+<li>x:该文件具有可以被系统执行的权限</li>
+</ul>
+<ol start="9">
+<li>对目录来说,权限的功能为:</li>
+</ol>
+<ul>
+<li>r:读取目录中的内容</li>
+<li>W:修改目录中的内容</li>
+<li>x:访问目录。</li>
+</ul>
+<ol start="10">
+<li>要开放目录给任何人浏览时,应该至少也要给予r及x的权限,但w权限不可随便给</li>
+<li>能否读取到某个文件内容,跟该文件所在的目录权限也有关系(目录至少需要有x的权限)</li>
+<li>Linux文件名的限制为:单一文件或目录的最大容许文件名为255个英文字符或128个中文字符</li>
+<li>FHS制定出来的四种目录为: <code>shareable</code>、 <code>unshareable</code>、 <code>static</code>、 <code>variable</code>等四类</li>
+<li>FHS所定义的三层主目录为:<code>/</code>、<code>/var</code>、<code>/usr</code>三层;</li>
+</ol>
+<h2 id="第六章-Linux文件与目录管理"><a href="#第六章-Linux文件与目录管理" class="headerlink" title="第六章 Linux文件与目录管理"></a>第六章 Linux文件与目录管理</h2><ol>
+<li>```shell<ul>
+<li><pre><code>               代表前一个工作目录
+</code></pre>
+~                    代表目前使用者身份所在的家目录<br>~account            代表account这个使用者的家目录（account是一个账号名称）<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">2. PATH</span><br><span class="line"></span><br><span class="line">* 不同身份用户默认的PATH不同，默认能够随意执行的命令也不同</span><br><span class="line">* 本目录(`.`)最好不要放到PATH中，但是在渗透的过程可以做一些手脚，如果是可执行文件且文件名与`ls`、`cd`等系统命令相同则会直接执行可执行文件而不是系统命令</span><br><span class="line"></span><br><span class="line">3. ls</span><br><span class="line"></span><br><span class="line">```shell</span><br><span class="line">ls 的选项与参数：</span><br><span class="line">-a  : 全部文件，连同隐藏文件（开头为.的文件）一起列出来(常用)</span><br><span class="line">-A  : 全部文件，连同隐藏文件但不包括.与..这两个目录</span><br><span class="line">-d  : 仅列出目录本身，而不是列出目录内的数据(常用)</span><br><span class="line">-f  : 直接列出结果,而不进行排序(1s默认会以文件名排序)</span><br><span class="line">-F  : 根据文件、目录等信息,给予附加数据结构,例如:</span><br><span class="line">    *:代表可执行文件  /:代表目录   =:代表 socket文件   |:代表FIFO文件</span><br><span class="line">-h  : 将文件容量以人类较易读的方式(例如GB、KB等)列出来</span><br><span class="line">-i  : 列出 inode号码</span><br><span class="line">-l  : 详细信息显示，包含文件属性与权限等数据(常用)</span><br><span class="line">-n  : 列出UID与GID而非使用者与用户组的名称</span><br><span class="line">-r  : 将排序结果反向输出,例如:原本文件名由小到大,反向则为由大到小</span><br><span class="line">-R  : 连同子目录内容一起列出来,等于该目录下的所有文件都会显示出来</span><br><span class="line">-S  : 以文件容量大小排序,而不是用文件名排序</span><br><span class="line">-t  : 依时间排序,而不是用文件名</span><br><span class="line">--color=never:不要依据文件特性给子颜色显示</span><br><span class="line">--color=always:显示颜色</span><br><span class="line">--color=auto:让系统自行依据设置来判断是否给予颜色</span><br><span class="line">--time=&#123;atime,ctime&#125; : 输出access时间或改变权限属性时间(ctime)，而非内容修改时间(modification time)</span><br><span class="line">--full-time : 以完整时间模式(包含年、月、日、时、分)输出</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ol>
 
       
 
@@ -259,17 +261,6 @@
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PyQt实现状态提示和工具提示的功能</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 
       
@@ -320,7 +311,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/06/09/PyQt%E4%B9%8B%E7%8A%B6%E6%80%81%E6%8F%90%E7%A4%BA%E5%92%8C%E5%B7%A5%E5%85%B7%E6%8F%90%E7%A4%BA/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/06/15/%E9%B8%9F%E5%93%A5%E7%9A%84linux%E7%A7%81%E6%88%BF%E8%8F%9C%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AF%87%E4%B9%8B%E6%95%A3%E8%AE%B0/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -334,18 +325,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2021/06/10/%E8%AF%BB%E3%80%8A%E8%99%9A%E6%8B%9F%E8%9C%9C%E7%BD%90%E4%BB%8E%E5%83%B5%E5%B0%B8%E7%BD%91%E7%BB%9C%E8%BF%BD%E8%B8%AA%E5%88%B0%E5%85%A5%E4%BE%B5%E6%A3%80%E6%B5%8B%E3%80%8B-%E4%B8%80/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          读《虚拟蜜罐从僵尸网络追踪到入侵检测》(一)
-        
-      </div>
-    </a>
   
-  
-    <a href="/2021/06/08/PyQt%E4%B9%8B%E7%99%BB%E5%BD%95%E7%95%8C%E9%9D%A2%EF%BC%88%E4%BA%8C%EF%BC%89/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">PyQt之登录界面（二）</div>
+    <a href="/2021/06/12/python%E7%88%AC%E8%99%AB%E4%B9%8B%E7%99%BE%E5%BA%A6%E6%96%87%E5%BA%93%E7%9A%84%E7%88%AC%E5%8F%96/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">python爬虫之百度文库的爬取</div>
       <i class="icon-circle-right"></i>
     </a>
   
