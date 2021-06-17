@@ -6,14 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2021/6 | Hexo</title>
+  <title>docker部署Nginx和Tomcat | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/2021/06/index.html">
+  <meta property="og:type" content="article">
+<meta property="og:title" content="docker部署Nginx和Tomcat">
+<meta property="og:url" content="http://example.com/2021/06/16/docker%E9%83%A8%E7%BD%B2Nginx%E5%92%8CTomcat/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-06-16T13:32:26.000Z">
+<meta property="article:modified_time" content="2021-06-17T13:46:51.008Z">
 <meta property="article:author" content="nan-del">
+<meta property="article:tag" content="docker的初识并且部署Nginx和Tomcat">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -171,36 +174,65 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-docker部署Nginx和Tomcat" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/06/16/docker%E9%83%A8%E7%BD%B2Nginx%E5%92%8CTomcat/" class="archive-article-date">
-  	<time datetime="2021-06-16T13:32:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-16</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/06/16/docker%E9%83%A8%E7%BD%B2Nginx%E5%92%8CTomcat/">docker部署Nginx和Tomcat</a>
+    <h1 class="article-title" itemprop="name">
+      docker部署Nginx和Tomcat
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2021/06/16/docker%E9%83%A8%E7%BD%B2Nginx%E5%92%8CTomcat/" class="archive-article-date">
+  	<time datetime="2021-06-16T13:32:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><escape><span id="more"></span></escape></p>
+<h2 id="部署Nginx"><a href="#部署Nginx" class="headerlink" title="部署Nginx"></a>部署Nginx</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">1.搜索Nginx的镜像</span></span><br><span class="line">docker search nginx</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">2.拉取Nginx的镜像</span></span><br><span class="line">docker pull nginx</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">3.查看镜像是否下载完成</span></span><br><span class="line">C:\Users\Administrator&gt;docker images -a</span><br><span class="line">REPOSITORY    TAG       IMAGE ID       CREATED        SIZE</span><br><span class="line">nginx         latest    d1a364dc548d   3 weeks ago    133MB</span><br><span class="line">hello-world   latest    d1165f221234   3 months ago   13.3kB</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">4.运行Nginx的镜像</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> -d        后台运行</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> --name    为运行的容器取一个名字</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> -p        第一个为宿主机开放的端口，第二个为容器开放的端口</span></span><br><span class="line"> </span><br><span class="line">C:\Users\Administrator&gt;docker run -d --name nginx-01 -p 8080:80 nginx</span><br><span class="line">a9193be0e2da0fa83a6cda4218f9184b6461a523b50246a96d584ccbea4997ca</span><br></pre></td></tr></table></figure>
+
+<p>这其实就已经运行起来了，可以在本地的网页中浏览：</p>
+<p><a target="_blank" rel="noopener" href="http://localhost:8080/">http://localhost:8080/</a></p>
+<h2 id="部署Nginx-1"><a href="#部署Nginx-1" class="headerlink" title="部署Nginx"></a>部署Nginx</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 1.搜索Tomcat的镜像</span></span><br><span class="line"></span><br><span class="line">可以去官网搜索版本信息</span><br><span class="line"><span class="meta">#</span><span class="bash"> 2.下载镜像</span></span><br><span class="line"></span><br><span class="line">C:\Users\Administrator&gt;docker pull tomcat</span><br><span class="line">Using default tag: latest</span><br><span class="line">latest: Pulling from library/tomcat</span><br><span class="line">Digest: sha256:9f502a5c7bafd4e1953dba4e77f9347c9211f987902ab8668a34997178f9bcd0</span><br><span class="line">Status: Image is up to date for tomcat:latest</span><br><span class="line">docker.io/library/tomcat:latest</span><br><span class="line"><span class="meta">#</span><span class="bash"> 3.运行镜像</span></span><br><span class="line"></span><br><span class="line">C:\Users\Administrator&gt;docker run -d --name tomcat02 -p 3344:8080 tomcat</span><br><span class="line">1063e99cb4ecc8ea0e6d4b7a634f8caaf56f1248dd9677f1dc621d01c2cc44cb</span><br><span class="line"><span class="meta">#</span><span class="bash"> 4.查看结果</span></span><br><span class="line"></span><br><span class="line">C:\Users\Administrator&gt;docker ps</span><br><span class="line">CONTAINER ID   IMAGE     COMMAND             CREATED          STATUS          PORTS         NAMES</span><br><span class="line">1063e99cb4ec   tomcat    &quot;catalina.sh run&quot;   24 seconds ago   Up 20 seconds   8080/tcp,   tomcat02</span><br><span class="line">a2c23b372c8e   centos    &quot;/bin/bash&quot;         4 hours ago      Up 2 hours                  centos01</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>但是在网页中却无法访问，原因是我们下载的tomcat的镜像是可以运行占用的最小的内存，在tomcat中的webapps目录下没有任何东西</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">我们可以进入tomcat中查看</span></span><br><span class="line">C:\Users\Administrator&gt;docker exec -it tomcat02 /bin/bash</span><br><span class="line">root@1063e99cb4ec:/usr/local/tomcat#   </span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">进入webapps目录查看，可以得到webapps目录是空的，什么都没有，但同时又有一个webapps.dist</span></span><br><span class="line">root@1063e99cb4ec:/usr/local/tomcat# ls</span><br><span class="line">BUILDING.txt  CONTRIBUTING.md  LICENSE  NOTICE  README.md  RELEASE-NOTES  RUNNING.txt  bin  conf  lib  logs  native-jni-lib  temp  webapps  webapps.dist  work</span><br><span class="line">root@1063e99cb4ec:/usr/local/tomcat# cd webapps</span><br><span class="line">root@1063e99cb4ec:/usr/local/tomcat/webapps# ls</span><br><span class="line">root@1063e99cb4ec:/usr/local/tomcat/webapps#</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">我们可以看一下webapps.dist目录下有什么，可以看到ROOT目录</span></span><br><span class="line">root@1063e99cb4ec:/usr/local/tomcat/webapps# cd ..</span><br><span class="line">root@1063e99cb4ec:/usr/local/tomcat# cd webapps.dist/</span><br><span class="line">root@1063e99cb4ec:/usr/local/tomcat/webapps.dist# ls</span><br><span class="line">ROOT  docs  examples  host-manager  manager</span><br><span class="line">root@1063e99cb4ec:/usr/local/tomcat/webapps.dist#</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">我们可以把webapps.dist目录下的全部复制给webapps目录，在到网页中访问</span></span><br><span class="line">root@1063e99cb4ec:/usr/local/tomcat# cp -r webapps.dist/* webapps</span><br><span class="line">root@1063e99cb4ec:/usr/local/tomcat# cd webapps</span><br><span class="line">root@1063e99cb4ec:/usr/local/tomcat/webapps# ls</span><br><span class="line">ROOT  docs  examples  host-manager  manager</span><br><span class="line">root@1063e99cb4ec:/usr/local/tomcat/webapps#</span><br><span class="line"><span class="meta">#</span><span class="bash">这时我们就可以在网页中看到tomcat的经典页面</span></span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -212,309 +244,105 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/06/16/docker%E9%83%A8%E7%BD%B2Nginx%E5%92%8CTomcat/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/06/15/%E9%B8%9F%E5%93%A5%E7%9A%84linux%E7%A7%81%E6%88%BF%E8%8F%9C%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AF%87%E4%B9%8B%E6%95%A3%E8%AE%B0/" class="archive-article-date">
-  	<time datetime="2021-06-15T00:32:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-15</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2021/06/15/%E9%B8%9F%E5%93%A5%E7%9A%84linux%E7%A7%81%E6%88%BF%E8%8F%9C%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AF%87%E4%B9%8B%E6%95%A3%E8%AE%B0/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">鸟哥的linux私房菜基础学习篇之散记</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/06/15/%E9%B8%9F%E5%93%A5%E7%9A%84linux%E7%A7%81%E6%88%BF%E8%8F%9C%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AF%87%E4%B9%8B%E6%95%A3%E8%AE%B0/">鸟哥的linux私房菜基础学习篇之散记</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/06/12/python%E7%88%AC%E8%99%AB%E4%B9%8B%E7%99%BE%E5%BA%A6%E6%96%87%E5%BA%93%E7%9A%84%E7%88%AC%E5%8F%96/" class="archive-article-date">
-  	<time datetime="2021-06-12T13:29:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/06/12/python%E7%88%AC%E8%99%AB%E4%B9%8B%E7%99%BE%E5%BA%A6%E6%96%87%E5%BA%93%E7%9A%84%E7%88%AC%E5%8F%96/">python爬虫之百度文库的爬取</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/06/10/%E8%AF%BB%E3%80%8A%E8%99%9A%E6%8B%9F%E8%9C%9C%E7%BD%90%E4%BB%8E%E5%83%B5%E5%B0%B8%E7%BD%91%E7%BB%9C%E8%BF%BD%E8%B8%AA%E5%88%B0%E5%85%A5%E4%BE%B5%E6%A3%80%E6%B5%8B%E3%80%8B-%E4%BA%8C/" class="archive-article-date">
-  	<time datetime="2021-06-10T11:30:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/06/10/%E8%AF%BB%E3%80%8A%E8%99%9A%E6%8B%9F%E8%9C%9C%E7%BD%90%E4%BB%8E%E5%83%B5%E5%B0%B8%E7%BD%91%E7%BB%9C%E8%BF%BD%E8%B8%AA%E5%88%B0%E5%85%A5%E4%BE%B5%E6%A3%80%E6%B5%8B%E3%80%8B-%E4%BA%8C/">读《虚拟蜜罐从僵尸网络追踪到入侵检测》(二)</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/06/10/%E8%AF%BB%E3%80%8A%E8%99%9A%E6%8B%9F%E8%9C%9C%E7%BD%90%E4%BB%8E%E5%83%B5%E5%B0%B8%E7%BD%91%E7%BB%9C%E8%BF%BD%E8%B8%AA%E5%88%B0%E5%85%A5%E4%BE%B5%E6%A3%80%E6%B5%8B%E3%80%8B-%E4%B8%80/" class="archive-article-date">
-  	<time datetime="2021-06-10T07:44:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/06/10/%E8%AF%BB%E3%80%8A%E8%99%9A%E6%8B%9F%E8%9C%9C%E7%BD%90%E4%BB%8E%E5%83%B5%E5%B0%B8%E7%BD%91%E7%BB%9C%E8%BF%BD%E8%B8%AA%E5%88%B0%E5%85%A5%E4%BE%B5%E6%A3%80%E6%B5%8B%E3%80%8B-%E4%B8%80/">读《虚拟蜜罐从僵尸网络追踪到入侵检测》(一)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/06/09/PyQt%E4%B9%8B%E7%8A%B6%E6%80%81%E6%8F%90%E7%A4%BA%E5%92%8C%E5%B7%A5%E5%85%B7%E6%8F%90%E7%A4%BA/" class="archive-article-date">
-  	<time datetime="2021-06-09T02:50:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/06/09/PyQt%E4%B9%8B%E7%8A%B6%E6%80%81%E6%8F%90%E7%A4%BA%E5%92%8C%E5%B7%A5%E5%85%B7%E6%8F%90%E7%A4%BA/">PyQt之状态提示和工具提示</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PyQt实现状态提示和工具提示的功能</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/06/08/PyQt%E4%B9%8B%E7%99%BB%E5%BD%95%E7%95%8C%E9%9D%A2%EF%BC%88%E4%BA%8C%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2021-06-08T14:05:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/06/08/PyQt%E4%B9%8B%E7%99%BB%E5%BD%95%E7%95%8C%E9%9D%A2%EF%BC%88%E4%BA%8C%EF%BC%89/">PyQt之登录界面（二）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">仿造qq登录界面之界面随着鼠标的移动</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/06/07/%E8%9C%9C%E7%BD%90%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%80%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2021-06-07T13:51:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/06/07/%E8%9C%9C%E7%BD%90%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%80%EF%BC%89/">蜜罐学习（一）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">初始蜜罐的学习(一)</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/06/07/PyQt%E4%B9%8B%E7%99%BB%E5%BD%95%E7%95%8C%E9%9D%A2/" class="archive-article-date">
-  	<time datetime="2021-06-07T02:49:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/06/07/PyQt%E4%B9%8B%E7%99%BB%E5%BD%95%E7%95%8C%E9%9D%A2/">PyQt之登录界面（一）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">仿造qq登录界面</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/06/07/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" class="archive-article-date">
-  	<time datetime="2021-06-07T02:23:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/06/07/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/">我的第一篇博客</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2021/06/page/2/">2</a><a class="extend next" rel="next" href="/archives/2021/06/page/2/">Next &amp;raquo;</a>
-    </nav>
   
 
 
@@ -540,8 +368,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
