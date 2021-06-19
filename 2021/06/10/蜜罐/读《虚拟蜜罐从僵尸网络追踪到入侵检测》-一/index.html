@@ -6,22 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>python爬虫之百度文库的爬取 | Hexo</title>
+  <title>读《虚拟蜜罐从僵尸网络追踪到入侵检测》(一) | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="article">
-<meta property="og:title" content="python爬虫之百度文库的爬取">
-<meta property="og:url" content="http://example.com/2021/06/12/python%E7%88%AC%E8%99%AB%E4%B9%8B%E7%99%BE%E5%BA%A6%E6%96%87%E5%BA%93%E7%9A%84%E7%88%AC%E5%8F%96/index.html">
+<meta property="og:title" content="读《虚拟蜜罐从僵尸网络追踪到入侵检测》(一)">
+<meta property="og:url" content="http://example.com/2021/06/10/%E8%9C%9C%E7%BD%90/%E8%AF%BB%E3%80%8A%E8%99%9A%E6%8B%9F%E8%9C%9C%E7%BD%90%E4%BB%8E%E5%83%B5%E5%B0%B8%E7%BD%91%E7%BB%9C%E8%BF%BD%E8%B8%AA%E5%88%B0%E5%85%A5%E4%BE%B5%E6%A3%80%E6%B5%8B%E3%80%8B-%E4%B8%80/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/Typora/image-20210612225913553.png">
-<meta property="og:image" content="http://example.com/Typora/image-20210612230033251.png">
-<meta property="og:image" content="http://example.com/Typora/image-20210612230728821.png">
-<meta property="og:image" content="http://example.com/Typora/image-20210612231655262.png">
-<meta property="article:published_time" content="2021-06-12T13:29:13.000Z">
-<meta property="article:modified_time" content="2021-06-13T01:22:29.174Z">
+<meta property="article:published_time" content="2021-06-10T07:44:18.000Z">
+<meta property="article:modified_time" content="2021-06-10T13:41:39.723Z">
 <meta property="article:author" content="nan-del">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/Typora/image-20210612225913553.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -80,7 +75,7 @@
                     </nav>
                     <nav>
                         总文章数
-                        11
+                        12
                     </nav>
                     <nav class="header-smart-menu">
                         
@@ -178,20 +173,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-python爬虫之百度文库的爬取" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-蜜罐/读《虚拟蜜罐从僵尸网络追踪到入侵检测》-一" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      python爬虫之百度文库的爬取
+      读《虚拟蜜罐从僵尸网络追踪到入侵检测》(一)
     </h1>
   
 
         
-        <a href="/2021/06/12/python%E7%88%AC%E8%99%AB%E4%B9%8B%E7%99%BE%E5%BA%A6%E6%96%87%E5%BA%93%E7%9A%84%E7%88%AC%E5%8F%96/" class="archive-article-date">
-  	<time datetime="2021-06-12T13:29:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-12</time>
+        <a href="/2021/06/10/%E8%9C%9C%E7%BD%90/%E8%AF%BB%E3%80%8A%E8%99%9A%E6%8B%9F%E8%9C%9C%E7%BD%90%E4%BB%8E%E5%83%B5%E5%B0%B8%E7%BD%91%E7%BB%9C%E8%BF%BD%E8%B8%AA%E5%88%B0%E5%85%A5%E4%BE%B5%E6%A3%80%E6%B5%8B%E3%80%8B-%E4%B8%80/" class="archive-article-date">
+  	<time datetime="2021-06-10T07:44:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-10</time>
 </a>
         
       </header>
@@ -199,89 +194,26 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p><escape><span id="more"></span></escape></p>
-<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>百度文库中的资源有文本的、PDF、但大多数都是以图片的形式加载的，我们今天要做的就是爬取百度文库中的图片。</p>
-<p>首先要做爬取百度文库的一些准备：</p>
-<ol>
-<li>文库中图片的URL地址，我们要提前找到</li>
-<li>百度文库为了提高文章加载的速度，采用了懒加载机制，图片不会一下全部加载出来，只有出现在屏幕中的图片才会加载出来</li>
-<li>因为是使用机器爬取文章，但是我们如果没有登录百度文库。是点击不了继续阅读的，也就加载不出来剩下的内容</li>
-</ol>
-<p>基于上面的三点，总结我们将要用到的模块：</p>
-<ol>
-<li>selenium模块，我们将使用它进行模拟登录，并且破解懒加载机制，获取动态的数据</li>
-<li>xpath解析，这是有网页代码格式的时候，最好用的一种解析数据的方式</li>
-<li>正则表达式解析，这是在没有网页代码格式的时候，最好的一种解析数据的方式</li>
-<li>request模块，对解析到的图片地址请求数据</li>
-<li>目标URL地址：<a target="_blank" rel="noopener" href="https://wenku.baidu.com/view/c062e89b18e8b8f67c1cfad6195f312b3069eb04.html">https://wenku.baidu.com/view/c062e89b18e8b8f67c1cfad6195f312b3069eb04.html</a></li>
-</ol>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><blockquote>
-<p>一、模拟登录百度文库</p>
-<ol>
-<li>点击登录按钮，首先要找到按钮的元素</li>
-</ol>
-<h1 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bro.find_element_by_class_name(<span class="string">&#x27;user-text&#x27;</span>).click()</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>点击登录后，出现下图界面，接下来我们使用用户名登录，所以我们找到用户名的元素并点击</li>
-</ol>
-<p><img src="../../../../Typora/image-20210612225913553.png" alt="image-20210612225913553"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bro.find_element_by_id(<span class="string">&#x27;TANGRAM__PSP_11__footerULoginBtn&#x27;</span>).click()</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>点击过后，出现下图界面，然后就是找到用户名和密码输入框的元素，并输入用户名和密码，最后在点击登录按钮，在这里，我就不把密码，展现出来了</li>
-</ol>
-<p><img src="../../../../Typora/image-20210612230033251.png" alt="image-20210612230033251"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">username = bro.find_element_by_id(<span class="string">&#x27;TANGRAM__PSP_11__userName&#x27;</span>)</span><br><span class="line">password = bro.find_element_by_id(<span class="string">&#x27;TANGRAM__PSP_11__password&#x27;</span>)</span><br><span class="line">username.send_keys(<span class="string">&#x27;nan_del&#x27;</span>)</span><br><span class="line">password.send_keys(<span class="string">&#x27;********&#x27;</span>)</span><br><span class="line">bro.find_element_by_id(<span class="string">&#x27;TANGRAM__PSP_11__submit&#x27;</span>).click()</span><br></pre></td></tr></table></figure>
-
-<ol start="4">
-<li>登录过后，还有下图的界面，在这里，我们要点击X这个按钮，但是这个按钮在元素中是span标签，所以使用xpath定位到元素</li>
-</ol>
-<p><img src="../../../../Typora/image-20210612230728821.png" alt="image-20210612230728821"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bro.find_element_by_xpath(<span class="string">&#x27;//*[@id=&quot;app&quot;]/div[3]/div[3]/div[5]/div/span&#x27;</span>).click()</span><br></pre></td></tr></table></figure>
-
-<p>到这就完成了模拟登录</p>
-</blockquote>
-<blockquote>
-<p>二、破解懒加载机制</p>
-<ol>
-<li>先点击’继续阅读‘，使全文展现出来</li>
-</ol>
-<p><img src="../../../../Typora/image-20210612231655262.png" alt="image-20210612231655262"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">read = bro.find_element_by_xpath(<span class="string">&#x27;//*[@id=&quot;app&quot;]/div[2]/div[1]/div[2]/div[2]/div[1]/div[2]/span[last()]&#x27;</span>)</span><br><span class="line">bro.execute_script(<span class="string">&quot;arguments[0].click();&quot;</span>, read)</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>慢慢滚动滑动条，使所有的图片全都加载出来</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">i = <span class="number">0</span></span><br><span class="line">start = <span class="number">0</span></span><br><span class="line">end = <span class="number">1000</span></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    i = i + <span class="number">1</span></span><br><span class="line">    start = <span class="built_in">str</span>(start)</span><br><span class="line">    end = <span class="built_in">str</span>(end)</span><br><span class="line">    js = <span class="string">f&quot;window.scrollBy(<span class="subst">&#123;start&#125;</span>,<span class="subst">&#123;end&#125;</span>)&quot;</span></span><br><span class="line">    bro.execute_script(js)</span><br><span class="line">    time.sleep(<span class="number">1</span>)</span><br><span class="line">    start = end</span><br><span class="line">    end = <span class="built_in">int</span>(end) + <span class="number">1000</span></span><br><span class="line">    <span class="keyword">if</span> i == <span class="number">10</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
-
-<p>到这，图片资源就全部加载出来了，下一步就是获取，图片地址的URL了</p>
-</blockquote>
-<blockquote>
-<p>三、获取图片URL，并下载保存图片</p>
-<ol>
-<li>获取整个页面的源码数据，并解析到含有图片的所有div标签</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">content = bro.page_source</span><br><span class="line">tree = etree.HTML(content)</span><br><span class="line">div_list = tree.xpath(<span class="string">&#x27;//*[@id=&quot;reader-container&quot;]/div&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>上一步的div_list是一个包含所有包含图片的div列表，然后遍历列表，在每一个单独的div中获取图片URL地址</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">item = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> div_list:</span><br><span class="line">        item = item + <span class="number">1</span></span><br><span class="line">        content_url = i.xpath(<span class="string">&#x27;.//div[@class=&quot;reader-pic-item&quot;]/@style&#x27;</span>)</span><br><span class="line">        <span class="keyword">if</span> content_url:</span><br><span class="line">            content_url = content_url[<span class="number">0</span>]</span><br><span class="line">            new_content_url = \</span><br><span class="line">            re.findall(<span class="string">&#x27;background-image: url\(\&quot;(.*)\&quot;\);| url\((.*)\);background-position:&#x27;</span>, content_url)[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>上一步的new_content_url是一个包含图片URL地址的元祖，里面有两个值，其中只有一个有值，因为通过分析图片的位置的元素，得到两种不同的数据，所以有两种正则表达式的规则，接下来就是获取图片的二进制数据，并保存下来</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> new_content_url[<span class="number">0</span>]:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;--------<span class="subst">&#123;item&#125;</span>----------&quot;</span>)</span><br><span class="line">    a = requests.get(new_content_url[<span class="number">0</span>], header).content</span><br><span class="line">    path = <span class="string">&#x27;./&#x27;</span> + <span class="built_in">str</span>(item) + <span class="string">&#x27;.png&#x27;</span></span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(path, <span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        f.write(a)</span><br><span class="line">        time.sleep(<span class="number">1</span>)</span><br><span class="line"><span class="keyword">if</span> new_content_url[<span class="number">1</span>]:</span><br><span class="line">    <span class="comment"># print(new_content_url[1])</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;--------<span class="subst">&#123;item&#125;</span>----------&quot;</span>)</span><br><span class="line">    a = requests.get(new_content_url[<span class="number">1</span>], header).content</span><br><span class="line">    path = <span class="string">&#x27;./&#x27;</span> + <span class="built_in">str</span>(item) + <span class="string">&#x27;.png&#x27;</span></span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(path, <span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        f.write(a)</span><br><span class="line">        time.sleep(<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-
-<p>到这，百度文库的图片数据获取就结束了</p>
-</blockquote>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>有难度的点：</p>
-<ol>
-<li>数据的分析</li>
-<li>span标签的点击（虽然只有几行代码，但是耗费了我很多时间，一直都在这一步报错）</li>
-<li>两种正则表达式的匹配不同的规则，并在同一代码中</li>
-</ol>
-<p>除了上面三点，其他有点爬虫的基础就可以完成了</p>
+<h2 id="蜜墙"><a href="#蜜墙" class="headerlink" title="蜜墙"></a>蜜墙</h2><p>蜜墙是第三代蜜网的核心，因为它能够完成以下蜜网的所有主要任务：</p>
+<ul>
+<li><p>数据捕捉：蜜网内的所有活动和进出蜜网的信息，能够在攻击者不知道被监视的情况下被捕获</p>
+</li>
+<li><p>数据控制：控制进出蜜网的可疑流量，进一步地，该机制必须确保一旦蜜网中的蜜罐被攻陷，所有的恶意活动必须限制在蜜网中</p>
+</li>
+<li><p>数据分析：帮助你作为蜜网操作员简化捕获数据分析，以及帮助计算机和网络取证</p>
+</li>
+</ul>
+<p>蜜墙通常被设置为一个透明的网桥，即一个工作在数据链路层的网络设备。在这种情况下，透明意味着蜜墙在连接蜜罐与互联网的两个接口上均没有<code>IP</code>地址，因此，攻击者不容易检测到它们之间有一个网络设备。可选的，也可以使用第三个网络接口，用于管理和维护蜜墙。</p>
+<p>正是这种网桥的设置，帮助我们捕捉重要的数据（数据捕捉），并控制所有进出蜜网的流量（数据控制）。数据控制意味着我们想控制哪些数据包允许今日蜜网，但是更重要的是，允许哪些数据包离开蜜网。假如一个攻击者成功地攻陷了一个蜜罐，并打算通过蜜罐进一步地攻击互联网的其他系统，攻击者可以利用一个特殊的漏洞，也可以对其他主机实施拒绝服务攻击等等，这是我们控制不了的，所以我们应该控制流入和流出的流量，因为我们也不能完全限制蜜罐访问互联网的其他主机（攻击者也要从其他计算机上获得工具）。</p>
+<p>数据控制的手段：</p>
+<ul>
+<li><p>使用Linux内核的子系统<code>netfilter</code>/<code>iptables</code>,可以设置允许连接的上限，以减轻对其他主机实施拒绝服务攻击的风险，为了预防拒绝服务攻击，每天流出的TCP流量限制为一定量的连接，同样，<code>ICMP</code>包也要限制，因为拒绝服务式攻击有Ping Dos,TCP SYN Dos(半开连接),TCP Handshake Dos(全开连接)等等。但这并不能防止攻击者使用特殊的漏洞攻击其他主机。</p>
+</li>
+<li><p>为了防止攻击者使用特殊的漏洞攻击其他主机，我们可以使用入侵防御系统<code>snort_inline</code>，这个工具基于入侵检测系统IDS-Snort，并且被扩展，允许修改或丢弃经过的数据包。我们可以通过<code>netfilter</code>/<code>iptables</code>功能，所有的流出流量都经过<code>snort_inline</code>，然后通过重写一个带有已知攻击有效载荷的流出流量，这样有效载荷将失败。意思就是，在任何端口上离开蜜网、带有外部目的地的任何端口上的所有<code>IP</code>数据包都要检查，如果检测到可疑的数据包，就把里面部分数据内容替换掉，并向日志文件写入一条信息，这种攻击过滤可以使我们放心的让攻击者攻击其他系统，因为他们的数据包，已经被我们偷天换日了。并且，如果攻击者的技术有限，在一段时间内可能都无法检测到蜜罐和蜜墙的存在，不知道他们发出的攻击其他系统的数据包被我们修改过，因此他会继续尝试不同形式的攻击，使我们能够更大程度和更长时间地观察他们。</p>
+</li>
+</ul>
+<p>除了数据控制，蜜墙的另一个任务是数据捕获—-尽可能地多收集有关攻击者行为的数据。最简单的数据捕获机制是捕获所有流入和流出的流量，可以使用<code>tcpdump </code>或 <code>wireshark</code>进行数据的捕获，但是这也有缺点，当攻击者使用加密的信道连接其他主机，因为我们不知道加密信道使用的密钥，所以我们不能解密数据。所以我们可以使用<code>Sebek</code>监视系统，<code>Sebek</code>是一个客户/服务器系统，所有蜜罐运行<code>Sebek</code>客户端，密切监视和记录所有用户的活动，而且不会被察觉，但这也不是说完全不可能被察觉到，但是一般来说，攻击者一般检测不到监视的存在。为了实现监视，<code>Sebek</code>把一些系统调用替换为自己的版本。<code>Sebek</code>可以记录所有的SSH会话，即使它们被加密。此外，它能够使我们通过安全拷贝(<code>scp</code>)恢复被拷贝的文件，记录入侵者使用的所有口令。这些记录下来的信息通过网络发送到<code>Sebek</code>服务器—也就是蜜墙。通过把所有记录的数据直接发送到设备驱动器，因而绕过了主机上的所有日志记录机制，所以，<code>Sebek</code>完成了（几乎）不可检测的通信。这意味着，一般攻击者攻击一个蜜罐时，不能轻易检测到正在进行的大量记录活动。此外，<code>Sebek</code>借用了<code>rootkit Adore</code>的一个技术隐藏自己，它使自己脱离已安装的内核模块列表，难以检测它的存在。（刚接触时，还以为可以检测已安装的软件中是否有<code>Sebek</code>，如果有就说明是一个蜜罐，还是太年起）</p>
+<p>最后，蜜墙的第三项任务是数据分析。这种机制使蜜罐的操作者可以快速分析蜜罐上当前正在发生的事情，或者在攻陷之前及攻击过程中间已经发生的事情。</p>
 
       
 
@@ -361,7 +293,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/06/12/python%E7%88%AC%E8%99%AB%E4%B9%8B%E7%99%BE%E5%BA%A6%E6%96%87%E5%BA%93%E7%9A%84%E7%88%AC%E5%8F%96/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/06/10/%E8%9C%9C%E7%BD%90/%E8%AF%BB%E3%80%8A%E8%99%9A%E6%8B%9F%E8%9C%9C%E7%BD%90%E4%BB%8E%E5%83%B5%E5%B0%B8%E7%BD%91%E7%BB%9C%E8%BF%BD%E8%B8%AA%E5%88%B0%E5%85%A5%E4%BE%B5%E6%A3%80%E6%B5%8B%E3%80%8B-%E4%B8%80/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -375,18 +307,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2021/06/15/%E9%B8%9F%E5%93%A5%E7%9A%84linux%E7%A7%81%E6%88%BF%E8%8F%9C%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AF%87%E4%B9%8B%E6%95%A3%E8%AE%B0/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2021/06/10/%E8%9C%9C%E7%BD%90/%E8%AF%BB%E3%80%8A%E8%99%9A%E6%8B%9F%E8%9C%9C%E7%BD%90%E4%BB%8E%E5%83%B5%E5%B0%B8%E7%BD%91%E7%BB%9C%E8%BF%BD%E8%B8%AA%E5%88%B0%E5%85%A5%E4%BE%B5%E6%A3%80%E6%B5%8B%E3%80%8B-%E4%BA%8C/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          鸟哥的linux私房菜基础学习篇之散记
+          读《虚拟蜜罐从僵尸网络追踪到入侵检测》(二)
         
       </div>
     </a>
   
   
-    <a href="/2021/06/10/%E8%AF%BB%E3%80%8A%E8%99%9A%E6%8B%9F%E8%9C%9C%E7%BD%90%E4%BB%8E%E5%83%B5%E5%B0%B8%E7%BD%91%E7%BB%9C%E8%BF%BD%E8%B8%AA%E5%88%B0%E5%85%A5%E4%BE%B5%E6%A3%80%E6%B5%8B%E3%80%8B-%E4%BA%8C/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">读《虚拟蜜罐从僵尸网络追踪到入侵检测》(二)</div>
+    <a href="/2021/06/09/PyQt/PyQt%E4%B9%8B%E7%8A%B6%E6%80%81%E6%8F%90%E7%A4%BA%E5%92%8C%E5%B7%A5%E5%85%B7%E6%8F%90%E7%A4%BA/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">PyQt之状态提示和工具提示</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -531,6 +463,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">docker的初识并且部署Nginx和Tomcat</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">学习docker的容器数据卷的使用</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">今天使用docker新建一个低交互cowrie蜜罐，并实验看看低交互蜜罐的特点</a>
               </li>
             
             <div class="clearfix"></div>

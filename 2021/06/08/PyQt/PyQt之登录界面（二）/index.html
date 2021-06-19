@@ -6,18 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>docker部署Nginx和Tomcat | Hexo</title>
+  <title>PyQt之登录界面（二） | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="article">
-<meta property="og:title" content="docker部署Nginx和Tomcat">
-<meta property="og:url" content="http://example.com/2021/06/16/docker%E9%83%A8%E7%BD%B2Nginx%E5%92%8CTomcat/index.html">
+<meta property="og:title" content="PyQt之登录界面（二）">
+<meta property="og:url" content="http://example.com/2021/06/08/PyQt/PyQt%E4%B9%8B%E7%99%BB%E5%BD%95%E7%95%8C%E9%9D%A2%EF%BC%88%E4%BA%8C%EF%BC%89/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-06-16T13:32:26.000Z">
-<meta property="article:modified_time" content="2021-06-17T13:46:51.008Z">
+<meta property="og:image" content="https://i.loli.net/2021/06/09/KeOzcorJ9pu8j4Y.png">
+<meta property="og:image" content="https://i.loli.net/2021/06/08/1RXGLUCjoEOfAuI.png">
+<meta property="article:published_time" content="2021-06-08T14:05:14.000Z">
+<meta property="article:modified_time" content="2021-06-09T00:32:54.924Z">
 <meta property="article:author" content="nan-del">
-<meta property="article:tag" content="docker的初识并且部署Nginx和Tomcat">
+<meta property="article:tag" content="仿造qq登录界面之界面随着鼠标的移动">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/06/09/KeOzcorJ9pu8j4Y.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -76,7 +79,7 @@
                     </nav>
                     <nav>
                         总文章数
-                        11
+                        12
                     </nav>
                     <nav class="header-smart-menu">
                         
@@ -174,20 +177,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-docker部署Nginx和Tomcat" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-PyQt/PyQt之登录界面（二）" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      docker部署Nginx和Tomcat
+      PyQt之登录界面（二）
     </h1>
   
 
         
-        <a href="/2021/06/16/docker%E9%83%A8%E7%BD%B2Nginx%E5%92%8CTomcat/" class="archive-article-date">
-  	<time datetime="2021-06-16T13:32:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-16</time>
+        <a href="/2021/06/08/PyQt/PyQt%E4%B9%8B%E7%99%BB%E5%BD%95%E7%95%8C%E9%9D%A2%EF%BC%88%E4%BA%8C%EF%BC%89/" class="archive-article-date">
+  	<time datetime="2021-06-08T14:05:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-08</time>
 </a>
         
       </header>
@@ -195,14 +198,37 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p><escape><span id="more"></span></escape></p>
-<h2 id="部署Nginx"><a href="#部署Nginx" class="headerlink" title="部署Nginx"></a>部署Nginx</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">1.搜索Nginx的镜像</span></span><br><span class="line">docker search nginx</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">2.拉取Nginx的镜像</span></span><br><span class="line">docker pull nginx</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">3.查看镜像是否下载完成</span></span><br><span class="line">C:\Users\Administrator&gt;docker images -a</span><br><span class="line">REPOSITORY    TAG       IMAGE ID       CREATED        SIZE</span><br><span class="line">nginx         latest    d1a364dc548d   3 weeks ago    133MB</span><br><span class="line">hello-world   latest    d1165f221234   3 months ago   13.3kB</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">4.运行Nginx的镜像</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> -d        后台运行</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> --name    为运行的容器取一个名字</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> -p        第一个为宿主机开放的端口，第二个为容器开放的端口</span></span><br><span class="line"> </span><br><span class="line">C:\Users\Administrator&gt;docker run -d --name nginx-01 -p 8080:80 nginx</span><br><span class="line">a9193be0e2da0fa83a6cda4218f9184b6461a523b50246a96d584ccbea4997ca</span><br></pre></td></tr></table></figure>
+<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>当有头部时，只有鼠标点击头部空白部分，才能移动控件。当控件去掉头部后，是不能移动控件的位置的。</p>
+<p>功能：</p>
+<p>当控件去掉头部后，依然可以随着鼠标的移动而移动</p>
+<p>步骤：</p>
+<ol>
+<li>实现一个框架</li>
+<li>去掉原始的头部</li>
+<li>实现移动功能</li>
+</ol>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><blockquote>
+<p>1.实现一个框架</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PyQt5.Qt <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Window</span>(<span class="params">QWidget</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;实现去掉头部后界面的鼠标左键点击拖拽&quot;&quot;&quot;</span></span><br><span class="line">    app = QApplication(sys.argv)</span><br><span class="line"></span><br><span class="line">    window = Window()</span><br><span class="line">    window.show()</span><br><span class="line"></span><br><span class="line">    sys.exit(app.exec_())</span><br></pre></td></tr></table></figure>
 
-<p>这其实就已经运行起来了，可以在本地的网页中浏览：</p>
-<p><a target="_blank" rel="noopener" href="http://localhost:8080/">http://localhost:8080/</a></p>
-<h2 id="部署Nginx-1"><a href="#部署Nginx-1" class="headerlink" title="部署Nginx"></a>部署Nginx</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 1.搜索Tomcat的镜像</span></span><br><span class="line"></span><br><span class="line">可以去官网搜索版本信息</span><br><span class="line"><span class="meta">#</span><span class="bash"> 2.下载镜像</span></span><br><span class="line"></span><br><span class="line">C:\Users\Administrator&gt;docker pull tomcat</span><br><span class="line">Using default tag: latest</span><br><span class="line">latest: Pulling from library/tomcat</span><br><span class="line">Digest: sha256:9f502a5c7bafd4e1953dba4e77f9347c9211f987902ab8668a34997178f9bcd0</span><br><span class="line">Status: Image is up to date for tomcat:latest</span><br><span class="line">docker.io/library/tomcat:latest</span><br><span class="line"><span class="meta">#</span><span class="bash"> 3.运行镜像</span></span><br><span class="line"></span><br><span class="line">C:\Users\Administrator&gt;docker run -d --name tomcat02 -p 3344:8080 tomcat</span><br><span class="line">1063e99cb4ecc8ea0e6d4b7a634f8caaf56f1248dd9677f1dc621d01c2cc44cb</span><br><span class="line"><span class="meta">#</span><span class="bash"> 4.查看结果</span></span><br><span class="line"></span><br><span class="line">C:\Users\Administrator&gt;docker ps</span><br><span class="line">CONTAINER ID   IMAGE     COMMAND             CREATED          STATUS          PORTS         NAMES</span><br><span class="line">1063e99cb4ec   tomcat    &quot;catalina.sh run&quot;   24 seconds ago   Up 20 seconds   8080/tcp,   tomcat02</span><br><span class="line">a2c23b372c8e   centos    &quot;/bin/bash&quot;         4 hours ago      Up 2 hours                  centos01</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>效果：</p>
+<p><img src="https://i.loli.net/2021/06/09/KeOzcorJ9pu8j4Y.png" alt="image-20210609082438417"></p>
+</blockquote>
+<blockquote>
+<p>2.去掉原始的头部</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;self.setWindowFlags(Qt.FramelessWindowHint)</span><br></pre></td></tr></table></figure>
 
-<p><strong>但是在网页中却无法访问，原因是我们下载的tomcat的镜像是可以运行占用的最小的内存，在tomcat中的webapps目录下没有任何东西</strong></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">我们可以进入tomcat中查看</span></span><br><span class="line">C:\Users\Administrator&gt;docker exec -it tomcat02 /bin/bash</span><br><span class="line">root@1063e99cb4ec:/usr/local/tomcat#   </span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">进入webapps目录查看，可以得到webapps目录是空的，什么都没有，但同时又有一个webapps.dist</span></span><br><span class="line">root@1063e99cb4ec:/usr/local/tomcat# ls</span><br><span class="line">BUILDING.txt  CONTRIBUTING.md  LICENSE  NOTICE  README.md  RELEASE-NOTES  RUNNING.txt  bin  conf  lib  logs  native-jni-lib  temp  webapps  webapps.dist  work</span><br><span class="line">root@1063e99cb4ec:/usr/local/tomcat# cd webapps</span><br><span class="line">root@1063e99cb4ec:/usr/local/tomcat/webapps# ls</span><br><span class="line">root@1063e99cb4ec:/usr/local/tomcat/webapps#</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">我们可以看一下webapps.dist目录下有什么，可以看到ROOT目录</span></span><br><span class="line">root@1063e99cb4ec:/usr/local/tomcat/webapps# cd ..</span><br><span class="line">root@1063e99cb4ec:/usr/local/tomcat# cd webapps.dist/</span><br><span class="line">root@1063e99cb4ec:/usr/local/tomcat/webapps.dist# ls</span><br><span class="line">ROOT  docs  examples  host-manager  manager</span><br><span class="line">root@1063e99cb4ec:/usr/local/tomcat/webapps.dist#</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">我们可以把webapps.dist目录下的全部复制给webapps目录，在到网页中访问</span></span><br><span class="line">root@1063e99cb4ec:/usr/local/tomcat# cp -r webapps.dist/* webapps</span><br><span class="line">root@1063e99cb4ec:/usr/local/tomcat# cd webapps</span><br><span class="line">root@1063e99cb4ec:/usr/local/tomcat/webapps# ls</span><br><span class="line">ROOT  docs  examples  host-manager  manager</span><br><span class="line">root@1063e99cb4ec:/usr/local/tomcat/webapps#</span><br><span class="line"><span class="meta">#</span><span class="bash">这时我们就可以在网页中看到tomcat的经典页面</span></span><br></pre></td></tr></table></figure>
+<p>效果：</p>
+<p><img src="https://i.loli.net/2021/06/08/1RXGLUCjoEOfAuI.png" alt="image-20210608221557571"></p>
+</blockquote>
+<blockquote>
+<p>3.实现移动功能</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">self.item = <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">  <span class="string">&quot;&quot;&quot;重写三个父类，分别是鼠标按下，鼠标移动，鼠标释放&quot;&quot;&quot;</span></span><br><span class="line">  <span class="string">&quot;&quot;&quot;如果要使鼠标移动控件，就是改变鼠标位置的同时，改变控件的位置，而且是相对于整个桌面而言&quot;&quot;&quot;</span></span><br><span class="line">  <span class="string">&quot;&quot;&quot;当控件设置了鼠标跟踪事件后，只要鼠标移动，控件也会跟着移动&quot;&quot;&quot;</span></span><br><span class="line">  <span class="string">&quot;&quot;&quot;就要判断鼠标是否按下，只有在鼠标在按下的时候，移动鼠标，控件才会跟着移动，否则，当鼠标在控件上，但是没有点击控件，鼠标移动时，控件也会跟着移动&quot;&quot;&quot;</span></span><br><span class="line">  <span class="string">&quot;&quot;&quot;所以在鼠标按下时就要有一个标记，判断控件是否需要跟着鼠标移动&quot;&quot;&quot;</span></span><br><span class="line">  <span class="string">&quot;&quot;&quot;并且需要记录下鼠标的当前位置和控件左上角的位置&quot;&quot;&quot;</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">mousePressEvent</span>(<span class="params">self,QMouseEvent</span>):</span></span><br><span class="line">      self.item = <span class="literal">True</span></span><br><span class="line">      self.mouse_startX = QMouseEvent.globalX()  <span class="comment">#鼠标X的位置</span></span><br><span class="line">      self.mouse_startY = QMouseEvent.globalY()  <span class="comment">#鼠标Y的位置</span></span><br><span class="line"></span><br><span class="line">      self.win_startX = self.x()    <span class="comment">#控件左上角的X值</span></span><br><span class="line">      self.win_startY = self.y()    <span class="comment">#控件左上角的y值</span></span><br><span class="line"></span><br><span class="line">  <span class="string">&quot;&quot;&quot;当item为False时，控件不会跟着鼠标移动，当item为True时，控件跟着鼠标移动&quot;&quot;&quot;</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">mouseMoveEvent</span>(<span class="params">self, QMouseEvent</span>):</span></span><br><span class="line">      <span class="keyword">if</span> self.item:</span><br><span class="line">          self.mouse_move_X = QMouseEvent.globalX() - self.mouse_startX  <span class="comment"># 鼠标X移动的间距</span></span><br><span class="line">          self.mouse_move_Y = QMouseEvent.globalY() - self.mouse_startY  <span class="comment"># 鼠标Y移动的间距</span></span><br><span class="line"></span><br><span class="line">          self.win_moveX = self.win_startX + self.mouse_move_X  <span class="comment"># 控件X移动的间距</span></span><br><span class="line">          self.win_moveY = self.win_startY + self.mouse_move_Y  <span class="comment"># 控件X移动的间距</span></span><br><span class="line">          self.move(self.win_moveX,self.win_moveY)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="string">&quot;&quot;&quot;当鼠标释放的时候，我们应该把item的值设置为False,否则，鼠标会一直在控件上，拿不下来&quot;&quot;&quot;</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">mouseReleaseEvent</span>(<span class="params">self,QMouseEvent</span>):</span></span><br><span class="line">      self.item = <span class="literal">False</span></span><br></pre></td></tr></table></figure>
+
+<p>图片展示不出效果！</p>
+</blockquote>
+<hr>
+<h1 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PyQt5.Qt <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Window</span>(<span class="params">QWidget</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line">        self.setWindowFlags(Qt.FramelessWindowHint)</span><br><span class="line">        self.item = <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">    <span class="string">&quot;&quot;&quot;重写三个父类，分别是鼠标按下，鼠标移动，鼠标释放&quot;&quot;&quot;</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;如果要使鼠标移动控件，就是改变鼠标位置的同时，改变控件的位置，而且是相对于整个桌面而言&quot;&quot;&quot;</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;当控件设置了鼠标跟踪事件后，只要鼠标移动，控件也会跟着移动&quot;&quot;&quot;</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;就要判断鼠标是否按下，只有在鼠标在按下的时候，移动鼠标，控件才会跟着移动，否则，当鼠标在控件上，但是没有点击控件，鼠标移动时，控件也会跟着移动&quot;&quot;&quot;</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;所以在鼠标按下时就要有一个标记，判断控件是否需要跟着鼠标移动&quot;&quot;&quot;</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;并且需要记录下鼠标的当前位置和控件左上角的位置&quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">mousePressEvent</span>(<span class="params">self,QMouseEvent</span>):</span></span><br><span class="line">        self.item = <span class="literal">True</span></span><br><span class="line">        self.mouse_startX = QMouseEvent.globalX()  <span class="comment">#鼠标X的位置</span></span><br><span class="line">        self.mouse_startY = QMouseEvent.globalY()  <span class="comment">#鼠标Y的位置</span></span><br><span class="line"></span><br><span class="line">        self.win_startX = self.x()    <span class="comment">#控件左上角的X值</span></span><br><span class="line">        self.win_startY = self.y()    <span class="comment">#控件左上角的y值</span></span><br><span class="line"></span><br><span class="line">    <span class="string">&quot;&quot;&quot;当item为False时，控件不会跟着鼠标移动，当item为True时，控件跟着鼠标移动&quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">mouseMoveEvent</span>(<span class="params">self, QMouseEvent</span>):</span></span><br><span class="line">        <span class="keyword">if</span> self.item:</span><br><span class="line">            self.mouse_move_X = QMouseEvent.globalX() - self.mouse_startX  <span class="comment"># 鼠标X移动的间距</span></span><br><span class="line">            self.mouse_move_Y = QMouseEvent.globalY() - self.mouse_startY  <span class="comment"># 鼠标Y移动的间距</span></span><br><span class="line"></span><br><span class="line">            self.win_moveX = self.win_startX + self.mouse_move_X  <span class="comment"># 控件X移动的间距</span></span><br><span class="line">            self.win_moveY = self.win_startY + self.mouse_move_Y  <span class="comment"># 控件X移动的间距</span></span><br><span class="line">            self.move(self.win_moveX,self.win_moveY)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="string">&quot;&quot;&quot;当鼠标释放的时候，我们应该把item的值设置为False,否则，鼠标会一直在控件上，拿不下来&quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">mouseReleaseEvent</span>(<span class="params">self,QMouseEvent</span>):</span></span><br><span class="line">        self.item = <span class="literal">False</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;实现去掉头部后界面的鼠标左键点击拖拽&quot;&quot;&quot;</span></span><br><span class="line">    app = QApplication(sys.argv)</span><br><span class="line"></span><br><span class="line">    window = Window()</span><br><span class="line">    window.show()</span><br><span class="line">    window.setMouseTracking(<span class="literal">True</span>) <span class="comment">#设置鼠标跟踪事件</span></span><br><span class="line"></span><br><span class="line">    sys.exit(app.exec_())</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
       
@@ -238,7 +264,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">docker的初识并且部署Nginx和Tomcat</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">仿造qq登录界面之界面随着鼠标的移动</a>
         		</li>
       		
 		</ul>
@@ -294,7 +320,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/06/16/docker%E9%83%A8%E7%BD%B2Nginx%E5%92%8CTomcat/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/06/08/PyQt/PyQt%E4%B9%8B%E7%99%BB%E5%BD%95%E7%95%8C%E9%9D%A2%EF%BC%88%E4%BA%8C%EF%BC%89/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -308,9 +334,18 @@
   
 <nav id="article-nav">
   
+    <a href="/2021/06/09/PyQt/PyQt%E4%B9%8B%E7%8A%B6%E6%80%81%E6%8F%90%E7%A4%BA%E5%92%8C%E5%B7%A5%E5%85%B7%E6%8F%90%E7%A4%BA/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          PyQt之状态提示和工具提示
+        
+      </div>
+    </a>
   
-    <a href="/2021/06/15/%E9%B8%9F%E5%93%A5%E7%9A%84linux%E7%A7%81%E6%88%BF%E8%8F%9C%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AF%87%E4%B9%8B%E6%95%A3%E8%AE%B0/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">鸟哥的linux私房菜基础学习篇之散记</div>
+  
+    <a href="/2021/06/07/%E8%9C%9C%E7%BD%90/%E8%9C%9C%E7%BD%90%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%80%EF%BC%89/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">蜜罐学习（一）</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -455,6 +490,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">docker的初识并且部署Nginx和Tomcat</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">学习docker的容器数据卷的使用</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">今天使用docker新建一个低交互cowrie蜜罐，并实验看看低交互蜜罐的特点</a>
               </li>
             
             <div class="clearfix"></div>

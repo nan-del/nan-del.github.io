@@ -6,17 +6,16 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>蜜罐学习（一） | Hexo</title>
+  <title>读《虚拟蜜罐从僵尸网络追踪到入侵检测》(二) | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="article">
-<meta property="og:title" content="蜜罐学习（一）">
-<meta property="og:url" content="http://example.com/2021/06/07/%E8%9C%9C%E7%BD%90%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%80%EF%BC%89/index.html">
+<meta property="og:title" content="读《虚拟蜜罐从僵尸网络追踪到入侵检测》(二)">
+<meta property="og:url" content="http://example.com/2021/06/10/%E8%9C%9C%E7%BD%90/%E8%AF%BB%E3%80%8A%E8%99%9A%E6%8B%9F%E8%9C%9C%E7%BD%90%E4%BB%8E%E5%83%B5%E5%B0%B8%E7%BD%91%E7%BB%9C%E8%BF%BD%E8%B8%AA%E5%88%B0%E5%85%A5%E4%BE%B5%E6%A3%80%E6%B5%8B%E3%80%8B-%E4%BA%8C/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-06-07T13:51:04.000Z">
-<meta property="article:modified_time" content="2021-06-07T13:55:15.250Z">
+<meta property="article:published_time" content="2021-06-10T11:30:46.000Z">
+<meta property="article:modified_time" content="2021-06-10T13:41:36.975Z">
 <meta property="article:author" content="nan-del">
-<meta property="article:tag" content="初始蜜罐的学习(一)">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -76,7 +75,7 @@
                     </nav>
                     <nav>
                         总文章数
-                        11
+                        12
                     </nav>
                     <nav class="header-smart-menu">
                         
@@ -174,20 +173,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-蜜罐学习（一）" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-蜜罐/读《虚拟蜜罐从僵尸网络追踪到入侵检测》-二" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      蜜罐学习（一）
+      读《虚拟蜜罐从僵尸网络追踪到入侵检测》(二)
     </h1>
   
 
         
-        <a href="/2021/06/07/%E8%9C%9C%E7%BD%90%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%80%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2021-06-07T13:51:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-07</time>
+        <a href="/2021/06/10/%E8%9C%9C%E7%BD%90/%E8%AF%BB%E3%80%8A%E8%99%9A%E6%8B%9F%E8%9C%9C%E7%BD%90%E4%BB%8E%E5%83%B5%E5%B0%B8%E7%BD%91%E7%BB%9C%E8%BF%BD%E8%B8%AA%E5%88%B0%E5%85%A5%E4%BE%B5%E6%A3%80%E6%B5%8B%E3%80%8B-%E4%BA%8C/" class="archive-article-date">
+  	<time datetime="2021-06-10T11:30:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-10</time>
 </a>
         
       </header>
@@ -195,243 +194,73 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p><escape><span id="more"></span></escape></p>
-<h2 id="蜜罐的分类："><a href="#蜜罐的分类：" class="headerlink" title="蜜罐的分类："></a>蜜罐的分类：</h2><ul>
-<li><p>部署目标</p>
+<h2 id="低交互蜜罐"><a href="#低交互蜜罐" class="headerlink" title="低交互蜜罐"></a>低交互蜜罐</h2><p>当攻击者利用了一个高交互蜜罐时，他能获得安装新软件和修改操作系统的能力，在低交互蜜罐中情况则不同。低交互蜜罐提供对操作系统的访问有限，按照设计，它并不打算扮演一个完整功能的操作系统，通常不能被完全利用。因此，一个低交互蜜罐不适用于捕获0-day漏洞利用攻击。但是，它可以用来检测已知的漏洞利用攻击，测量你的网络受攻击的频率。一个低交互蜜罐通常模拟有限的网络服务，实现仅仅够用的互联网协议，通常是TCP和<code>IP</code>,允许与攻击者交互，使攻击者相信他正在与一个真正的系统连接。</p>
+<p>低交互蜜罐的优点是多方面的，它们很容易建立和维护，不需要大量的计算资源，也不能被攻击者攻陷，运行低交互蜜罐的风险比运行可以被攻击者完全攻陷和控制的蜜罐要小得多。另一方面，这也是一个缺点，它只能呈现为虚拟的机器，它也许相当复杂，但任然不能为攻击者提供一个真正的超级用户外壳程序（root shell）,而且能够被高级的攻击者检测出来。</p>
+<table>
+<thead>
+<tr>
+<th align="center">解决方案</th>
+<th align="center">重点目标</th>
+<th align="center">可检测性</th>
+<th align="center">性能</th>
+<th align="center">易用性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">欺骗工具包</td>
+<td align="center">单机服务</td>
+<td align="center">容易到中等</td>
+<td align="center">低</td>
+<td align="center">容易</td>
+</tr>
+<tr>
+<td align="center"><code>LaBrea</code></td>
+<td align="center">阻碍垃圾邮件</td>
+<td align="center">容易</td>
+<td align="center">高</td>
+<td align="center">中等</td>
+</tr>
+<tr>
+<td align="center"><code>Tiny Honeypot</code></td>
+<td align="center">自动攻击</td>
+<td align="center">容易</td>
+<td align="center">低</td>
+<td align="center">中等</td>
+</tr>
+<tr>
+<td align="center"><code>GHH</code></td>
+<td align="center">Web服务</td>
+<td align="center">中等到困难</td>
+<td align="center">高</td>
+<td align="center">容易</td>
+</tr>
+<tr>
+<td align="center"><code>Php.Hop</code></td>
+<td align="center">Web服务</td>
+<td align="center">中等到困难</td>
+<td align="center">高</td>
+<td align="center">容易</td>
+</tr>
+</tbody></table>
+<h3 id="LaBrea"><a href="#LaBrea" class="headerlink" title="LaBrea"></a><code>LaBrea</code></h3><p><code>LaBrea</code>因引入一个<code>tarpit</code>概念而闻名，<code>tarpit</code>是一种服务，通过使TCP连接非常缓慢或完全停止它们的进程，试图减缓垃圾邮件发送者发送速度甚至是蠕虫的传播速度，但是<code>tarpit</code>不能减缓更高级的蠕虫传播。</p>
+<p><code>LaBrea</code>的功能：在网络上运行<code>LaBrea</code>时，它会发现空闲的<code>IP</code>地址，并开始代替它们应答连接。一旦建立了一个连接，<code>LaBrea</code>会试图尽可能长时间地黏住发送者，通过在TCP协议中采用技巧可以做到这一点，使建立的连接进入一种不能再取得任何进展的状态。拖延连接的原因非常简单，垃圾邮件发送者在他的服务器上维持每一个连接，这就减少了他向真正的机器发送垃圾邮件的可用资源。</p>
+<p><code>LaBrea</code>为了检测一个<code>IP</code>地址是否可用，利用<code>ARP</code>协议。每当路由器试图向一个<code>IP</code>地址交付一个数据包时，它首先需要找到相应的MAC地址，如果没有主机监听这一<code>IP</code>地址，<code>ARP</code>不会获得应答。由于<code>ARP</code>在整个网络上广播，<code>LaBrea</code>监视来自路由器的<code>ARP</code>请求，如果网络上没有主机相应<code>IP</code>地址，<code>LaBrea</code>则发送自己的应答。但是对于这一现象有一个问题，就是当一个主机重新启动，它可能会使用一个已经被<code>LaBrea</code>占用的<code>IP</code>地址。所以在重新启动的主机发送一个无需应答的<code>ARP</code>请求，通知网络上的每个人新的<code>IP</code>地址和MAC地址的绑定，在这种情况下，<code>LaBrea</code>会主动放弃被使用的<code>IP</code>地址。</p>
+<p><code>LaBrea</code>接受网络上所有空闲的<code>IP</code>地址的TCP连接，当它收到一个SYN包，它就会通过完成TCP三次握手建立一个连接，然后拖延这个连接。<code>LaBrea</code>支持两种放慢连接传输速度的方法：</p>
 <ul>
-<li>产品型：就类似于成品服务，可以直接供用户使用，不用专业的无人员分析样本，能够把攻击流量吸引走，防止攻击真实的目标</li>
-<li>研究性： 可以近距离观察样本，对样本进行解构，一般用于研究攻击者的行为和发现新的攻击方式</li>
-</ul>
+<li><p>窗口调节：<code>LaBrea</code>接受新的连接，但公布一个非常小的接收窗口。接收窗口指示发送者，每个数据包不能发送大于窗口允许长度的数据。当采用窗口调节时，连接任然在继续，但显示传输速率很慢。</p>
 </li>
-<li><p>交互型：攻击者在蜜罐中活动的交互性级别</p>
+<li><p>持久捕捉：<code>LaBrea</code>公布一个TCP接收窗口的大小为0，指示发送者在继续发送数据前等待。发送者周期地回访发送窗口探测数据包，以确定接收窗口是否再次打开，这种状态可以一直持续下去。</p>
+</li>
+</ul>
+<p> 当垃圾邮件发送者试图通过一个<code>LaBrea</code>蜜罐发送电子邮件时，<code>STMP</code>事务将不产生或者产生很小的进程，一个哑垃圾邮件发送者将保持连接，浪费网络资源。最终，垃圾邮件发送者一旦发现和<code>LaBrea</code>会话没有取得进展，它可能走掉。</p>
+<h3 id="Tiny-Honeypot"><a href="#Tiny-Honeypot" class="headerlink" title="Tiny Honeypot"></a><code>Tiny Honeypot</code></h3><p><code>Tiny Honeypot</code>(<code>thp</code>,微型蜜罐),它遵循一个非常简单的概念：</p>
 <ul>
-<li>低交互型：容易通过和蜜罐的交互中，辨别出这是否是一个蜜罐，还是一个真的系统，如一些基本的命令都执行不了，就容易被攻击者分辨出来这是个蜜罐</li>
-<li>高交互型：交互性高，可以使得黑客更加容易相信他攻陷的是一个真正的系统，而不是一个蜜罐，可以以假乱真，但是仿真程度越高，也就意味着暴露的资产也就越多，反而可能会被黑客利用，作为跳板，扫描内网，也可能通过虚拟机的相关漏洞拿到宿主机的权限</li>
-<li>混合型：就是交互型较高，但是给到的权限不会太高</li>
-</ul>
+<li><p>针对任何端口上的任何连接，提供一个登录标识和一个超级用户外壳程序</p>
 </li>
-<li><p>新型蜜罐</p>
-<ul>
-<li>主动式蜜罐</li>
-<li>蜜场</li>
-<li>蜜信</li>
-<li>应用层蜜罐</li>
-<li>客户端蜜罐</li>
-</ul>
-<p><strong>产品型蜜罐</strong></p>
-<ul>
-<li>部署目标：保护单位网络<ul>
-<li>防御</li>
-<li>检测</li>
-<li>帮助对攻击的响应</li>
-</ul>
-</li>
-<li>可以使得网管尽可能少的工作</li>
-<li>商业产品<ul>
-<li><code>KESenssor</code></li>
-</ul>
+<li><p>收集你得到的所有数据</p>
 </li>
 </ul>
-<p><strong>研究型蜜罐</strong></p>
-<ul>
-<li>部署目标：对黑客攻击进行捕获和分析<ul>
-<li>了解黑客在干什么</li>
-<li>了解攻击方法</li>
-<li>捕获他们的击键记录</li>
-<li>捕获他们的攻击工具</li>
-<li>监听他们的会话</li>
-</ul>
-</li>
-<li>需要大量的时间和精力投入</li>
-<li>实例：<ul>
-<li><code>Genll</code>蜜网</li>
-<li>Honeyed</li>
-</ul>
-</li>
-</ul>
-<p><strong>低交互蜜罐</strong></p>
-<ul>
-<li>模拟服务和操作系统</li>
-<li>只能捕获少量信息</li>
-<li>容易部署，减少风险</li>
-<li>实例<ul>
-<li><code>Dionaea</code></li>
-<li><code>Honeyd</code></li>
-<li><code>KFSensor</code></li>
-</ul>
-</li>
-</ul>
-<p><strong>高交互蜜罐</strong></p>
-<ul>
-<li>提供真实的操作系统</li>
-<li>可以捕获更丰富的信息</li>
-<li>部署复杂，高安全，高风险</li>
-<li>实例<ul>
-<li><code>ShadowDaemon</code></li>
-<li><code>Lyrebird</code></li>
-</ul>
-</li>
-</ul>
-<p><strong>主动式蜜罐技术</strong></p>
-<ul>
-<li>动态蜜罐<ul>
-<li>即插即用的解决方案</li>
-<li>自动调整</li>
-</ul>
-</li>
-<li>被动指纹识别技术<ul>
-<li>了解所处的网络环境</li>
-</ul>
-</li>
-<li>动态配置<ul>
-<li>虚拟蜜罐</li>
-</ul>
-</li>
-</ul>
-<p><strong>蜜场的基本思想</strong></p>
-<ul>
-<li><p>把一堆蜜罐放进一个比较大的网络环境中，扮演一个有很多漏洞的大型网络，吸引攻击者，吸引攻击流量</p>
-</li>
-<li><p>当内网中检测到了扫描行为，就把流量重定向到蜜场，蜜场中包含有很多蜜罐，就会把目标转移到蜜场中的虚拟的系统中，而遗漏真实的系统，使得攻击者把更多的时间和精力放在虚拟的蜜场中</p>
-</li>
-</ul>
-<p><strong>重定向机制</strong></p>
-<ul>
-<li>对高价值目标映射蜜罐系统<ul>
-<li>动态蜜罐技术</li>
-</ul>
-</li>
-<li>不需要创建新的目标，而使用已存在的目标</li>
-<li>将恶意的、未经授权的活动重定向到蜜罐</li>
-<li>监视和捕获攻击者在蜜罐中的活动</li>
-<li>计算机取证技术</li>
-</ul>
-<p><strong>什么时候重定向</strong></p>
-<ul>
-<li>非预期的流量-Hot Zoning<ul>
-<li>非业务目标端口</li>
-<li>非业务源端口</li>
-<li>Time of day</li>
-</ul>
-</li>
-<li>已知攻击-Bait-n-Switch<ul>
-<li>Snort的修改版本，内联网关</li>
-<li>将检测到的活动重定向到蜜罐中</li>
-</ul>
-</li>
-<li>基于主机的监控<ul>
-<li>监控主机上的未授权活动、或者恶意活动，然后重定向</li>
-<li>实例<ul>
-<li><code>PaX</code></li>
-<li><code>Systrace</code></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p><strong>蜜罐的欺骗性</strong></p>
-<ul>
-<li>真实的系统环境<ul>
-<li>系统标识<ul>
-<li><code>IP</code>、<code>traceroute路径</code></li>
-<li>主机名、操作系统内核版本等等细节</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>系统配置和应用程序<ul>
-<li>开放的网络服务</li>
-<li>安装的应用程序，假如一个攻击者已经攻陷了一台内网的主机，但是这个主机上什么应用程序都没有，就容易使人怀疑，因为正常的有人使用的电脑，普通的应用程序还是有的</li>
-</ul>
-</li>
-<li>数据内容<ul>
-<li>如一些文本数据，假如攻击者已经攻陷了一台主机，但是这台主机上什么数据都没有，连一个<code>txt</code>文本都没有，就容易使人怀疑</li>
-<li>数据内容尽量真实可信，但又不是真正的数据，让攻击者分辨不出，以为获得了敏感数据</li>
-<li>还有一些网页的历史浏览记录等，也应模拟出来</li>
-</ul>
-</li>
-<li>优势：在一个高度可控的环境中愚弄/观察攻击者的所有行动</li>
-</ul>
-<p><strong>蜜信（<code>HoneyToken</code>）</strong></p>
-<ul>
-<li>概念出发点：威胁不仅仅是针对信息系统，也针对信息本身</li>
-<li><code>HoneyToken</code>:正常情况不会使用的一些诱饵信息<ul>
-<li>数据库诱饵记录</li>
-<li>伪造的弱用户名、弱口令</li>
-</ul>
-</li>
-<li>如果<code>HoneyToken</code>一旦被访问，预示着攻击即将发生，就可以对它进行监视跟踪</li>
-</ul>
-<p><strong>应用层蜜罐</strong></p>
-<ul>
-<li>模拟应用层的服务对非自动化的攻击更具吸引力</li>
-<li>在应用层能够更有效地对攻击进行分析</li>
-<li>实例<ul>
-<li><code>Web application honeypot</code></li>
-</ul>
-</li>
-</ul>
-<p><strong>客户端蜜罐（<code>Honeyclient</code>）</strong></p>
-<ul>
-<li>越来越多的攻击针对客户端软件<ul>
-<li>Web浏览器</li>
-<li>Email客户端</li>
-</ul>
-</li>
-<li><code>Honeyclient</code>的设计要考虑<ul>
-<li>应用协议本身</li>
-<li>需要捕获的攻击</li>
-</ul>
-</li>
-<li>基于完整性测试判断是否遭受攻击<ul>
-<li>程序本身</li>
-<li>配置文件、注册表等</li>
-</ul>
-</li>
-<li>分类<ul>
-<li><code>Active honeyclient</code>:同步交互，如<code>web-based honeyclient</code></li>
-<li><code>Passive honeyclient</code>:异步交互，如<code>wmail honeyclient</code></li>
-</ul>
-</li>
-</ul>
-<p><strong>蜜罐技术优势</strong></p>
-<ul>
-<li>高保真–高质量的小数据集<ul>
-<li>低误报率和低漏报率</li>
-</ul>
-</li>
-<li>捕获新的攻击及战术</li>
-<li>并不是资源密集型</li>
-</ul>
-<p><strong>蜜罐技术弱势</strong></p>
-<ul>
-<li>劳力/技术密集型</li>
-<li>局限的视图</li>
-<li>不能直接防护信息系统</li>
-<li>引入新的安全风险<ul>
-<li>如蜜罐被攻陷</li>
-</ul>
-</li>
-</ul>
-<p><strong>安全风险</strong></p>
-<ul>
-<li>发现蜜罐<ul>
-<li>蜜罐指纹识别 VS 消除蜜罐的指纹<ul>
-<li>一旦识破蜜罐：攻击者可能会向蜜罐反馈虚假、伪造的信息</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>利用蜜罐攻击的第三方<ul>
-<li>期望黑客获得蜜罐的root权限 VS 获得root权限之后是否真的可以为所欲为<ul>
-<li>系统仿真程度越高、开放服务越多会引入更多的攻击暴露面</li>
-</ul>
-</li>
-<li>完全隔离网络 VS 伴随仿真蜜网</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
+<p><code>tnp</code>采用的技术细节也相当简单。<code>thp</code>使用<code>xinetd</code>绑定一个端口，然后使用内置的防火墙将到所有端口的流量重定向到<code>xinetd</code>正在监听的端口。唯一的列外是端口映射—–<code>UNIX</code>的服务，将<code>RPC</code>服务映射到本地端口。<code>Tiny Honeypot</code>注册了大量有趣的服务，允许远程入侵者查找对应一个给定服务他们应该连接的端口号。</p>
 
       
 
@@ -461,17 +290,6 @@
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">初始蜜罐的学习(一)</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 
       
@@ -522,7 +340,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/06/07/%E8%9C%9C%E7%BD%90%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%80%EF%BC%89/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/06/10/%E8%9C%9C%E7%BD%90/%E8%AF%BB%E3%80%8A%E8%99%9A%E6%8B%9F%E8%9C%9C%E7%BD%90%E4%BB%8E%E5%83%B5%E5%B0%B8%E7%BD%91%E7%BB%9C%E8%BF%BD%E8%B8%AA%E5%88%B0%E5%85%A5%E4%BE%B5%E6%A3%80%E6%B5%8B%E3%80%8B-%E4%BA%8C/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -536,18 +354,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2021/06/08/PyQt%E4%B9%8B%E7%99%BB%E5%BD%95%E7%95%8C%E9%9D%A2%EF%BC%88%E4%BA%8C%EF%BC%89/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2021/06/12/%E7%88%AC%E8%99%AB/python%E7%88%AC%E8%99%AB%E4%B9%8B%E7%99%BE%E5%BA%A6%E6%96%87%E5%BA%93%E7%9A%84%E7%88%AC%E5%8F%96/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          PyQt之登录界面（二）
+          python爬虫之百度文库的爬取
         
       </div>
     </a>
   
   
-    <a href="/2021/06/07/PyQt%E4%B9%8B%E7%99%BB%E5%BD%95%E7%95%8C%E9%9D%A2/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">PyQt之登录界面（一）</div>
+    <a href="/2021/06/10/%E8%9C%9C%E7%BD%90/%E8%AF%BB%E3%80%8A%E8%99%9A%E6%8B%9F%E8%9C%9C%E7%BD%90%E4%BB%8E%E5%83%B5%E5%B0%B8%E7%BD%91%E7%BB%9C%E8%BF%BD%E8%B8%AA%E5%88%B0%E5%85%A5%E4%BE%B5%E6%A3%80%E6%B5%8B%E3%80%8B-%E4%B8%80/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">读《虚拟蜜罐从僵尸网络追踪到入侵检测》(一)</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -692,6 +510,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">docker的初识并且部署Nginx和Tomcat</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">学习docker的容器数据卷的使用</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">今天使用docker新建一个低交互cowrie蜜罐，并实验看看低交互蜜罐的特点</a>
               </li>
             
             <div class="clearfix"></div>
