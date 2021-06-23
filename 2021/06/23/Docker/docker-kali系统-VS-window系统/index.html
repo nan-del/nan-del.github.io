@@ -6,17 +6,16 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>蜜罐学习（一） | Hexo</title>
+  <title>docker-kali系统 VS window系统 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="article">
-<meta property="og:title" content="蜜罐学习（一）">
-<meta property="og:url" content="http://example.com/2021/06/07/%E8%9C%9C%E7%BD%90/%E8%9C%9C%E7%BD%90%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%80%EF%BC%89/index.html">
+<meta property="og:title" content="docker-kali系统 VS window系统">
+<meta property="og:url" content="http://example.com/2021/06/23/Docker/docker-kali%E7%B3%BB%E7%BB%9F-VS-window%E7%B3%BB%E7%BB%9F/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-06-07T13:51:04.000Z">
-<meta property="article:modified_time" content="2021-06-07T13:55:15.250Z">
+<meta property="article:published_time" content="2021-06-23T13:31:00.000Z">
+<meta property="article:modified_time" content="2021-06-23T13:31:45.824Z">
 <meta property="article:author" content="nan-del">
-<meta property="article:tag" content="初始蜜罐的学习(一)">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -175,20 +174,20 @@
                                 <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
                             </div>
                             <div id="js-content" class="content-ll">
-                                <article id="post-蜜罐/蜜罐学习（一）" class="article article-type-post " itemscope itemprop="blogPost">
+                                <article id="post-Docker/docker-kali系统-VS-window系统" class="article article-type-post " itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
   
     <h1 class="article-title" itemprop="name">
-      蜜罐学习（一）
+      docker-kali系统 VS window系统
     </h1>
   
 
                     
-                        <a href="/2021/06/07/%E8%9C%9C%E7%BD%90/%E8%9C%9C%E7%BD%90%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%80%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2021-06-07T13:51:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-07</time>
+                        <a href="/2021/06/23/Docker/docker-kali%E7%B3%BB%E7%BB%9F-VS-window%E7%B3%BB%E7%BB%9F/" class="archive-article-date">
+  	<time datetime="2021-06-23T13:31:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-23</time>
 </a>
                             
             </header>
@@ -196,243 +195,18 @@
                 <div class="article-entry" itemprop="articleBody">
                     
                                         <p><escape><span id="more"></span></escape></p>
-<h2 id="蜜罐的分类："><a href="#蜜罐的分类：" class="headerlink" title="蜜罐的分类："></a>蜜罐的分类：</h2><ul>
-<li><p>部署目标</p>
-<ul>
-<li>产品型：就类似于成品服务，可以直接供用户使用，不用专业的无人员分析样本，能够把攻击流量吸引走，防止攻击真实的目标</li>
-<li>研究性： 可以近距离观察样本，对样本进行解构，一般用于研究攻击者的行为和发现新的攻击方式</li>
-</ul>
-</li>
-<li><p>交互型：攻击者在蜜罐中活动的交互性级别</p>
-<ul>
-<li>低交互型：容易通过和蜜罐的交互中，辨别出这是否是一个蜜罐，还是一个真的系统，如一些基本的命令都执行不了，就容易被攻击者分辨出来这是个蜜罐</li>
-<li>高交互型：交互性高，可以使得黑客更加容易相信他攻陷的是一个真正的系统，而不是一个蜜罐，可以以假乱真，但是仿真程度越高，也就意味着暴露的资产也就越多，反而可能会被黑客利用，作为跳板，扫描内网，也可能通过虚拟机的相关漏洞拿到宿主机的权限</li>
-<li>混合型：就是交互型较高，但是给到的权限不会太高</li>
-</ul>
-</li>
-<li><p>新型蜜罐</p>
-<ul>
-<li>主动式蜜罐</li>
-<li>蜜场</li>
-<li>蜜信</li>
-<li>应用层蜜罐</li>
-<li>客户端蜜罐</li>
-</ul>
-<p><strong>产品型蜜罐</strong></p>
-<ul>
-<li>部署目标：保护单位网络<ul>
-<li>防御</li>
-<li>检测</li>
-<li>帮助对攻击的响应</li>
-</ul>
-</li>
-<li>可以使得网管尽可能少的工作</li>
-<li>商业产品<ul>
-<li><code>KESenssor</code></li>
-</ul>
-</li>
-</ul>
-<p><strong>研究型蜜罐</strong></p>
-<ul>
-<li>部署目标：对黑客攻击进行捕获和分析<ul>
-<li>了解黑客在干什么</li>
-<li>了解攻击方法</li>
-<li>捕获他们的击键记录</li>
-<li>捕获他们的攻击工具</li>
-<li>监听他们的会话</li>
-</ul>
-</li>
-<li>需要大量的时间和精力投入</li>
-<li>实例：<ul>
-<li><code>Genll</code>蜜网</li>
-<li>Honeyed</li>
-</ul>
-</li>
-</ul>
-<p><strong>低交互蜜罐</strong></p>
-<ul>
-<li>模拟服务和操作系统</li>
-<li>只能捕获少量信息</li>
-<li>容易部署，减少风险</li>
-<li>实例<ul>
-<li><code>Dionaea</code></li>
-<li><code>Honeyd</code></li>
-<li><code>KFSensor</code></li>
-</ul>
-</li>
-</ul>
-<p><strong>高交互蜜罐</strong></p>
-<ul>
-<li>提供真实的操作系统</li>
-<li>可以捕获更丰富的信息</li>
-<li>部署复杂，高安全，高风险</li>
-<li>实例<ul>
-<li><code>ShadowDaemon</code></li>
-<li><code>Lyrebird</code></li>
-</ul>
-</li>
-</ul>
-<p><strong>主动式蜜罐技术</strong></p>
-<ul>
-<li>动态蜜罐<ul>
-<li>即插即用的解决方案</li>
-<li>自动调整</li>
-</ul>
-</li>
-<li>被动指纹识别技术<ul>
-<li>了解所处的网络环境</li>
-</ul>
-</li>
-<li>动态配置<ul>
-<li>虚拟蜜罐</li>
-</ul>
-</li>
-</ul>
-<p><strong>蜜场的基本思想</strong></p>
-<ul>
-<li><p>把一堆蜜罐放进一个比较大的网络环境中，扮演一个有很多漏洞的大型网络，吸引攻击者，吸引攻击流量</p>
-</li>
-<li><p>当内网中检测到了扫描行为，就把流量重定向到蜜场，蜜场中包含有很多蜜罐，就会把目标转移到蜜场中的虚拟的系统中，而遗漏真实的系统，使得攻击者把更多的时间和精力放在虚拟的蜜场中</p>
-</li>
-</ul>
-<p><strong>重定向机制</strong></p>
-<ul>
-<li>对高价值目标映射蜜罐系统<ul>
-<li>动态蜜罐技术</li>
-</ul>
-</li>
-<li>不需要创建新的目标，而使用已存在的目标</li>
-<li>将恶意的、未经授权的活动重定向到蜜罐</li>
-<li>监视和捕获攻击者在蜜罐中的活动</li>
-<li>计算机取证技术</li>
-</ul>
-<p><strong>什么时候重定向</strong></p>
-<ul>
-<li>非预期的流量-Hot Zoning<ul>
-<li>非业务目标端口</li>
-<li>非业务源端口</li>
-<li>Time of day</li>
-</ul>
-</li>
-<li>已知攻击-Bait-n-Switch<ul>
-<li>Snort的修改版本，内联网关</li>
-<li>将检测到的活动重定向到蜜罐中</li>
-</ul>
-</li>
-<li>基于主机的监控<ul>
-<li>监控主机上的未授权活动、或者恶意活动，然后重定向</li>
-<li>实例<ul>
-<li><code>PaX</code></li>
-<li><code>Systrace</code></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p><strong>蜜罐的欺骗性</strong></p>
-<ul>
-<li>真实的系统环境<ul>
-<li>系统标识<ul>
-<li><code>IP</code>、<code>traceroute路径</code></li>
-<li>主机名、操作系统内核版本等等细节</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>系统配置和应用程序<ul>
-<li>开放的网络服务</li>
-<li>安装的应用程序，假如一个攻击者已经攻陷了一台内网的主机，但是这个主机上什么应用程序都没有，就容易使人怀疑，因为正常的有人使用的电脑，普通的应用程序还是有的</li>
-</ul>
-</li>
-<li>数据内容<ul>
-<li>如一些文本数据，假如攻击者已经攻陷了一台主机，但是这台主机上什么数据都没有，连一个<code>txt</code>文本都没有，就容易使人怀疑</li>
-<li>数据内容尽量真实可信，但又不是真正的数据，让攻击者分辨不出，以为获得了敏感数据</li>
-<li>还有一些网页的历史浏览记录等，也应模拟出来</li>
-</ul>
-</li>
-<li>优势：在一个高度可控的环境中愚弄/观察攻击者的所有行动</li>
-</ul>
-<p><strong>蜜信（<code>HoneyToken</code>）</strong></p>
-<ul>
-<li>概念出发点：威胁不仅仅是针对信息系统，也针对信息本身</li>
-<li><code>HoneyToken</code>:正常情况不会使用的一些诱饵信息<ul>
-<li>数据库诱饵记录</li>
-<li>伪造的弱用户名、弱口令</li>
-</ul>
-</li>
-<li>如果<code>HoneyToken</code>一旦被访问，预示着攻击即将发生，就可以对它进行监视跟踪</li>
-</ul>
-<p><strong>应用层蜜罐</strong></p>
-<ul>
-<li>模拟应用层的服务对非自动化的攻击更具吸引力</li>
-<li>在应用层能够更有效地对攻击进行分析</li>
-<li>实例<ul>
-<li><code>Web application honeypot</code></li>
-</ul>
-</li>
-</ul>
-<p><strong>客户端蜜罐（<code>Honeyclient</code>）</strong></p>
-<ul>
-<li>越来越多的攻击针对客户端软件<ul>
-<li>Web浏览器</li>
-<li>Email客户端</li>
-</ul>
-</li>
-<li><code>Honeyclient</code>的设计要考虑<ul>
-<li>应用协议本身</li>
-<li>需要捕获的攻击</li>
-</ul>
-</li>
-<li>基于完整性测试判断是否遭受攻击<ul>
-<li>程序本身</li>
-<li>配置文件、注册表等</li>
-</ul>
-</li>
-<li>分类<ul>
-<li><code>Active honeyclient</code>:同步交互，如<code>web-based honeyclient</code></li>
-<li><code>Passive honeyclient</code>:异步交互，如<code>wmail honeyclient</code></li>
-</ul>
-</li>
-</ul>
-<p><strong>蜜罐技术优势</strong></p>
-<ul>
-<li>高保真–高质量的小数据集<ul>
-<li>低误报率和低漏报率</li>
-</ul>
-</li>
-<li>捕获新的攻击及战术</li>
-<li>并不是资源密集型</li>
-</ul>
-<p><strong>蜜罐技术弱势</strong></p>
-<ul>
-<li>劳力/技术密集型</li>
-<li>局限的视图</li>
-<li>不能直接防护信息系统</li>
-<li>引入新的安全风险<ul>
-<li>如蜜罐被攻陷</li>
-</ul>
-</li>
-</ul>
-<p><strong>安全风险</strong></p>
-<ul>
-<li>发现蜜罐<ul>
-<li>蜜罐指纹识别 VS 消除蜜罐的指纹<ul>
-<li>一旦识破蜜罐：攻击者可能会向蜜罐反馈虚假、伪造的信息</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>利用蜜罐攻击的第三方<ul>
-<li>期望黑客获得蜜罐的root权限 VS 获得root权限之后是否真的可以为所欲为<ul>
-<li>系统仿真程度越高、开放服务越多会引入更多的攻击暴露面</li>
-</ul>
-</li>
-<li>完全隔离网络 VS 伴随仿真蜜网</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
+<h2 id="window中运行centos镜像"><a href="#window中运行centos镜像" class="headerlink" title="window中运行centos镜像"></a>window中运行centos镜像</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 首先查看当前docker的运行情况</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 可以看到，当前没有任何容器运行</span></span><br><span class="line">C:\Users\Administrator&gt;docker ps</span><br><span class="line">CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 这里我们运行一个cnetos的容器，取名centos02，并进入容器</span></span><br><span class="line">C:\Users\Administrator&gt;docker run -it --name centos02 centos /bin/bash</span><br><span class="line">[root@c536685339d9 /]# ls</span><br><span class="line">bin  dev  etc  home  lib  lib64  lost+found  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 这里执行命令 ping www.baidu.com，也可以看到是可以Ping通的，之前我们没有装任何的软件及服务</span></span><br><span class="line">[root@c536685339d9 /]# ping www.baidu.com</span><br><span class="line">PING www.a.shifen.com (14.215.177.39) 56(84) bytes of data.</span><br><span class="line">64 bytes from 14.215.177.39 (14.215.177.39): icmp_seq=1 ttl=37 time=17.6 ms</span><br><span class="line">64 bytes from 14.215.177.39 (14.215.177.39): icmp_seq=2 ttl=37 time=13.9 ms</span><br><span class="line">64 bytes from 14.215.177.39 (14.215.177.39): icmp_seq=3 ttl=37 time=11.6 ms</span><br><span class="line">^C</span><br><span class="line">--- www.a.shifen.com ping statistics ---</span><br><span class="line">3 packets transmitted, 3 received, 0% packet loss, time 76ms</span><br><span class="line">rtt min/avg/max/mdev = 11.558/14.354/17.569/2.475 ms</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 这里我们执行命令 ifconfig ，但是可以看到这里显示找不到命令</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 因为这个镜像没有什么软件及服务</span></span><br><span class="line">[root@c536685339d9 /]# ifconfig</span><br><span class="line">bash: ifconfig: command not found</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 这里我们安装 net-tools的服务</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 可以看到是有网络的，可以安装 net-tools的服务</span></span><br><span class="line">[root@c536685339d9 /]# yum install net-tools</span><br><span class="line">Failed to set locale, defaulting to C.UTF-8</span><br><span class="line">CentOS Linux 8 - AppStream                                                                                                     598 kB/s | 7.5 MB     00:12</span><br><span class="line">CentOS Linux 8 - BaseOS                                                                                                        1.6 MB/s | 2.6 MB     00:01</span><br><span class="line">CentOS Linux 8 - Extras                                                                                                         11 kB/s | 9.6 kB     00:00</span><br><span class="line">Installed:</span><br><span class="line">  net-tools-2.0-0.52.20160912git.el8.x86_64</span><br><span class="line"></span><br><span class="line">Complete!</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 这里再次执行 ifconfig的命令 ，可以看到执行成功</span></span><br><span class="line">[root@c536685339d9 /]# ifconfig</span><br><span class="line">eth0: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500</span><br><span class="line">        inet 172.17.0.2  netmask 255.255.0.0  broadcast 172.17.255.255</span><br><span class="line">        ether 02:42:ac:11:00:02  txqueuelen 0  (Ethernet)</span><br><span class="line">        RX packets 7857  bytes 11382961 (10.8 MiB)</span><br><span class="line">        RX errors 0  dropped 0  overruns 0  frame 0</span><br><span class="line">        TX packets 4612  bytes 255823 (249.8 KiB)</span><br><span class="line">        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0</span><br><span class="line"></span><br><span class="line">lo: flags=73&lt;UP,LOOPBACK,RUNNING&gt;  mtu 65536</span><br><span class="line">        inet 127.0.0.1  netmask 255.0.0.0</span><br><span class="line">        loop  txqueuelen 1000  (Local Loopback)</span><br><span class="line">        RX packets 0  bytes 0 (0.0 B)</span><br><span class="line">        RX errors 0  dropped 0  overruns 0  frame 0</span><br><span class="line">        TX packets 0  bytes 0 (0.0 B)</span><br><span class="line">        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 这里我们查看docker 的网络模式</span></span><br><span class="line">C:\Users\Administrator&gt;docker network ls</span><br><span class="line">NETWORK ID     NAME      DRIVER    SCOPE</span><br><span class="line">8a8d2eac6f5a   bridge    bridge    local</span><br><span class="line">7352a346c0cb   host      host      local</span><br><span class="line">2d823934185a   none      null      local</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 这里我们详细查看bridge的详细情况</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 可以看到centos02添加到了bridge的网络中</span></span><br><span class="line">C:\Users\Administrator&gt;docker network inspect bridge</span><br><span class="line">[</span><br><span class="line">    &#123;</span><br><span class="line">        &quot;Name&quot;: &quot;bridge&quot;,</span><br><span class="line">        &quot;Id&quot;: &quot;8a8d2eac6f5a5ebf9811031134e4fe0e6119fc5458292860c488280a91af510a&quot;,</span><br><span class="line">        &quot;Created&quot;: &quot;2021-06-22T12:00:27.8749281Z&quot;,</span><br><span class="line">        &quot;Scope&quot;: &quot;local&quot;,</span><br><span class="line">        &quot;Driver&quot;: &quot;bridge&quot;,</span><br><span class="line">        &quot;EnableIPv6&quot;: false,</span><br><span class="line">        &quot;IPAM&quot;: &#123;</span><br><span class="line">            &quot;Driver&quot;: &quot;default&quot;,</span><br><span class="line">            &quot;Options&quot;: null,</span><br><span class="line">            &quot;Config&quot;: [</span><br><span class="line">                &#123;</span><br><span class="line">                    &quot;Subnet&quot;: &quot;172.17.0.0/16&quot;,</span><br><span class="line">                    &quot;Gateway&quot;: &quot;172.17.0.1&quot;</span><br><span class="line">                &#125;</span><br><span class="line">            ]</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;Internal&quot;: false,</span><br><span class="line">        &quot;Attachable&quot;: false,</span><br><span class="line">        &quot;Ingress&quot;: false,</span><br><span class="line">        &quot;ConfigFrom&quot;: &#123;</span><br><span class="line">            &quot;Network&quot;: &quot;&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;ConfigOnly&quot;: false,</span><br><span class="line">        &quot;Containers&quot;: &#123;</span><br><span class="line">            &quot;c536685339d99cff8cf83542bc54a304064f27ee8dda623f1bcd2955dded5613&quot;: &#123;</span><br><span class="line">                &quot;Name&quot;: &quot;centos02&quot;,</span><br><span class="line">                &quot;EndpointID&quot;: &quot;9d73154639251343b4b0897c692b37e7aa5bbf28e9a82b1c156c26acc30cc613&quot;,</span><br><span class="line">                &quot;MacAddress&quot;: &quot;02:42:ac:11:00:02&quot;,</span><br><span class="line">                &quot;IPv4Address&quot;: &quot;172.17.0.2/16&quot;,</span><br><span class="line">                &quot;IPv6Address&quot;: &quot;&quot;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;Options&quot;: &#123;</span><br><span class="line">            &quot;com.docker.network.bridge.default_bridge&quot;: &quot;true&quot;,</span><br><span class="line">            &quot;com.docker.network.bridge.enable_icc&quot;: &quot;true&quot;,</span><br><span class="line">            &quot;com.docker.network.bridge.enable_ip_masquerade&quot;: &quot;true&quot;,</span><br><span class="line">            &quot;com.docker.network.bridge.host_binding_ipv4&quot;: &quot;0.0.0.0&quot;,</span><br><span class="line">            &quot;com.docker.network.bridge.name&quot;: &quot;docker0&quot;,</span><br><span class="line">            &quot;com.docker.network.driver.mtu&quot;: &quot;1500&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;Labels&quot;: &#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<h2 id="Kali中运行centos镜像"><a href="#Kali中运行centos镜像" class="headerlink" title="Kali中运行centos镜像"></a>Kali中运行centos镜像</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 首先查看当前docker的运行情况</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 可以看到，当前没有任何容器运行</span></span><br><span class="line">┌──(root??kali)-[~]</span><br><span class="line">└─# docker ps   </span><br><span class="line">CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES</span><br><span class="line">                                                                                                             # 这里我们运行一个cnetos的容器，取名centos01，并进入容器                                    </span><br><span class="line">┌──(root??kali)-[~]</span><br><span class="line">└─# docker run -it --name centos01 centos /bin/bash            </span><br><span class="line">[root@d951e397be8b /]# ls</span><br><span class="line">bin  dev  etc  home  lib  lib64  lost+found  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 这里我们执行Ping 命令，但是可以看到这里显示找不到服务</span></span><br><span class="line">[root@d951e397be8b /]# ping www.baidu.com</span><br><span class="line">ping: www.baidu.com: Name or service not known</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 接下来我们在执行ifconfig命令，但是也可以看到和在window中一样，找不到命令</span></span><br><span class="line">[root@d951e397be8b /]# ifconfig</span><br><span class="line">bash: ifconfig: command not found</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 这里我们同样安装 net-tools服务</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 但是可以看到这里没有网络，安装不了net-tools服务</span></span><br><span class="line">[root@d951e397be8b /]# yum install net-tools</span><br><span class="line">Failed to set locale, defaulting to C.UTF-8</span><br><span class="line">^CCentOS Linux 8 - AppStream                                [                                                === ] ---  B/s |   0  B     --:-- ETCentOS Linux 8 - AppStream                                                                                       0.0  B/s |   0  B     01:13    </span><br><span class="line">Errors during downloading metadata for repository &#x27;appstream&#x27;:</span><br><span class="line">  - Curl error (6): Couldn&#x27;t resolve host name for http://mirrorlist.centos.org/?release=8&amp;arch=x86_64&amp;repo=AppStream&amp;infra=container [Could not resolve host: mirrorlist.centos.org]</span><br><span class="line">Error: Failed to download metadata for repo &#x27;appstream&#x27;: Cannot prepare internal mirrorlist: Interrupted by signal</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 这里我们同样来查看docker的网络情况</span></span><br><span class="line">┌──(root💀kali)-[/]</span><br><span class="line">└─# docker network ls                              </span><br><span class="line">NETWORK ID     NAME      DRIVER    SCOPE</span><br><span class="line">49d1f7d39755   bridge    bridge    local</span><br><span class="line">0a268cf29b9c   host      host      local</span><br><span class="line">f5b925485be2   mynet     bridge    local</span><br><span class="line">56c02f08c35c   none      null      local</span><br><span class="line">                                                                                                             # 查看bridge的详细情况  </span><br><span class="line"><span class="meta">#</span><span class="bash"> 可以看到cnetos01同样添加到了bridge网络中，但是centos01没有网络</span>  </span><br><span class="line">┌──(root💀kali)-[/]</span><br><span class="line">└─# docker network inspect bridge</span><br><span class="line">[</span><br><span class="line">    &#123;</span><br><span class="line">        &quot;Name&quot;: &quot;bridge&quot;,</span><br><span class="line">        &quot;Id&quot;: &quot;49d1f7d39755ba898678ca50dd1227b4a0579f324e03f23af94668820db58b0b&quot;,</span><br><span class="line">        &quot;Created&quot;: &quot;2021-06-21T19:53:14.970281417+08:00&quot;,</span><br><span class="line">        &quot;Scope&quot;: &quot;local&quot;,</span><br><span class="line">        &quot;Driver&quot;: &quot;bridge&quot;,</span><br><span class="line">        &quot;EnableIPv6&quot;: false,</span><br><span class="line">        &quot;IPAM&quot;: &#123;</span><br><span class="line">            &quot;Driver&quot;: &quot;default&quot;,</span><br><span class="line">            &quot;Options&quot;: null,</span><br><span class="line">            &quot;Config&quot;: [</span><br><span class="line">                &#123;</span><br><span class="line">                    &quot;Subnet&quot;: &quot;172.17.0.0/16&quot;</span><br><span class="line">                &#125;</span><br><span class="line">            ]</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;Internal&quot;: false,</span><br><span class="line">        &quot;Attachable&quot;: false,</span><br><span class="line">        &quot;Ingress&quot;: false,</span><br><span class="line">        &quot;ConfigFrom&quot;: &#123;</span><br><span class="line">            &quot;Network&quot;: &quot;&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;ConfigOnly&quot;: false,</span><br><span class="line">        &quot;Containers&quot;: &#123;</span><br><span class="line">            &quot;d951e397be8bbf8271ec2c21dc31b08cb08ccce52a39a1066ceb30999a63064c&quot;: &#123;</span><br><span class="line">                &quot;Name&quot;: &quot;centos01&quot;,</span><br><span class="line">                &quot;EndpointID&quot;: &quot;6c31494502bc085c682d004f39387cc252ff35040160cb60758eb22c0453bd3d&quot;,</span><br><span class="line">                &quot;MacAddress&quot;: &quot;02:42:ac:11:00:02&quot;,</span><br><span class="line">                &quot;IPv4Address&quot;: &quot;172.17.0.2/16&quot;,</span><br><span class="line">                &quot;IPv6Address&quot;: &quot;&quot;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;Options&quot;: &#123;</span><br><span class="line">            &quot;com.docker.network.bridge.default_bridge&quot;: &quot;true&quot;,</span><br><span class="line">            &quot;com.docker.network.bridge.enable_icc&quot;: &quot;true&quot;,</span><br><span class="line">            &quot;com.docker.network.bridge.enable_ip_masquerade&quot;: &quot;true&quot;,</span><br><span class="line">            &quot;com.docker.network.bridge.host_binding_ipv4&quot;: &quot;0.0.0.0&quot;,</span><br><span class="line">            &quot;com.docker.network.bridge.name&quot;: &quot;docker0&quot;,</span><br><span class="line">            &quot;com.docker.network.driver.mtu&quot;: &quot;1500&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;Labels&quot;: &#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<h2 id="对比"><a href="#对比" class="headerlink" title="对比"></a>对比</h2><ol>
+<li>可以看到在window中运行的cnetos的镜像一开始是可以Ping通<a target="_blank" rel="noopener" href="http://www.baidu.com的,但是kali中运行的不能ping通,甚至找不到服务/">www.baidu.com的，但是kali中运行的不能Ping通，甚至找不到服务</a></li>
+<li>在window中运行的centos镜像有网络，可以安装软件，安装服务，而在kali中运行的没有网络，也就无法安装服务</li>
+</ol>
 
                                             
 
@@ -462,17 +236,6 @@
         <div class="article-info article-info-index">
             
                     
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">初始蜜罐的学习(一)</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
                         
 
                             
@@ -523,7 +286,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/06/07/%E8%9C%9C%E7%BD%90/%E8%9C%9C%E7%BD%90%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%80%EF%BC%89/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/06/23/Docker/docker-kali%E7%B3%BB%E7%BB%9F-VS-window%E7%B3%BB%E7%BB%9F/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -537,18 +300,9 @@
     
 <nav id="article-nav">
   
-    <a href="/2021/06/08/PyQt/PyQt%E4%B9%8B%E7%99%BB%E5%BD%95%E7%95%8C%E9%9D%A2%EF%BC%88%E4%BA%8C%EF%BC%89/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          PyQt之登录界面（二）
-        
-      </div>
-    </a>
   
-  
-    <a href="/2021/06/07/PyQt/PyQt%E4%B9%8B%E7%99%BB%E5%BD%95%E7%95%8C%E9%9D%A2/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">PyQt之登录界面（一）</div>
+    <a href="/2021/06/23/%E5%85%A5%E4%BE%B5%E6%A3%80%E6%B5%8B/%E5%85%A5%E4%BE%B5%E6%A3%80%E6%B5%8B%E5%88%9D%E8%AF%86/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">入侵检测初识</div>
       <i class="icon-circle-right"></i>
     </a>
   
