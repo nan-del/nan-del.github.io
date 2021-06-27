@@ -6,15 +6,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>配置蜜罐网络(一) | Hexo</title>
+  <title>python爬虫之b站视频的爬取 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="article">
-<meta property="og:title" content="配置蜜罐网络(一)">
-<meta property="og:url" content="http://example.com/2021/06/22/%E8%9C%9C%E7%BD%90/%E9%85%8D%E7%BD%AE%E8%9C%9C%E7%BD%90%E7%BD%91%E7%BB%9C-%E4%B8%80/index.html">
+<meta property="og:title" content="python爬虫之b站视频的爬取">
+<meta property="og:url" content="http://example.com/2021/06/27/%E7%88%AC%E8%99%AB/python%E7%88%AC%E8%99%AB%E4%B9%8Bb%E7%AB%99%E8%A7%86%E9%A2%91%E7%9A%84%E7%88%AC%E5%8F%96/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-06-22T13:17:02.000Z">
-<meta property="article:modified_time" content="2021-06-23T07:51:08.105Z">
+<meta property="article:published_time" content="2021-06-27T08:14:17.000Z">
+<meta property="article:modified_time" content="2021-06-27T11:58:50.815Z">
 <meta property="article:author" content="nan-del">
 <meta name="twitter:card" content="summary">
   
@@ -174,20 +174,20 @@
                                 <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
                             </div>
                             <div id="js-content" class="content-ll">
-                                <article id="post-蜜罐/配置蜜罐网络-一" class="article article-type-post " itemscope itemprop="blogPost">
+                                <article id="post-爬虫/python爬虫之b站视频的爬取" class="article article-type-post " itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
   
     <h1 class="article-title" itemprop="name">
-      配置蜜罐网络(一)
+      python爬虫之b站视频的爬取
     </h1>
   
 
                     
-                        <a href="/2021/06/22/%E8%9C%9C%E7%BD%90/%E9%85%8D%E7%BD%AE%E8%9C%9C%E7%BD%90%E7%BD%91%E7%BB%9C-%E4%B8%80/" class="archive-article-date">
-  	<time datetime="2021-06-22T13:17:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-22</time>
+                        <a href="/2021/06/27/%E7%88%AC%E8%99%AB/python%E7%88%AC%E8%99%AB%E4%B9%8Bb%E7%AB%99%E8%A7%86%E9%A2%91%E7%9A%84%E7%88%AC%E5%8F%96/" class="archive-article-date">
+  	<time datetime="2021-06-27T08:14:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-27</time>
 </a>
                             
             </header>
@@ -195,8 +195,18 @@
                 <div class="article-entry" itemprop="articleBody">
                     
                                         <p><escape><span id="more"></span></escape></p>
-<h2 id="配置网络"><a href="#配置网络" class="headerlink" title="配置网络"></a>配置网络</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 配置名为:mynetde 网络</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> --subnet 10.200.193.0/24    网段和子网掩码</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> --gateway 10.200.193.1      网关</span></span><br><span class="line">C:\Users\Administrator&gt;docker network create --driver bridge --subnet 10.200.193.0/24 --gateway 10.200.193.1 mynet</span><br><span class="line">ba49168278a3a3e288a86fd01c52c4ebec834bad5c8d8fa54b3be3a699e0bc95</span><br><span class="line"></span><br><span class="line">C:\Users\Administrator&gt;docker network ls</span><br><span class="line">NETWORK ID     NAME      DRIVER    SCOPE</span><br><span class="line">85efc410ac8b   bridge    bridge    local</span><br><span class="line">7352a346c0cb   host      host      local</span><br><span class="line">ba49168278a3   mynet     bridge    local</span><br><span class="line">2d823934185a   none      null      local</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看mynet网络的详细情况</span></span><br><span class="line">C:\Users\Administrator&gt;docker network inspect mynet</span><br><span class="line">[</span><br><span class="line">    &#123;</span><br><span class="line">        &quot;Name&quot;: &quot;mynet&quot;,</span><br><span class="line">        &quot;Id&quot;: &quot;ba49168278a3a3e288a86fd01c52c4ebec834bad5c8d8fa54b3be3a699e0bc95&quot;,</span><br><span class="line">        &quot;Created&quot;: &quot;2021-06-22T13:14:34.5094297Z&quot;,</span><br><span class="line">        &quot;Scope&quot;: &quot;local&quot;,</span><br><span class="line">        &quot;Driver&quot;: &quot;bridge&quot;,</span><br><span class="line">        &quot;EnableIPv6&quot;: false,</span><br><span class="line">        &quot;IPAM&quot;: &#123;</span><br><span class="line">            &quot;Driver&quot;: &quot;default&quot;,</span><br><span class="line">            &quot;Options&quot;: &#123;&#125;,</span><br><span class="line">            &quot;Config&quot;: [</span><br><span class="line">                &#123;</span><br><span class="line">                    &quot;Subnet&quot;: &quot;10.200.193.0/24&quot;,</span><br><span class="line">                    &quot;Gateway&quot;: &quot;10.200.193.1&quot;</span><br><span class="line">                &#125;</span><br><span class="line">            ]</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;Internal&quot;: false,</span><br><span class="line">        &quot;Attachable&quot;: false,</span><br><span class="line">        &quot;Ingress&quot;: false,</span><br><span class="line">        &quot;ConfigFrom&quot;: &#123;</span><br><span class="line">            &quot;Network&quot;: &quot;&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;ConfigOnly&quot;: false,</span><br><span class="line">        &quot;Containers&quot;: &#123;&#125;,</span><br><span class="line">        &quot;Options&quot;: &#123;&#125;,</span><br><span class="line">        &quot;Labels&quot;: &#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>之前其实就有试过爬取b站的视频，但是每次都爬取不到数据，而且通过分析出来的链接也不能再网页上直接显示视频，会报一个403的错误，说权限不够，所以一直无法爬取视频数据，而网上的一些教程其实也没有办法获得数据，应该是b站做了一些改变使得按照网上的教程也做不到，所以，一直就没有做到爬取b站的视频数据。</p>
+<p>但是最近了解到一个强大的第三方视频下载工具——you-get，既然我们不能直接获取数据，那么就利用第三方工具来帮我们完成数据下载的功能，但是我们还是要通过爬虫爬取视频的url地址。</p>
+<p>我们先来了解一下you-get的使用方法</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 首先我们要先进入安装you-get的文件夹，在使用cmd打开</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> you-get -V 查看you-get的版本</span></span><br><span class="line">D:\Python-work\venv\Scripts&gt;you-get -V</span><br><span class="line">you-get: version 0.4.1527, a tiny downloader that scrapes the web.</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> </span></span><br></pre></td></tr></table></figure>
 
+<p>可以看到you-get要使用命令行的方式才能使用，所以python必须使用sys的模块</p>
+<p>接下来，我们就使用python和you-get结合的方式来爬取b站的视频，获取视频链接地址的过程就不写了，而且我的图床还没有搞定，就很烦。就直接上代码了</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> you_get</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">download</span>(<span class="params">url, path</span>):</span></span><br><span class="line">    sys.argv = [<span class="string">&#x27;you-get&#x27;</span>, <span class="string">&#x27;-o&#x27;</span>, path, url]</span><br><span class="line">    you_get.main()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    url = <span class="string">&#x27;https://api.bilibili.com/x/web-interface/popular?ps=20&amp;pn=1&#x27;</span></span><br><span class="line">    header = &#123;</span><br><span class="line">        <span class="string">&quot;User-Agent&quot;</span>: <span class="string">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.104 Safari/537.36&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">    text_data = requests.get(url,header).json()</span><br><span class="line">    path = <span class="string">&#x27;G:/dcoker&#x27;</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> text_data[<span class="string">&#x27;data&#x27;</span>][<span class="string">&#x27;list&#x27;</span>]:</span><br><span class="line">        url = i[<span class="string">&#x27;short_link&#x27;</span>]</span><br><span class="line">        download(url, path)</span><br><span class="line">        time.sleep(<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">可以看到总共的代码就这么多，而核心就是download这个函数。</span><br><span class="line"></span><br><span class="line">而text_data[&#x27;data&#x27;][&#x27;list&#x27;]这个就是看你要获取视频的具体json数据的情况了，这应该不难</span><br><span class="line"></span><br><span class="line">而time.sleep(5)是因为如果太过频繁的获取视频，可能会被封IP吧，其实之前出现403的那种情况，我曾经一度以为是我的IP被封了，但具体是因为什么我现在也不清楚，反正就是获取不到，而教程却又可以。</span><br></pre></td></tr></table></figure>
+
+<p>其实我们在某一些地方总会遇到一些困难，一时之间解决不了，但是没有关系，眼下解决不了，可能是因为我们的能力还不够，那就放一放，等到我们有能力的时候，我们在来解决。</p>
 
                                             
 
@@ -276,7 +286,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/06/22/%E8%9C%9C%E7%BD%90/%E9%85%8D%E7%BD%AE%E8%9C%9C%E7%BD%90%E7%BD%91%E7%BB%9C-%E4%B8%80/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/06/27/%E7%88%AC%E8%99%AB/python%E7%88%AC%E8%99%AB%E4%B9%8Bb%E7%AB%99%E8%A7%86%E9%A2%91%E7%9A%84%E7%88%AC%E5%8F%96/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -290,18 +300,9 @@
     
 <nav id="article-nav">
   
-    <a href="/2021/06/23/%E5%85%A5%E4%BE%B5%E6%A3%80%E6%B5%8B/%E5%85%A5%E4%BE%B5%E6%A3%80%E6%B5%8B%E5%88%9D%E8%AF%86/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          入侵检测初识
-        
-      </div>
-    </a>
   
-  
-    <a href="/2021/06/21/Docker/docker-%E7%BD%91%E7%BB%9C/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">docker-网络</div>
+    <a href="/2021/06/23/Docker/docker-kali%E7%B3%BB%E7%BB%9F-VS-window%E7%B3%BB%E7%BB%9F/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">docker-kali系统 VS window系统</div>
       <i class="icon-circle-right"></i>
     </a>
   
