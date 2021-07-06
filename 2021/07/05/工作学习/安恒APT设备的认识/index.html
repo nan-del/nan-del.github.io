@@ -13,13 +13,13 @@
 <meta property="og:url" content="http://example.com/2021/07/05/%E5%B7%A5%E4%BD%9C%E5%AD%A6%E4%B9%A0/%E5%AE%89%E6%81%92APT%E8%AE%BE%E5%A4%87%E7%9A%84%E8%AE%A4%E8%AF%86/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2021/07/05/%E5%B7%A5%E4%BD%9C%E5%AD%A6%E4%B9%A0/%E5%AE%89%E6%81%92APT%E8%AE%BE%E5%A4%87%E7%9A%84%E8%AE%A4%E8%AF%86/image-20210705175454450.png">
-<meta property="og:image" content="http://example.com/2021/07/05/%E5%B7%A5%E4%BD%9C%E5%AD%A6%E4%B9%A0/%E5%AE%89%E6%81%92APT%E8%AE%BE%E5%A4%87%E7%9A%84%E8%AE%A4%E8%AF%86/image-20210705195724327.png">
+<meta property="og:image" content="https://i.loli.net/2021/07/06/s2pCD14FunlbyPq.png">
+<meta property="og:image" content="https://i.loli.net/2021/07/06/qMV12yebwr5ku4G.png">
 <meta property="article:published_time" content="2021-07-05T09:07:40.000Z">
-<meta property="article:modified_time" content="2021-07-05T12:35:12.551Z">
+<meta property="article:modified_time" content="2021-07-06T01:17:52.571Z">
 <meta property="article:author" content="nan-del">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2021/07/05/%E5%B7%A5%E4%BD%9C%E5%AD%A6%E4%B9%A0/%E5%AE%89%E6%81%92APT%E8%AE%BE%E5%A4%87%E7%9A%84%E8%AE%A4%E8%AF%86/image-20210705175454450.png">
+<meta name="twitter:image" content="https://i.loli.net/2021/07/06/s2pCD14FunlbyPq.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -205,7 +205,7 @@
 <p>三、利用防火墙、服务器等系统漏洞继而获取访问企业网络的有效凭证信息是使用APT攻击的另一重要手段。</p>
 <p>总之，高级持续性威胁(APT)正在通过一切方式，绕过基于代码的传统安全方案(如防病毒软件、防火墙、IPS等)，并更长时间地潜伏在系统中，让传统防御体系难以侦测。</p>
 <h2 id="1、产品介绍"><a href="#1、产品介绍" class="headerlink" title="1、产品介绍"></a>1、产品介绍</h2><p>在外网的情况下，建议把APT产品部署在传统防护设备的后面，在设备资产的前面，这样可以有效防护住传统产品无法防护的一些危险，如绕过攻击、后门利用、病毒传播、木马远控等；在内网的情况下，建议把产品部署在internet的入口，这样可以防护一些高危恶意代码、僵尸主机感染、非法外连、恶意数据盗取等行为。当在一个比较大的网络中可以采取如下图的部署方案，分为邮件区域、WEB区域、办公网区域、服务器网区域等，在分别做对应的防护。如果是一个中小型的网络，我们可以采用一体机的方式，把三个区域的流量通过交换机流量镜像的方式传给APT设备。</p>
-<p><img src="image-20210705175454450.png" alt="image-20210705175454450"></p>
+<p><img src="https://i.loli.net/2021/07/06/s2pCD14FunlbyPq.png" alt="image-20210706091626486"></p>
 <h2 id="2、环境调研表"><a href="#2、环境调研表" class="headerlink" title="2、环境调研表"></a>2、环境调研表</h2><ol>
 <li>单台设备单结点部署方式：旁路部署在用户单位核心交换机设备上。此方式适合网络架构不复杂，互联网出口交换机就是核心交换机的情况。</li>
 <li>多台设备分布式部署方式：对于大型网络架构可以采取分布式部署的方式，在互联网出口交换机、内网交换机、DMZ区域交换机、服务器区交换机分别部署一台APT设备作为探测器，然后选择其中一台设备为数据中心，分支机构的APT设备也可以统一管理。作为数据中心设备的同时还可以具备探测器。</li>
@@ -229,7 +229,7 @@
 <p> <strong>上架准备工作</strong>：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 1.设备上架到客户机</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 2.通过串口连接设备，波特率是115200，串口登录系统的用户名是admin，密码是Dbapp@2014(使用xshell连接的话，需要改变连接的协议)</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 3.登录进去后，在功能菜单选择1 本地IP地址设置，在选择1修改设备的IP地址</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 4.在功能菜单选择7 设备身份设置，在选择2把设备的身份设置为探测器身份</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 5.License申请，（一）需要提供APT的MAC地址;(二)邮件发送给：support@dbappsecurity.com.cn。具体可以看许可授权的视频</span></span><br></pre></td></tr></table></figure>
 
-<p><img src="image-20210705195724327.png" alt="image-20210705195724327"></p>
+<p><img src="https://i.loli.net/2021/07/06/qMV12yebwr5ku4G.png" alt="image-20210706091707556"></p>
 <p><strong>界面配置</strong>：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 一.配置当前城市所在地理位置：（可以在首页看到攻击的走势）</span></span><br><span class="line">	1. 默认添加内网IP（192.168.*.*）</span><br><span class="line">    2. 配置-&gt;常规-&gt;当前位置所在城市</span><br><span class="line"><span class="meta">#</span><span class="bash"> 二.添加防护邮箱：配置-&gt;常规-&gt;防护邮箱设置</span></span><br><span class="line">	在新增里把相关的域名和邮箱服务器IP地址填好</span><br><span class="line"><span class="meta">#</span><span class="bash"> 三.客户网络：配置-&gt;常规-&gt;基本设置</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 四.时间同步：</span></span><br><span class="line">	1.排错平台-&gt;服务设置-&gt;时间设置（推荐使用  快捷键：shift+p）</span><br><span class="line">	2.配置-&gt;基本设置-&gt;时钟同步服务器设置</span><br><span class="line"><span class="meta">#</span><span class="bash"> 发送类别：配置-&gt;风险通知-&gt;发送类别</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 报表自动发送：配置-&gt;常规-&gt;报表自动发送</span></span><br></pre></td></tr></table></figure>
 
