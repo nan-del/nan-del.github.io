@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="计算机病毒分析">
+<meta property="og:url" content="http://example.com/2021/07/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%97%85%E6%AF%92%E5%88%86%E6%9E%90/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%97%85%E6%AF%92%E5%88%86%E6%9E%90/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-07-13T11:37:22.000Z">
+<meta property="article:modified_time" content="2021-07-13T12:43:16.058Z">
+<meta property="article:author" content="nan-del">
+<meta property="article:tag" content="这个课程是b站上的一个比较不错关于计算机病毒分析的课程--https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV1jU4y1s7s4?p&#x3D;15&amp;t&#x3D;6">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2021/07/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%97%85%E6%AF%92%E5%88%86%E6%9E%90/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%97%85%E6%AF%92%E5%88%86%E6%9E%90/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>计算机病毒分析 | Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hexo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/07/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%97%85%E6%AF%92%E5%88%86%E6%9E%90/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%97%85%E6%AF%92%E5%88%86%E6%9E%90/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="nan-del">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          计算机病毒分析
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-07-13 19:37:22 / Modified: 20:43:16" itemprop="dateCreated datePublished" datetime="2021-07-13T19:37:22+08:00">2021-07-13</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><escape><span id="more"></span></escape></p>
+<h2 id="一、计算机病毒的定义和类型"><a href="#一、计算机病毒的定义和类型" class="headerlink" title="一、计算机病毒的定义和类型"></a>一、计算机病毒的定义和类型</h2><h4 id="1、计算机病毒的定义"><a href="#1、计算机病毒的定义" class="headerlink" title="1、计算机病毒的定义"></a>1、计算机病毒的定义</h4><p>定义：计算机病毒也称为恶意代码。任何以某种方式对用户、计算机或网络造成破坏的软件，都可以被认为是恶意代码，包括计算机病毒、木马、蠕虫、Rootkit、勒索病毒、间谍软件等。</p>
+<h4 id="2、计算机病毒的功能分类"><a href="#2、计算机病毒的功能分类" class="headerlink" title="2、计算机病毒的功能分类"></a>2、计算机病毒的功能分类</h4><p>后门：攻击者可以绕过安全认证，远程控制受感染的计算机</p>
+<p>僵尸网络：由大量被感染的计算机组成的网络，可以发起大规模的网络攻击，例如DDos攻击</p>
+<p>木马：表面上是有用的软件，实际目的却是危害计算机安全的程序</p>
+<p>下载器、启动器：用来下载和隐蔽的执行其它病毒的恶意代码（现在的病毒大部分都是以动态链接库的形式存在，动态链接库是不能够直接执行的，它们需要依附于一个可执行的exe程序，下载器和启动器就把这些动态链接库注入到正常的正在执行的进程中，并把它们隐藏起来）</p>
+<p>间谍软件：从受害者计算机上收集信息并发送给攻击者的恶意代码</p>
+<p>Rootkit：获得计算机root权限的工具，可以用来隐藏其它计算机病毒（当病毒获取到root权限后，它可以隐藏病毒的各种行为、文件甚至可以对抗杀毒软件或者对抗防火墙）</p>
+<p>勒索软件：通过加密受感染用户的文件或者硬盘，索取赎金的病毒</p>
+<p>垃圾邮件发送病毒：感染用户计算机之后，使用系统与网络资源来发送大量的垃圾邮件，例如广告邮件、钓鱼邮件等。</p>
+<p>蠕虫：可以自我复制并感染其他计算机的病毒</p>
+<p>目前，同一个计算机病毒经常包括多个功能类别。比如勒索病毒，既包括了蠕虫的传播功能，还有后门、木马等的功能。</p>
+<h4 id="3、计算机病毒的攻击目标"><a href="#3、计算机病毒的攻击目标" class="headerlink" title="3、计算机病毒的攻击目标"></a>3、计算机病毒的攻击目标</h4><p>大众型的计算机病毒：比如勒索软件，采用的是一种广撒网捞鱼的方法，设计的目标是感染尽可能多的机器。这类恶意代码比较普遍，恶意行为比较明显，容易被检测和防御。</p>
+<p>针对型的计算机病毒：比如特制的后门病毒、间谍软件等，是针对特定组织而研制的，不是广泛传播的，样本收集难度大，代码非常复杂，病毒分析往往要借助一些高级分析技巧，例如震网病毒，定向攻击工业系统。</p>
+<h2 id="二、计算机病毒分析的目标"><a href="#二、计算机病毒分析的目标" class="headerlink" title="二、计算机病毒分析的目标"></a>二、计算机病毒分析的目标</h2><h4 id="1、计算机病毒分析"><a href="#1、计算机病毒分析" class="headerlink" title="1、计算机病毒分析"></a>1、计算机病毒分析</h4><p>计算机病毒分析，通常是为一起计算机病毒事件的应急响应提供所需信息，包括以下的分析内容：</p>
+<ol>
+<li>系统到底发生了什么？</li>
+<li>定位被感染的计算机和可疑的程序</li>
+<li>对可疑文件进行分析</li>
+<li>提取出可以在系统和网络上检测病毒的特征码</li>
+<li>衡量并消除计算机病毒所带来的损害</li>
+</ol>
+<h4 id="2、可疑文件分析"><a href="#2、可疑文件分析" class="headerlink" title="2、可疑文件分析"></a>2、可疑文件分析</h4><p>对病毒文件进行分析是对计算机病毒进行应急响应的关键</p>
+<ol>
+<li>计算机病毒是如何工作的</li>
+<li>如何识别计算机病毒</li>
+<li>如何消除计算机病毒</li>
+</ol>
+<h4 id="3、计算机病毒特征码"><a href="#3、计算机病毒特征码" class="headerlink" title="3、计算机病毒特征码"></a>3、计算机病毒特征码</h4><p>利用病毒的特征码可以查杀系统中的病毒文件、拦截病毒在网络中的传播，病毒特征码又分为主机特征码和网络特征码</p>
+<p>主机特征码：注册表的特定修改、创建或修改了特定的文件等这些主机行为都可以作为主机的特征码</p>
+<p>网络特征码：僵尸网络的通信数据包、与恶意IP地址的连接等行为可以作为网络特征码</p>
+<p>主机特征码与反病毒软件所使用的病毒特征码是不同的，主机特征码关注的是病毒对系统做了什么，而不是病毒本身的文件特征，主机特征码比反病毒软件特征码更加有效。（因为杀毒软件为了提高杀毒软件的速度，所以只是针对文件的特征来进行快速的识别而不是针对整个计算机病毒的行为来识别，所以主机特征码比反病毒特征码更加全面、更加有效，只针对病毒本身文件的特征码会受到很多干扰，比如计算机病毒所使用的多态、变形、加壳、花指令等，它可以修改病毒文件本身的特征码而躲避杀毒软件的检测，甚至计算机病毒在执行过程中将自身文件从硬盘中删除，只保留内存中的计算机病毒，在这种没有病毒文件的情况下，杀毒软件是没有办法使用文件特征码识别病毒的。主机特征码和网络特征码可以相结合使用，这样可以提供更高的检测率和更少的误报）</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%BF%99%E4%B8%AA%E8%AF%BE%E7%A8%8B%E6%98%AFb%E7%AB%99%E4%B8%8A%E7%9A%84%E4%B8%80%E4%B8%AA%E6%AF%94%E8%BE%83%E4%B8%8D%E9%94%99%E5%85%B3%E4%BA%8E%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%97%85%E6%AF%92%E5%88%86%E6%9E%90%E7%9A%84%E8%AF%BE%E7%A8%8B-https-www-bilibili-com-video-BV1jU4y1s7s4-p-15-t-6/" rel="tag"># 这个课程是b站上的一个比较不错关于计算机病毒分析的课程--https://www.bilibili.com/video/BV1jU4y1s7s4?p=15&t=6</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/07/07/Rust/%E7%8C%9C%E6%95%B0%E6%B8%B8%E6%88%8F/" rel="prev" title="猜数游戏">
+      <i class="fa fa-chevron-left"></i> 猜数游戏
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%97%85%E6%AF%92%E7%9A%84%E5%AE%9A%E4%B9%89%E5%92%8C%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.</span> <span class="nav-text">一、计算机病毒的定义和类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E3%80%81%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%97%85%E6%AF%92%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">1.0.1.</span> <span class="nav-text">1、计算机病毒的定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%E3%80%81%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%97%85%E6%AF%92%E7%9A%84%E5%8A%9F%E8%83%BD%E5%88%86%E7%B1%BB"><span class="nav-number">1.0.2.</span> <span class="nav-text">2、计算机病毒的功能分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3%E3%80%81%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%97%85%E6%AF%92%E7%9A%84%E6%94%BB%E5%87%BB%E7%9B%AE%E6%A0%87"><span class="nav-number">1.0.3.</span> <span class="nav-text">3、计算机病毒的攻击目标</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%97%85%E6%AF%92%E5%88%86%E6%9E%90%E7%9A%84%E7%9B%AE%E6%A0%87"><span class="nav-number">2.</span> <span class="nav-text">二、计算机病毒分析的目标</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E3%80%81%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%97%85%E6%AF%92%E5%88%86%E6%9E%90"><span class="nav-number">2.0.1.</span> <span class="nav-text">1、计算机病毒分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%E3%80%81%E5%8F%AF%E7%96%91%E6%96%87%E4%BB%B6%E5%88%86%E6%9E%90"><span class="nav-number">2.0.2.</span> <span class="nav-text">2、可疑文件分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3%E3%80%81%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%97%85%E6%AF%92%E7%89%B9%E5%BE%81%E7%A0%81"><span class="nav-number">2.0.3.</span> <span class="nav-text">3、计算机病毒特征码</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">nan-del</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">nan-del</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
