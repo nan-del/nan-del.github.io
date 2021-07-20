@@ -25,11 +25,13 @@
 <meta property="og:url" content="http://example.com/2021/07/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%97%85%E6%AF%92%E5%88%86%E6%9E%90/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%97%85%E6%AF%92%E5%88%86%E6%9E%90/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.loli.net/2021/07/18/axCuwYoFVbPH1Qn.png">
 <meta property="article:published_time" content="2021-07-13T11:37:22.000Z">
-<meta property="article:modified_time" content="2021-07-13T12:43:16.058Z">
+<meta property="article:modified_time" content="2021-07-19T12:40:04.061Z">
 <meta property="article:author" content="nan-del">
 <meta property="article:tag" content="这个课程是b站上的一个比较不错关于计算机病毒分析的课程--https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV1jU4y1s7s4?p&#x3D;15&amp;t&#x3D;6">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/07/18/axCuwYoFVbPH1Qn.png">
 
 <link rel="canonical" href="http://example.com/2021/07/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%97%85%E6%AF%92%E5%88%86%E6%9E%90/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%97%85%E6%AF%92%E5%88%86%E6%9E%90/">
 
@@ -171,10 +173,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2021-07-13 19:37:22 / Modified: 20:43:16" itemprop="dateCreated datePublished" datetime="2021-07-13T19:37:22+08:00">2021-07-13</time>
+              <time title="Created: 2021-07-13 19:37:22" itemprop="dateCreated datePublished" datetime="2021-07-13T19:37:22+08:00">2021-07-13</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-07-19 20:40:04" itemprop="dateModified" datetime="2021-07-19T20:40:04+08:00">2021-07-19</time>
+              </span>
 
           
 
@@ -219,6 +227,71 @@
 <p>主机特征码：注册表的特定修改、创建或修改了特定的文件等这些主机行为都可以作为主机的特征码</p>
 <p>网络特征码：僵尸网络的通信数据包、与恶意IP地址的连接等行为可以作为网络特征码</p>
 <p>主机特征码与反病毒软件所使用的病毒特征码是不同的，主机特征码关注的是病毒对系统做了什么，而不是病毒本身的文件特征，主机特征码比反病毒软件特征码更加有效。（因为杀毒软件为了提高杀毒软件的速度，所以只是针对文件的特征来进行快速的识别而不是针对整个计算机病毒的行为来识别，所以主机特征码比反病毒特征码更加全面、更加有效，只针对病毒本身文件的特征码会受到很多干扰，比如计算机病毒所使用的多态、变形、加壳、花指令等，它可以修改病毒文件本身的特征码而躲避杀毒软件的检测，甚至计算机病毒在执行过程中将自身文件从硬盘中删除，只保留内存中的计算机病毒，在这种没有病毒文件的情况下，杀毒软件是没有办法使用文件特征码识别病毒的。主机特征码和网络特征码可以相结合使用，这样可以提供更高的检测率和更少的误报）</p>
+<h2 id="三、计算机病毒分析技术"><a href="#三、计算机病毒分析技术" class="headerlink" title="三、计算机病毒分析技术"></a>三、计算机病毒分析技术</h2><h4 id="1、静态分析"><a href="#1、静态分析" class="headerlink" title="1、静态分析"></a>1、静态分析</h4><p>静态分析方法是在没有运行计算机病毒时，对其进行分析的相关技术；常用的分析工具有VirusTotal、strings、IDApro等</p>
+<h4 id="2、动态分析"><a href="#2、动态分析" class="headerlink" title="2、动态分析"></a>2、动态分析</h4><p>动态分析方法则需要运行计算机病毒；常用的分析工具有RehShot、Process Monitor、OllyDbg等。</p>
+<p>这两累技术又进一步分为基础分析和高级分析。</p>
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">静态分析</th>
+<th align="center">动态分析</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">基础分析</td>
+<td align="center">静态基础分析技术</td>
+<td align="center">动态基础分析技术</td>
+</tr>
+<tr>
+<td align="center">高级分析</td>
+<td align="center">静态高级分析技术</td>
+<td align="center">动态高级分析技术</td>
+</tr>
+</tbody></table>
+<p><strong>静态基础分析技术</strong>：包括分析病毒可执行文件，但不查看具体CPU指令的分析技术，计算机病毒并没有执行，只是以文件的形式存在的，我们通过分析文件然后进行计算机病毒的分析；非常快速简单但是难以分析复杂的计算机病毒，而且可能会漏掉一些重要的行为；常用的分析工具有VirusToal、Strings等。</p>
+<p><strong>动态基础分析技术</strong>：通过运行计算机病毒，分析病毒在系统和网络上的行为，提取病毒的特征码；前提是需要建立安全的分析环境，但也会漏掉一些重要的病毒功能。（我们可以将病毒放到一个可控的环境中，如沙箱中，我们可以快速的看到计算机病毒做了哪些行为，然后从这些行为中可以去判断计算机病毒的危害，但是它也会漏掉一些重要的病毒功能，比如说黑色星期五病毒，我们在星期一到星期四对病毒进行分析的时候，计算机病毒不会做任何事情，这个计算机病毒只有在星期五的时候才会爆发，那这样的话，动态基础分析技术就会漏掉这些重要功能）</p>
+<p><strong>静态高级分析技术</strong>：对计算机病毒内部机制的逆向工程，通过将可执行文件装载到反汇编器中，查看程序CPU指令，来分析病毒到底做了什么；可以深入分析计算机病毒；但是需要掌握汇编语言、Windows系统编程等知识而且在逆向的过程中易受到混淆技术的干扰。例如加壳、花指令等。</p>
+<p><strong>动态高级分析技术</strong>：使用调试器来分析一个病毒运行时刻的内部状态，动态的执行每一条指令，验证静态高级分析的结果，这样可以缓解代码混淆的干扰但是这样只能覆盖一条计算机病毒的执行轨迹。（计算机病毒它有不同的执行路径，但在同一个时刻，计算机病毒它只会执行一个路径，那这样的话，对计算机病毒分析的全面性是一个影响）</p>
+<p><strong>计算机病毒分析的经验</strong>：首先不要过于陷入细节，我们应该关注主要的功能。在进入细节分析之前有一个概要性的理解；其次应该尝试从不同角度，不同工具和方法来分析计算机病毒；最后计算机病毒在不断的变异和进化，应该能够快速的对应病毒的新变化。</p>
+<h2 id="四、静态基础分析技术"><a href="#四、静态基础分析技术" class="headerlink" title="四、静态基础分析技术"></a>四、静态基础分析技术</h2><h4 id="1、杀毒软件"><a href="#1、杀毒软件" class="headerlink" title="1、杀毒软件"></a>1、杀毒软件</h4><p>病毒特征库：每一个杀毒软件都有一个计算机病毒的特征库，这个特征库是对已知的计算机病毒的样本进行分析提取出的病毒特征码的集合，特征库只是针对的是<strong>已知</strong>的病毒，对于未知的病毒，特征库就没有办法进行识别。在病毒特征库的基础上开发了启发式规则的检测方法。</p>
+<p>启发式规则：启发式规则是对特征库扫描技术的补充，在已知计算机病毒分析经验的基础上总结出来的规则，可以检测到未知的计算机病毒变种。但启发式规则只是一个近似的检测方法，并不是一个百分百的检测方法。</p>
+<p>杀毒软件面临的挑战：计算机病毒的编写者可以很容易的修改自己的代码，从而改变这些病毒的各种特征，来躲避杀毒软件的检测。如：垃圾指令（是指加入了大量的冗余的cpu指令，或者冗余的字符串等等）；多态技术：语义不变，语法混淆；变形技术：功能不变，语义混淆；单向执行技术：未解的数学猜想、哈希值（它使恶意代码可以正向执行但是逆向分析的难度增加到了求解未解数学猜想或者碰撞哈希值的难度上）等。</p>
+<p>另外一个挑战是：新的病毒家族</p>
+<p>新出现的计算机病毒家族，通常不会被杀毒软件识别，因为病毒特征库里面没有这些新的样本。启发式检测也可以被新的病毒家族绕过去，因为新的病毒家族的行为与已知家族的不一样。（比如之前的熊猫烧香病毒在刚刚爆发的时候，杀毒软件是没有办法进行查杀的，还有永恒之蓝病毒在刚刚爆发的时候，杀毒软件也没有及时的进行应对的方法。还要勒索软件，它的行为是通过对硬盘、对文件进行加密，并不向传统的计算机病毒发送大量的垃圾邮件或者像数据包的DDOS攻击等，它的行为是与传统的计算机病毒不一致导致启发式规则也没有办法进行检测）</p>
+<p>多杀毒软件的交叉检测：不同的杀毒软件使用了不同的特征库和启发式检测方法，使用多个杀毒软件可以大幅增加计算机病毒的躲避难度，对计算机病毒分析进行更加全面的、多角度的检测。最常用的交叉检测系统是Virustotal，它是谷歌推出的一个恶意代码的检测平台。</p>
+<h4 id="2、哈希值-恶意代码指纹"><a href="#2、哈希值-恶意代码指纹" class="headerlink" title="2、哈希值:恶意代码指纹"></a>2、哈希值:恶意代码指纹</h4><p>哈希值是由哈希函数计算出来的，哈希函数是一种从任何一种数据中创建小的数字“指纹”的方法，也叫做散列函数，它的输入可以是文件或者任意长度的字符串；它的输出是固定长度的哈希值，如MD5 128-bit的哈希值或者SHA256 256-bit哈希值。</p>
+<p>哈希值可以用来唯一的识别一个文件，它很少发生碰撞，（碰撞是指两个不同的文件哈希值相同的情况），可以用来进行计算机病毒的识别，优点：计算速度快、识别简单（匹配一这个哈希值是在已知的计算机病毒的哈希值列表中），易于分享给其他病毒分析员。</p>
+<p>在一些杀毒软件中，就是根据文件的哈希值来判断文件是否感染病毒，从而发现病毒，并隔离感染病毒的文件。</p>
+<h4 id="3、特征字符串"><a href="#3、特征字符串" class="headerlink" title="3、特征字符串"></a>3、特征字符串</h4><p>我们在做病毒分析的时候，一般会把病毒文件的后缀改成非exe的格式，这样的话可以防止误操作，使计算机病毒执行起来。</p>
+<h4 id="4、加壳与混淆"><a href="#4、加壳与混淆" class="headerlink" title="4、加壳与混淆"></a>4、加壳与混淆</h4><p><strong>目的</strong>：使计算机病毒更难被检测和分析</p>
+<p><strong>混淆</strong>：隐藏计算机病毒程序的信息</p>
+<p><strong>加壳</strong>：压缩计算机病毒的文件大小或者加密计算机病毒的核心代码</p>
+<p>正常程序：使用Strings指令可以搜索出来很多字符串</p>
+<p>加壳或者加密后的程序：Strings指令搜索出来的对分析有效的字符串少</p>
+<p>被加壳后的程序分为两个部分：一、Packed Executable；二、Wrapper Program。</p>
+<p>Packed Executable：就是原始程序被压缩后的程序，这一般都比原始程序要小，而且这里面的字符串和各种有用的信息会变得不可见</p>
+<p>Wrapper Program：这个可以理解为一个解壳程序，它的功能是在恶意代码的执行过程中，动态的对加壳的或者加密的可执行文件进行解密、解壳，使它们能够正常的执行，也就是说加壳之后的程序，是不能够在cpu中直接执行的，需要进行解密之后，还原成原始的可执行程序才能够被cpu执行。这个解壳程序就负责程序在cpu执行的过程中进行动态的解壳。所以加壳之后的程序，在静态分析中，是没有办法看到有用的字符串或者有用的信息的。</p>
+<p><strong>加壳工具</strong>：</p>
+<p><strong>UPX加壳工具</strong>： </p>
+<p>这是使用UPX加壳之前和之后的对比，并用Strings命令提取字符串的结果</p>
+<p><img src="https://i.loli.net/2021/07/18/axCuwYoFVbPH1Qn.png" alt="image-20210718162626949"></p>
+<p>第一个数字是字符串的数量：我们可以看到加壳之前chatty程序可以提取出1962个字符串，但是可以看到解壳之后使用strings提取出来的字符串有3950个，比加壳之前提取的字符串多了2000个；</p>
+<p>第二个数字是字符串的字符单词数量：我们可以看到加壳之前chatty程序有4498个，而且加壳之后的程序单词数量有4290个，我们可以发下加壳之后的程序单词的数量相差不大，但是字符串的数量却比加壳之前的字符串个数要多，说明每个字符串的长度都是比较短的，也就是没有意义的。有意义的字符串比如说：IP地址，它会占用十几个字符，还有一些url信息、路径信息、文件信息等等，它们的字符串长度都是比较长的。短的字符串其实都是压缩。加壳之后的字符串数量增加了，但是长度都变短了，短的字符串的实际分析意义是不大的。</p>
+<p><strong>PEiD</strong>：</p>
+<p>我们可以使用PEiD检测壳的信息，PEiD收集了大量的加壳信息，它可以通过这些加壳信息去识别一个未知的程序采用的是哪种加壳方法，但是在使用PEiD的时候要注意PEiD有可能使我们静态分析的病毒执行起来，因为PEiD，它有一个缓冲区溢出的漏洞，攻击者可以利用这个漏洞去执行任意的代码， 也就是，如果攻击者利用了这个漏洞，当我们使用PEiD分析恶意代码的时候，这个恶意代码可以通过这个漏洞被执行起来。</p>
+<h4 id="5、PE文件格式"><a href="#5、PE文件格式" class="headerlink" title="5、PE文件格式"></a>5、PE文件格式</h4><p>Windows可执行程序和动态链接库都是PE文件格式，PE文件包含Windows将文件从硬盘装载到内存中执行的必要信息。</p>
+<p><strong>PE文件头</strong>：PE文件头里面记录了可执行代码的各种信息，包括程序的类型，它是exe的可执行程序还是dll的动态链接库程序，Windows基于PE文件头将可执行程序和可依赖的动态链接库映射到内存空间中。</p>
+<p>在PE文件中使用节表对不同的数据进行标识，其中最常用的节是<code>.text</code>；</p>
+<p><code>.text</code>：包含了CPU的执行指令，所有其他节存储数据和支持性的信息，一般来说，这是唯一可以执行的节，也是唯一包含代码的节。text中的数据是可读可执行的，有的时候text节的数据是可读、可写、可执行的，这里面就包括了CPU指令的动态生成技术。</p>
+<p><code>.rdata</code>：通常包含导入导出函数信息，这个节中还可以存储程序所使用的其他只读数据。</p>
+<p><code>.data</code>：包含了程序的全局数据，保存的是可读、可写的数据。</p>
+<p><code>.rsrc</code>：该节包含由可执行文件所使用的资源，而这写内容并不是可执行的，比如图标、图片、菜单项和字符串。该节也被用来存储其他计算机病毒，例如装载器通常在<code>.rsrc</code>节中存储了多个计算机病毒，在执行的时候，将它们装载到计算机的内存中。</p>
+<h4 id="6、链接库与函数"><a href="#6、链接库与函数" class="headerlink" title="6、链接库与函数"></a>6、链接库与函数</h4><p>PE文件中有一个引入表，它负责将我们计算机病毒需要的链接库和函数导入到计算机内存里，计算机病毒代码会调用动态链接库中的函数。</p>
+<p>链接方法有三种：静态链接、运行时链接、动态链接</p>
+<p>1.静态链接：静态链接是Windows平台链接代码库最不常用的方法，在UNIX和Linux程序中是比较常见的。当一个库被静态链接到可执行程序时，所有这个库中的代码都会复制到可执行程序中去。在PE文件里面，头部结构中是看不到链接库的信息；它的链接时间是在编译的时候链接；这种方法会导致可执行程序体积大，占用内存空间多。计算机病毒为了保证体积比较小，一般不采用静态链接的形式。</p>
+<p>2.运行时链接：虽然运行时链接在合法程序中并不流行，但是在恶意代码中是常用的，特别是当恶意代码被加壳或混淆的时候（因为加壳或混淆会破坏计算机病毒的引入表，没有了引入表，在Windows中是不会自动的帮助计算机病毒完成链接工作，所以需要在运行的时候，计算机病毒利用运行时链接的方法将所需要的函数和链接库装载到内存空间中）。使用运行时链接的可执行程序，只有当需要使用函数时，才会链接到库，而并不是像动态链接模式一样，在程序启动时就会链接。最常用的函数是：<code>LoadLibrary</code>和<code>GetProcAddress</code>。<code>LoadLibrary</code>：功能是实现将动态链接库动态的从硬盘装载到计算机病毒的内存空间；<code>GetProcAddress</code>：功能是：从动态链接库中找到对应函数的调用地址。这两个函数是配合使用的，经常出现在计算机病毒的代码中。</p>
+<p>3.动态链接：在所有方法中，动态链接是最常见的，对于恶意代码分析师也应该是最关注的地方。当代码库被动态链接时，宿主操作系统会在程序被装载时搜索所需的代码库，如果程序调用了被链接的库函数，这个函数会在代码库中执行。</p>
 
     </div>
 
@@ -299,7 +372,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%97%85%E6%AF%92%E7%9A%84%E5%AE%9A%E4%B9%89%E5%92%8C%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.</span> <span class="nav-text">一、计算机病毒的定义和类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E3%80%81%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%97%85%E6%AF%92%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">1.0.1.</span> <span class="nav-text">1、计算机病毒的定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%E3%80%81%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%97%85%E6%AF%92%E7%9A%84%E5%8A%9F%E8%83%BD%E5%88%86%E7%B1%BB"><span class="nav-number">1.0.2.</span> <span class="nav-text">2、计算机病毒的功能分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3%E3%80%81%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%97%85%E6%AF%92%E7%9A%84%E6%94%BB%E5%87%BB%E7%9B%AE%E6%A0%87"><span class="nav-number">1.0.3.</span> <span class="nav-text">3、计算机病毒的攻击目标</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%97%85%E6%AF%92%E5%88%86%E6%9E%90%E7%9A%84%E7%9B%AE%E6%A0%87"><span class="nav-number">2.</span> <span class="nav-text">二、计算机病毒分析的目标</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E3%80%81%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%97%85%E6%AF%92%E5%88%86%E6%9E%90"><span class="nav-number">2.0.1.</span> <span class="nav-text">1、计算机病毒分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%E3%80%81%E5%8F%AF%E7%96%91%E6%96%87%E4%BB%B6%E5%88%86%E6%9E%90"><span class="nav-number">2.0.2.</span> <span class="nav-text">2、可疑文件分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3%E3%80%81%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%97%85%E6%AF%92%E7%89%B9%E5%BE%81%E7%A0%81"><span class="nav-number">2.0.3.</span> <span class="nav-text">3、计算机病毒特征码</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%97%85%E6%AF%92%E7%9A%84%E5%AE%9A%E4%B9%89%E5%92%8C%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.</span> <span class="nav-text">一、计算机病毒的定义和类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E3%80%81%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%97%85%E6%AF%92%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">1.0.1.</span> <span class="nav-text">1、计算机病毒的定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%E3%80%81%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%97%85%E6%AF%92%E7%9A%84%E5%8A%9F%E8%83%BD%E5%88%86%E7%B1%BB"><span class="nav-number">1.0.2.</span> <span class="nav-text">2、计算机病毒的功能分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3%E3%80%81%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%97%85%E6%AF%92%E7%9A%84%E6%94%BB%E5%87%BB%E7%9B%AE%E6%A0%87"><span class="nav-number">1.0.3.</span> <span class="nav-text">3、计算机病毒的攻击目标</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%97%85%E6%AF%92%E5%88%86%E6%9E%90%E7%9A%84%E7%9B%AE%E6%A0%87"><span class="nav-number">2.</span> <span class="nav-text">二、计算机病毒分析的目标</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E3%80%81%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%97%85%E6%AF%92%E5%88%86%E6%9E%90"><span class="nav-number">2.0.1.</span> <span class="nav-text">1、计算机病毒分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%E3%80%81%E5%8F%AF%E7%96%91%E6%96%87%E4%BB%B6%E5%88%86%E6%9E%90"><span class="nav-number">2.0.2.</span> <span class="nav-text">2、可疑文件分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3%E3%80%81%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%97%85%E6%AF%92%E7%89%B9%E5%BE%81%E7%A0%81"><span class="nav-number">2.0.3.</span> <span class="nav-text">3、计算机病毒特征码</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%97%85%E6%AF%92%E5%88%86%E6%9E%90%E6%8A%80%E6%9C%AF"><span class="nav-number">3.</span> <span class="nav-text">三、计算机病毒分析技术</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E3%80%81%E9%9D%99%E6%80%81%E5%88%86%E6%9E%90"><span class="nav-number">3.0.1.</span> <span class="nav-text">1、静态分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%E3%80%81%E5%8A%A8%E6%80%81%E5%88%86%E6%9E%90"><span class="nav-number">3.0.2.</span> <span class="nav-text">2、动态分析</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E9%9D%99%E6%80%81%E5%9F%BA%E7%A1%80%E5%88%86%E6%9E%90%E6%8A%80%E6%9C%AF"><span class="nav-number">4.</span> <span class="nav-text">四、静态基础分析技术</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E3%80%81%E6%9D%80%E6%AF%92%E8%BD%AF%E4%BB%B6"><span class="nav-number">4.0.1.</span> <span class="nav-text">1、杀毒软件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%E3%80%81%E5%93%88%E5%B8%8C%E5%80%BC-%E6%81%B6%E6%84%8F%E4%BB%A3%E7%A0%81%E6%8C%87%E7%BA%B9"><span class="nav-number">4.0.2.</span> <span class="nav-text">2、哈希值:恶意代码指纹</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3%E3%80%81%E7%89%B9%E5%BE%81%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">4.0.3.</span> <span class="nav-text">3、特征字符串</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4%E3%80%81%E5%8A%A0%E5%A3%B3%E4%B8%8E%E6%B7%B7%E6%B7%86"><span class="nav-number">4.0.4.</span> <span class="nav-text">4、加壳与混淆</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5%E3%80%81PE%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F"><span class="nav-number">4.0.5.</span> <span class="nav-text">5、PE文件格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6%E3%80%81%E9%93%BE%E6%8E%A5%E5%BA%93%E4%B8%8E%E5%87%BD%E6%95%B0"><span class="nav-number">4.0.6.</span> <span class="nav-text">6、链接库与函数</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
