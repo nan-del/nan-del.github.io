@@ -26,8 +26,14 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://i.loli.net/2021/07/22/hkyqB3fw8l1St5b.png">
+<meta property="og:image" content="https://i.loli.net/2021/07/26/W5NvJ7sx9T1XnBV.png">
+<meta property="og:image" content="https://i.loli.net/2021/07/26/qNuFnfKWlkOmsZw.png">
+<meta property="og:image" content="https://i.loli.net/2021/07/27/1ovzE5rXRA3ZkTf.png">
+<meta property="og:image" content="https://i.loli.net/2021/07/31/raqTviWXzERIlup.png">
+<meta property="og:image" content="https://i.loli.net/2021/07/31/ui3SeQkGNCsnmwF.png">
+<meta property="og:image" content="https://i.loli.net/2021/07/31/ghGrHLxK15XNZDB.png">
 <meta property="article:published_time" content="2021-07-21T11:23:15.000Z">
-<meta property="article:modified_time" content="2021-07-22T12:54:11.507Z">
+<meta property="article:modified_time" content="2021-07-31T10:09:01.878Z">
 <meta property="article:author" content="nan-del">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://i.loli.net/2021/07/22/hkyqB3fw8l1St5b.png">
@@ -180,7 +186,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-07-22 20:54:11" itemprop="dateModified" datetime="2021-07-22T20:54:11+08:00">2021-07-22</time>
+                <time title="Modified: 2021-07-31 18:09:01" itemprop="dateModified" datetime="2021-07-31T18:09:01+08:00">2021-07-31</time>
               </span>
 
           
@@ -199,6 +205,48 @@
 <p>解析：</p>
 <p>使用IDA直接打开，按下<code>shitf+F12</code> 就可以直接看到flag了，这比较简单，只是入门题目。</p>
 <p><img src="https://i.loli.net/2021/07/22/hkyqB3fw8l1St5b.png" alt="image-20210722205342946"></p>
+<h2 id="reverse1"><a href="#reverse1" class="headerlink" title="reverse1"></a>reverse1</h2><p>解析：</p>
+<ol>
+<li>使用IDA打开exe文件</li>
+<li>按下<code>shift + F12</code>,找到关键字符</li>
+</ol>
+<p><img src="https://i.loli.net/2021/07/26/W5NvJ7sx9T1XnBV.png" alt="image-20210726210554251"></p>
+<ol start="3">
+<li>点击进入‘this is the right flag!\n’</li>
+<li>得到‘aThisIsTheRight’这个变量，我们把光标放到这个变量上并右键，点击<code>Jump to xref to operand</code> 就可以到使用这个变量的函数哪里，这样才能使用<code>tab</code>键进行反汇编，看到代码。</li>
+</ol>
+<p><img src="https://i.loli.net/2021/07/26/qNuFnfKWlkOmsZw.png" alt="image-20210726210803828"></p>
+<ol start="5">
+<li><p>得到代码后，就可以分析了</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">  #</span><span class="bash"> 首先了解两个函数：j_strlen 、 strncmp</span> </span><br><span class="line">  </span><br><span class="line"><span class="meta">  #</span><span class="bash"> j_strlen是测字符串的长度的，但不包括‘\0<span class="string">&#x27;。</span></span></span><br><span class="line">  </span><br><span class="line"><span class="meta">  #</span><span class="bash"><span class="string"> strncmp函数为字符串比较函数，字符串大小的比较是以ASCII 码表上的顺序来决定，此顺序亦为字符的值。其函数声明为int strncmp ( const char * str1, const char * str2, size_t n );功能是把 str1 和 str2 进行比较，最多比较前 n 个字节，若str1与str2的前n个字符相同，则返回0；若s1大于s2，则返回大于0的值；若s1 小于s2，则返回小于0的值。</span></span></span><br><span class="line">  </span><br><span class="line">  char v5[36]; // [rsp+0h] [rbp-20h] BYREF</span><br><span class="line">  int j; // [rsp+24h] [rbp+4h]</span><br><span class="line">  char Str1[224]; // [rsp+48h] [rbp+28h] BYREF</span><br><span class="line">  unsigned __int64 v8; // [rsp+128h] [rbp+108h]</span><br><span class="line"></span><br><span class="line">  v0 = v5;</span><br><span class="line">  for ( i = 82i64; i; --i )</span><br><span class="line">  &#123;</span><br><span class="line">    *(_DWORD *)v0 = -858993460;</span><br><span class="line">    v0 += 4;</span><br><span class="line">  &#125;</span><br><span class="line">  for ( j = 0; ; ++j )</span><br><span class="line">  &#123;</span><br><span class="line">    v8 = j;</span><br><span class="line">    v2 = j_strlen(Str2);   # 这里是得到str2字符串的长度再循环</span><br><span class="line">    if ( v8 &gt; v2 )</span><br><span class="line">      break;</span><br><span class="line">    if ( Str2[j] == 111 )  # 111和48这里是ascii码，分别代表o和0，其实就是当str2中有o时，用0代替。</span><br><span class="line">      Str2[j] = 48;</span><br><span class="line">  &#125;</span><br><span class="line">  sub_1400111D1(&quot;input the flag:&quot;);</span><br><span class="line">  sub_14001128F(&quot;%20s&quot;, Str1);</span><br><span class="line">  v3 = j_strlen(Str2);</span><br><span class="line">  if ( !strncmp(Str1, Str2, v3) ) # 这里是字符串的比较，如果ste1和str2相同，就打印下面的字符串，不同，就执行else</span><br><span class="line">    sub_1400111D1(&quot;this is the right flag!\n&quot;);</span><br><span class="line">  else</span><br><span class="line">    sub_1400111D1(&quot;wrong flag\n&quot;);</span><br><span class="line">  sub_14001113B(v5, &amp;unk_140019D00);</span><br><span class="line">  return 0i64;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>现在就是等到str2的值了，我们可以直接点击str2就可以转到定义它的位置。</p>
+</li>
+</ol>
+<p><img src="https://i.loli.net/2021/07/27/1ovzE5rXRA3ZkTf.png" alt="image-20210727204501638"></p>
+<p>​    7. 所以得到的flag是：{hell0_w0rld}</p>
+<h2 id="reverse2"><a href="#reverse2" class="headerlink" title="reverse2"></a>reverse2</h2><p>解析：</p>
+<ol>
+<li>使用IDA打开reverse_2文件</li>
+</ol>
+<p><img src="https://i.loli.net/2021/07/31/raqTviWXzERIlup.png" alt="image-20210729220314114"></p>
+<ol start="2">
+<li>点击<code>this is the right flag!</code>进入</li>
+</ol>
+<p><img src="https://i.loli.net/2021/07/31/ui3SeQkGNCsnmwF.png" alt="image-20210729220445024"></p>
+<ol start="3">
+<li>跳转到使用这个变量的地方得到反汇编后的代码</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 我们只用关注重要的代码和重要的函数</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 有些函数在上一个的例子中有解释，这里就不解释了</span></span><br><span class="line"></span><br><span class="line">int __cdecl main(int argc, const char **argv, const char **envp)</span><br><span class="line">&#123;</span><br><span class="line">  int result; // eax</span><br><span class="line">  int stat_loc; // [rsp+4h] [rbp-3Ch] BYREF</span><br><span class="line">  int i; // [rsp+8h] [rbp-38h]</span><br><span class="line">  __pid_t pid; // [rsp+Ch] [rbp-34h]</span><br><span class="line">  char s2[24]; // [rsp+10h] [rbp-30h] BYREF</span><br><span class="line">  unsigned __int64 v8; // [rsp+28h] [rbp-18h]</span><br><span class="line"></span><br><span class="line">  v8 = __readfsqword(0x28u);</span><br><span class="line">  pid = fork();</span><br><span class="line">  if ( pid )</span><br><span class="line">  &#123;</span><br><span class="line">    waitpid(pid, &amp;stat_loc, 0);</span><br><span class="line">  &#125;</span><br><span class="line">  else</span><br><span class="line">  &#123;</span><br><span class="line">    for ( i = 0; i &lt;= strlen(&amp;flag); ++i )   </span><br><span class="line">    &#123;</span><br><span class="line">      if ( *(&amp;flag + i) == 105 || *(&amp;flag + i) == 114 )   # 105代表i;114代表r</span><br><span class="line">        *(&amp;flag + i) = 49;  # 49代表数字1    这两行就是把flag中的r和i 替代为 1  ,所以需要找到flag代表什么</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  printf(&quot;input the flag:&quot;);</span><br><span class="line">  __isoc99_scanf(&quot;%20s&quot;, s2);  # 这一步是s2是输入时的变量，即到时候使用s2与改变之后的falg作比较</span><br><span class="line">  if ( !strcmp(&amp;flag, s2) ) #这一步就是使用输入的s2与变量flag比较，相同则是正确的flag，即改变之后的flag就是这道题目的flag</span><br><span class="line">    result = puts(&quot;this is the right flag!&quot;);</span><br><span class="line">  else</span><br><span class="line">    result = puts(&quot;wrong flag!&quot;);</span><br><span class="line">  return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>找到变量flag的值，即flag为：{hacking_for_fun}</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.data:0000000000601080 flag            db 7Bh                  ; DATA XREF: main+34↑r  # 7Bh转化为ascii码为123，即 flag            db  &#123; </span><br><span class="line">.data:0000000000601080                                         ; main+44↑r ...</span><br><span class="line">.data:0000000000601081 aHackingForFun  db &#x27;hacking_for_fun&#125;&#x27;,0</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 结合下面的`hacking_for_fun&#125;`就是：`&#123;hacking_for_fun&#125;`</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.loli.net/2021/07/31/ghGrHLxK15XNZDB.png" alt="image-20210729221551408"></p>
+<ol start="5">
+<li>然后把r和i 替换为1即flag为：<code>flag&#123;hack1ng_fo1_fun&#125;</code></li>
+</ol>
 
     </div>
 
@@ -276,7 +324,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#BUUCTF%E9%A2%98%E7%9B%AE"><span class="nav-number">1.</span> <span class="nav-text">BUUCTF题目</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#easyre"><span class="nav-number">1.1.</span> <span class="nav-text">easyre</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#BUUCTF%E9%A2%98%E7%9B%AE"><span class="nav-number">1.</span> <span class="nav-text">BUUCTF题目</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#easyre"><span class="nav-number">1.1.</span> <span class="nav-text">easyre</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reverse1"><span class="nav-number">1.2.</span> <span class="nav-text">reverse1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reverse2"><span class="nav-number">1.3.</span> <span class="nav-text">reverse2</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
