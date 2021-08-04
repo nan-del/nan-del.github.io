@@ -28,7 +28,7 @@
 <meta property="og:image" content="https://img-blog.csdn.net/20180717202520531?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4OTUwMzE2/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
 <meta property="og:image" content="https://img-blog.csdn.net/20180717204202563?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4OTUwMzE2/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
 <meta property="article:published_time" content="2021-07-20T01:55:10.000Z">
-<meta property="article:modified_time" content="2021-07-26T11:55:04.680Z">
+<meta property="article:modified_time" content="2021-08-02T12:15:00.678Z">
 <meta property="article:author" content="nan-del">
 <meta property="article:tag" content="记录一些平时瞎想，瞎玩的事情">
 <meta name="twitter:card" content="summary">
@@ -182,7 +182,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-07-26 19:55:04" itemprop="dateModified" datetime="2021-07-26T19:55:04+08:00">2021-07-26</time>
+                <time title="Modified: 2021-08-02 20:15:00" itemprop="dateModified" datetime="2021-08-02T20:15:00+08:00">2021-08-02</time>
               </span>
 
           
@@ -232,6 +232,14 @@
 <p>​    现在把三次握手改成仅需要两次握手，死锁是可能发生的。作为例子，考虑计算机S和C之间的通信，假定C给S发送一个连接请求分组，S收到了这个分组，并发 送了确认应答分组。按照两次握手的协定，S认为连接已经成功地建立了，可以开始发送数据分组。可是，C在S的应答分组在传输中被丢失的情况下，将不知道S 是否已准备好，不知道S建立什么样的序列号，C甚至怀疑S是否收到自己的连接请求分组。在这种情况下，C认为连接还未建立成功，将忽略S发来的任何数据分 组，只等待连接确认应答分组。而S在发出的分组超时后，重复发送同样的分组。这样就形成了死锁。</p>
 <p>【问题4】如果已经建立了连接，但是客户端突然出现故障了怎么办？</p>
 <p>TCP还设有一个保活计时器，显然，客户端如果出现故障，服务器不能一直等下去，白白浪费资源。服务器每收到一次客户端的请求后都会重新复位这个计时器，时间通常是设置为2小时，若两小时还没有收到客户端的任何数据，服务器就会发送一个探测报文段，以后每隔75秒钟发送一次。若一连发送10个探测报文仍然没反应，服务器就认为客户端出了故障，接着就关闭连接。</p>
+<h2 id="算法时间复杂度的几条基本计算规则"><a href="#算法时间复杂度的几条基本计算规则" class="headerlink" title="算法时间复杂度的几条基本计算规则"></a>算法时间复杂度的几条基本计算规则</h2><ol>
+<li>基本操作，即只有常数项，认为起时间复杂度为O(1)</li>
+<li>顺序结构，时间复杂度按加法进行计算</li>
+<li>循环结构，时间复杂度按乘法进行计算</li>
+<li>分支结构，时间复杂度取最大值</li>
+<li>判断一个算法的效率时，往往只需要关注操作数量的最高次项，其他次要项和常数项可以忽略</li>
+<li>在没有 特殊说明时，我们所分析的算法的时间复杂度都是指最坏时间复杂度</li>
+</ol>
 
     </div>
 
@@ -315,7 +323,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#IP%E5%9C%B0%E5%9D%80%E7%9A%84%E6%BA%AF%E6%BA%90"><span class="nav-number">1.</span> <span class="nav-text">IP地址的溯源</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BA%E4%BD%95%E8%A6%81%E6%BA%AF%E6%BA%90IP%E5%9C%B0%E5%9D%80"><span class="nav-number">1.0.1.</span> <span class="nav-text">为何要溯源IP地址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%8E%E4%B9%88%E9%98%B2%E6%AD%A2IP%E7%9A%84%E8%BF%BD%E8%B8%AA"><span class="nav-number">1.0.2.</span> <span class="nav-text">怎么防止IP的追踪</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%8E%E4%B9%88%E8%BF%BD%E8%B8%AAIP"><span class="nav-number">1.0.3.</span> <span class="nav-text">怎么追踪IP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">1.0.4.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%92%8C%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B"><span class="nav-number">2.</span> <span class="nav-text">三次握手和四次挥手</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E8%BF%87%E7%A8%8B%E7%90%86%E8%A7%A3"><span class="nav-number">2.0.1.</span> <span class="nav-text">三次握手过程理解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%E8%BF%87%E7%A8%8B%E7%90%86%E8%A7%A3"><span class="nav-number">2.0.2.</span> <span class="nav-text">四次挥手过程理解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98"><span class="nav-number">2.0.3.</span> <span class="nav-text">常见面试题</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#IP%E5%9C%B0%E5%9D%80%E7%9A%84%E6%BA%AF%E6%BA%90"><span class="nav-number">1.</span> <span class="nav-text">IP地址的溯源</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BA%E4%BD%95%E8%A6%81%E6%BA%AF%E6%BA%90IP%E5%9C%B0%E5%9D%80"><span class="nav-number">1.0.1.</span> <span class="nav-text">为何要溯源IP地址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%8E%E4%B9%88%E9%98%B2%E6%AD%A2IP%E7%9A%84%E8%BF%BD%E8%B8%AA"><span class="nav-number">1.0.2.</span> <span class="nav-text">怎么防止IP的追踪</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%8E%E4%B9%88%E8%BF%BD%E8%B8%AAIP"><span class="nav-number">1.0.3.</span> <span class="nav-text">怎么追踪IP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">1.0.4.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%92%8C%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B"><span class="nav-number">2.</span> <span class="nav-text">三次握手和四次挥手</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E8%BF%87%E7%A8%8B%E7%90%86%E8%A7%A3"><span class="nav-number">2.0.1.</span> <span class="nav-text">三次握手过程理解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%E8%BF%87%E7%A8%8B%E7%90%86%E8%A7%A3"><span class="nav-number">2.0.2.</span> <span class="nav-text">四次挥手过程理解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98"><span class="nav-number">2.0.3.</span> <span class="nav-text">常见面试题</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E7%9A%84%E5%87%A0%E6%9D%A1%E5%9F%BA%E6%9C%AC%E8%AE%A1%E7%AE%97%E8%A7%84%E5%88%99"><span class="nav-number">3.</span> <span class="nav-text">算法时间复杂度的几条基本计算规则</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -329,7 +337,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-count">26</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
