@@ -32,8 +32,16 @@
 <meta property="og:image" content="https://i.loli.net/2021/07/31/raqTviWXzERIlup.png">
 <meta property="og:image" content="https://i.loli.net/2021/07/31/ui3SeQkGNCsnmwF.png">
 <meta property="og:image" content="https://i.loli.net/2021/07/31/ghGrHLxK15XNZDB.png">
+<meta property="og:image" content="https://i.loli.net/2021/11/14/2PubKmwnqW54BlU.png">
+<meta property="og:image" content="https://i.loli.net/2021/11/14/eAgcjPLt9hUpm2r.png">
+<meta property="og:image" content="https://i.loli.net/2021/11/14/czslw7BFyfZxjHS.png">
+<meta property="og:image" content="https://i.loli.net/2021/11/14/R8vflZL29QBjSgJ.png">
+<meta property="og:image" content="https://i.loli.net/2021/11/14/wtBxiNGFkAS5ZUR.png">
+<meta property="og:image" content="https://i.loli.net/2021/11/14/uqZv7QjpwbAV9PU.png">
+<meta property="og:image" content="https://i.loli.net/2021/11/14/yBKhe4sw25TOlJ8.png">
+<meta property="og:image" content="https://i.loli.net/2021/11/14/ZGydgKcIleMjSD7.png">
 <meta property="article:published_time" content="2021-07-21T11:23:15.000Z">
-<meta property="article:modified_time" content="2021-07-31T10:09:01.878Z">
+<meta property="article:modified_time" content="2021-11-15T01:50:52.533Z">
 <meta property="article:author" content="nan-del">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://i.loli.net/2021/07/22/hkyqB3fw8l1St5b.png">
@@ -186,7 +194,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-07-31 18:09:01" itemprop="dateModified" datetime="2021-07-31T18:09:01+08:00">2021-07-31</time>
+                <time title="Modified: 2021-11-15 09:50:52" itemprop="dateModified" datetime="2021-11-15T09:50:52+08:00">2021-11-15</time>
               </span>
 
           
@@ -246,6 +254,37 @@
 <p><img src="https://i.loli.net/2021/07/31/ghGrHLxK15XNZDB.png" alt="image-20210729221551408"></p>
 <ol start="5">
 <li>然后把r和i 替换为1即flag为：<code>flag&#123;hack1ng_fo1_fun&#125;</code></li>
+</ol>
+<h2 id="新年快乐"><a href="#新年快乐" class="headerlink" title="新年快乐"></a>新年快乐</h2><p>解析：</p>
+<ol>
+<li>首先判断这个exe是多少位的程序。</li>
+</ol>
+<p>使用记事本打开这个exe程序，如果第二行的PE后面是<code>L</code>就是32位的程序，如果是<code>d</code>就是64为的程序。</p>
+<p><img src="https://i.loli.net/2021/11/14/2PubKmwnqW54BlU.png" alt="image-20211114172054966"></p>
+<ol start="2">
+<li>使用32位的IDA打开这个exe程序，结果有加壳的警告：</li>
+</ol>
+<p><img src="https://i.loli.net/2021/11/14/eAgcjPLt9hUpm2r.png" alt="image-20211114172343072"></p>
+<ol start="3">
+<li>所以我们可以使用PEiD查看这个exe程序被加了UPX的壳</li>
+</ol>
+<p><img src="https://i.loli.net/2021/11/14/czslw7BFyfZxjHS.png" alt="image-20211114173242107"></p>
+<ol start="4">
+<li>接着使用去壳工具把壳去掉，这个<code>新年快乐_unpacked.exe</code>就是去壳后的程序</li>
+</ol>
+<p><img src="https://i.loli.net/2021/11/14/R8vflZL29QBjSgJ.png" alt="image-20211114173623291"></p>
+<p><img src="https://i.loli.net/2021/11/14/wtBxiNGFkAS5ZUR.png" alt="image-20211114173654218"></p>
+<ol start="5">
+<li>我们在使用32位的IDA打开</li>
+</ol>
+<p><img src="https://i.loli.net/2021/11/14/uqZv7QjpwbAV9PU.png" alt="image-20211114174007875"></p>
+<p><img src="https://i.loli.net/2021/11/14/yBKhe4sw25TOlJ8.png" alt="image-20211114174056657"></p>
+<p>最后得到代码：</p>
+<p><img src="https://i.loli.net/2021/11/14/ZGydgKcIleMjSD7.png" alt="image-20211114174212991"></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> __cdecl <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> **argv, <span class="keyword">const</span> <span class="keyword">char</span> **envp)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> result; <span class="comment">// eax</span></span><br><span class="line">  <span class="keyword">char</span> Str2[<span class="number">14</span>]; <span class="comment">// [esp+12h] [ebp-3Ah] BYREF</span></span><br><span class="line">  __int16 Str1; <span class="comment">// [esp+20h] [ebp-2Ch] BYREF</span></span><br><span class="line">  _BYTE v6[<span class="number">30</span>]; <span class="comment">// [esp+22h] [ebp-2Ah] BYREF</span></span><br><span class="line"></span><br><span class="line">  sub_401910();</span><br><span class="line">  <span class="built_in">strcpy</span>(Str2, <span class="string">&quot;HappyNewYear!&quot;</span>);</span><br><span class="line">  Str1 = word_40306B;</span><br><span class="line">  <span class="built_in">memset</span>(v6, <span class="number">0</span>, <span class="keyword">sizeof</span>(v6));</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;please input the true flag:&quot;</span>);</span><br><span class="line">  <span class="built_in">scanf</span>(<span class="string">&quot;%s&quot;</span>, &amp;Str1);</span><br><span class="line">  <span class="keyword">if</span> ( !<span class="built_in">strncmp</span>((<span class="keyword">const</span> <span class="keyword">char</span> *)&amp;Str1, Str2, <span class="built_in">strlen</span>(Str2)) )</span><br><span class="line">    result = <span class="built_in">puts</span>(aThisIsTrueFlag);</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    result = <span class="built_in">puts</span>(Buffer);</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="6">
+<li>最后分析当Str1等于Str2的时候，会输出<code>aThisIsTrueFlag</code>，而 <code>aThisIsTrueFlag</code> 就是 <code>this is true flag!</code>, 所以flag= <code>HappyNewYear!</code>。</li>
 </ol>
 
     </div>
@@ -327,7 +366,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#BUUCTF%E9%A2%98%E7%9B%AE"><span class="nav-number">1.</span> <span class="nav-text">BUUCTF题目</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#easyre"><span class="nav-number">1.1.</span> <span class="nav-text">easyre</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reverse1"><span class="nav-number">1.2.</span> <span class="nav-text">reverse1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reverse2"><span class="nav-number">1.3.</span> <span class="nav-text">reverse2</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#BUUCTF%E9%A2%98%E7%9B%AE"><span class="nav-number">1.</span> <span class="nav-text">BUUCTF题目</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#easyre"><span class="nav-number">1.1.</span> <span class="nav-text">easyre</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reverse1"><span class="nav-number">1.2.</span> <span class="nav-text">reverse1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reverse2"><span class="nav-number">1.3.</span> <span class="nav-text">reverse2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B0%E5%B9%B4%E5%BF%AB%E4%B9%90"><span class="nav-number">1.4.</span> <span class="nav-text">新年快乐</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -341,7 +380,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-count">28</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
