@@ -27,7 +27,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://i.loli.net/2021/07/18/axCuwYoFVbPH1Qn.png">
 <meta property="article:published_time" content="2021-07-13T11:37:22.000Z">
-<meta property="article:modified_time" content="2021-07-20T10:45:44.010Z">
+<meta property="article:modified_time" content="2021-12-03T03:13:25.223Z">
 <meta property="article:author" content="nan-del">
 <meta property="article:tag" content="这个课程是b站上的一个比较不错关于计算机病毒分析的课程--https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV1jU4y1s7s4?p&#x3D;15&amp;t&#x3D;6">
 <meta name="twitter:card" content="summary">
@@ -181,7 +181,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-07-20 18:45:44" itemprop="dateModified" datetime="2021-07-20T18:45:44+08:00">2021-07-20</time>
+                <time title="Modified: 2021-12-03 11:13:25" itemprop="dateModified" datetime="2021-12-03T11:13:25+08:00">2021-12-03</time>
               </span>
 
           
@@ -310,7 +310,7 @@
 <p><strong>沙箱的挑战</strong></p>
 <p>沙箱只能简单的运行可执行程序，不能带有命令行选项（比如说，在沙箱中不能对计算机病毒发送各种命令信息，因为不同的计算机病毒，它的命令格式是不一样的，沙箱是一个通用的分析平台，它不会针对某一个计算机病毒的特性进行定制的开发）。沙箱也不能记录所有事件，因为不管是分析员还是沙箱，都不会等待足够长的时间让所有事件发生（很多计算机病毒为了躲避动态检测，它在执行的开始阶段会调用sleep函数，会停止所有的行为，如可以在24小时之后，它才会执行恶意代码，这样的话，沙箱和病毒分析员在做动态分析的时候是不可能的持续24个小时的），而且恶意代码经常检测它是否运行在一个虚拟机里，如果检测到了它是在虚拟机中，恶意代码将会停止运行。所以沙箱将很难检测到恶意代码的异常表现。如果沙箱使用的虚拟机存在漏洞的话也会被计算机病毒所利用，通过漏洞从沙箱中逃逸出来感染物理机。</p>
 <p>另外一个，一些恶意代码需要系统上拥有特定的注册表项或者文件才会执行，而这些在沙箱内是找不到的（例如一些计算机病毒它针对的可能是QQ、微信等等，如果我们的沙箱里面没有这样的软件，这个计算机病毒就会停止执行，）。这些就可能需要包含一些合法数据，比如控制命令或者加密密钥。</p>
-<p> 如果恶意代码是一个DLL，一些导出函数可能不会被恰当的调用，因为一个DLL文件不想可执行文件那样容易运行。一般动态链接库文件它都需要一个配合的启动器来将动态链接库注入到进程里让它启动起来。</p>
+<p> 如果恶意代码是一个DLL，一些导出函数可能不会被恰当的调用，因为一个DLL文件不像可执行文件那样容易运行。一般动态链接库文件它都需要一个配合的启动器来将动态链接库注入到进程里让它启动起来。</p>
 <p>另外一个挑战沙箱不能告诉我们恶意代码做了什么，它能报告基本功能，但它不能告诉你恶意代码具体是一个什么程序，需要我们自己来总结。因此，我们在判断一个计算机病毒具体做了什么，还需要我们进入深入的分析，不能仅仅依靠沙箱的分析报告。</p>
 <h4 id="2、运行病毒和进程监视"><a href="#2、运行病毒和进程监视" class="headerlink" title="2、运行病毒和进程监视"></a>2、运行病毒和进程监视</h4><h4 id="3、Proccess-Explorer-和-Regshot"><a href="#3、Proccess-Explorer-和-Regshot" class="headerlink" title="3、Proccess Explorer 和 Regshot"></a>3、Proccess Explorer 和 Regshot</h4><h4 id="4、网络模拟"><a href="#4、网络模拟" class="headerlink" title="4、网络模拟"></a>4、网络模拟</h4>
     </div>
@@ -441,7 +441,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
